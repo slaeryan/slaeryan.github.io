@@ -4,7 +4,7 @@ layout: default
 
 # Bio
 
-<img style="padding-right: 50px;" align="left" src="assets/images/logo.jpeg">
+<img style="padding-right: 30px;" align="left" src="assets/images/logo.jpeg">
 
 **Name:** Upayan
 
@@ -20,7 +20,7 @@ layout: default
 
 **Linkedin:** [https://www.linkedin.com/in/upayansaha](https://www.linkedin.com/in/upayan-saha-404881192/)
 
-**Twitter:** 
+**Twitter:**
 
 <br clear="left"/>
 
