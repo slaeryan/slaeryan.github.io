@@ -10,7 +10,7 @@ layout: default
 
 **Known Aliases:** slaeryan
 
-**Profession:** A CS undergrad moonlighting as an Offensive Cyber Analyst
+**Profession:** Offensive Cyber Analyst
 
 **Current Location:** Kolkata, IN
 
@@ -29,5 +29,4 @@ layout: default
 
 
 - **Jan 07, 2020:** [Cracking the Perimeter (CTP) and Offensive Security Certified Expert (OSCE) Guide](./posts/ctp-osce-guide.html)
-
 
