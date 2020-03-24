@@ -16,8 +16,6 @@ layout: default
 
 **Certifications:** None yet
 
-_References_
-
 **GitHub:** [https://github.com/upayansaha](https://github.com/upayansaha)
 
 **Linkedin:** [https://www.linkedin.com/in/upayansaha](https://www.linkedin.com/in/upayan-saha-404881192/)
@@ -25,6 +23,7 @@ _References_
 **Twitter:** 
 
 <br clear="left"/>
+
 
 # Posts
 
