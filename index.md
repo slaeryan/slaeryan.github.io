@@ -26,6 +26,8 @@ layout: default
 
 **Twitter:**
 
+<br />
+
 # Posts
 
 - **Jan 07, 2020:** [Cracking the Perimeter (CTP) and Offensive Security Certified Expert (OSCE) Guide](./posts/ctp-osce-guide.html)
