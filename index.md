@@ -17,6 +17,8 @@ layout: default
 **Certifications:** None yet
 
 <br clear="left"/>
+<br />
+<br />
 
 **GitHub:** [https://github.com/upayansaha](https://github.com/upayansaha)
 
@@ -26,6 +28,6 @@ layout: default
 
 # Posts
 
-
 - **Jan 07, 2020:** [Cracking the Perimeter (CTP) and Offensive Security Certified Expert (OSCE) Guide](./posts/ctp-osce-guide.html)
 
+<br />
