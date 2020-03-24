@@ -5,13 +5,13 @@ layout: default
 # Bio
 
 <img style="padding-right: 30px;" align="left" src="assets/images/logo.jpeg">
-**Who am I:** Upayan
+**Name:** Upayan
 
 **Known Aliases:** slaeryan
 
-**What do I do:** Offensive Cyber Analyst
+**Profession:** A CS undergrad moonlighting as an Offensive Cyber Analyst
 
-**Where am I:** Kolkata, IN
+**Current Location:** Kolkata, IN
 
 **Certifications:** None yet
 
@@ -29,3 +29,5 @@ _References_
 
 
 - **Jan 07, 2020:** [Cracking the Perimeter (CTP) and Offensive Security Certified Expert (OSCE) Guide](./posts/ctp-osce-guide.html)
+
+
