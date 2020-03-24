@@ -5,6 +5,7 @@ layout: default
 # Bio
 
 <img style="padding-right: 30px;" align="left" src="assets/images/logo.jpeg">
+
 **Name:** Upayan
 
 **Known Aliases:** slaeryan
