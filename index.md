@@ -16,14 +16,13 @@ layout: default
 
 **Certifications:** None yet
 
+<br clear="left"/>
+
 **GitHub:** [https://github.com/upayansaha](https://github.com/upayansaha)
 
 **Linkedin:** [https://www.linkedin.com/in/upayansaha](https://www.linkedin.com/in/upayan-saha-404881192/)
 
 **Twitter:**
-
-<br clear="left"/>
-
 
 # Posts
 
