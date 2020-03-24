@@ -4,7 +4,7 @@ layout: default
 
 # Bio
 
-<img style="padding-right: 30px;" align="left" src="assets/images/logo.jpeg">
+<img style="padding-right: 30px;" align="right" src="assets/images/logo.jpeg">
 
 **Name:** Upayan
 
