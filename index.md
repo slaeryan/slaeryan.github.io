@@ -31,10 +31,6 @@ published: true
 
 # Posts
 
-- **Jan 07, 2020:** [Cracking the Perimeter (CTP) and Offensive Security Certified Expert (OSCE) Guide](./posts/ctp-osce-guide.html)
-
-<br />
-
 - **Mar 25, 2020:** [SLAE Exam Assignment 2 - Creating a Reverse TCP shellcode](./posts/slae-assignment2-blogpost.html)
 
 <br />
