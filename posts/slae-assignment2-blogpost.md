@@ -30,7 +30,7 @@ But a Reverse TCP shell can be used in those scenarios because the firewall most
 So all in all, Reverse TCP shells are very useful in penetration testing and this payload is what we use on almost every occassion with a few exceptions.
 
 ## A C Prototype
-If we are going to program in something as low-level as machine code it is only fair that we first create a prototype in a high-level language like C/C++ to conceptualize it right?
+If we are going to program in something as low-level as machine code it is only fair that we first create a prototype in a high-level language like C/C++ to conceptualize it and get a template for creating our assembly code right?
 
 ```c
 // Filename: reverse_tcp.cpp
@@ -79,3 +79,15 @@ int main(int argc, char const *argv[])
 	return 0;
 }
 ```
+
+And here is a fully-functional C++ source for a reverse shell payload. Stripping the C++ code down to it's essential details, we note the following syscalls to be made in our assembly code:
+
+1. socket
+1. connect
+1. dup2
+1. execve
+
+Beautiful! Now let's get started with recreating the payload in ASM.
+
+## Creating the assembly program
+test
