@@ -311,13 +311,13 @@ Here is the final demo of the Reverse TCP shellcode in action:
 ## Code Repository
 All the code referred to or used in this project is listed as follows:
 
-1. [The C Prototype](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%202/reverse_tcp.cpp).
-1. [The NASM source](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%202/reverse_tcp_shellcode.nasm).
+1. [The C Prototype](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%202/reverse_tcp.cpp)
+1. [The NASM source](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%202/reverse_tcp_shellcode.nasm)
 1. [compile.sh](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%202/compile.sh)
-1. [converter.py](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%202/converter.py).
-1. [Reverse TCP Shellcode Generator](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%202/gen_reverse_tcp_shellcode.py).
-1. [The Shellcode Loader Program](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%202/shellcode_loader).
-1. [shellcode_loader.cpp](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%202/shellcode_loader.cpp).
+1. [converter.py](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%202/converter.py)
+1. [Reverse TCP Shellcode Generator](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%202/gen_reverse_tcp_shellcode.py)
+1. [The Shellcode Loader Program](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%202/shellcode_loader)
+1. [shellcode_loader.cpp](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%202/shellcode_loader.cpp)
 
 Feel free to use and modify all of the above code as and when you see fit. 
 
