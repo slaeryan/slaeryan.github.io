@@ -308,7 +308,7 @@ Here is the final demo of the Reverse TCP shellcode in action:
 
 <script id="asciicast-SsJ2joOfGVptz8Q0aNsCB402v" src="https://asciinema.org/a/SsJ2joOfGVptz8Q0aNsCB402v.js" async></script>
 
-## Code Repository
+## Code links:
 All the code referred to or used in this project is listed as follows:
 
 1. [The C Prototype](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%202/reverse_tcp.cpp)
