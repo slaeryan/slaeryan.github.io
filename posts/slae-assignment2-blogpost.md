@@ -59,7 +59,7 @@ int main(int argc, char const *argv[])
 	// Console C2 Port input from operator
 	char* c2portstring = (char*)argv[2];
 	int C2_PORT = atoi(c2portstring);
-    // Declaring a sockaddr_in struct and an int var for socket file descriptor
+  	// Declaring a sockaddr_in struct and an int var for socket file descriptor
 	struct sockaddr_in client;
 	int sockfd;
 	// Initializing the sockaddr_in struct
@@ -79,4 +79,3 @@ int main(int argc, char const *argv[])
 	return 0;
 }
 ```
-
