@@ -11,3 +11,5 @@ Also there's no ignoring the fact that we hacker tribes get a different joy from
 So without any further ado let's get down with it!
 
 ## So what is Reverse TCP anyway?
+Let's look at a visual representation first and then we'll talk about it.
+![Reverse TCP Overview](../assets/images/reverse_tcp_overview.png "Reverse TCP Overview")
