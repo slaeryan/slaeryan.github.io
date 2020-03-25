@@ -324,7 +324,7 @@ Feel free to use and modify all of the above code as and when you see fit.
 Cheers!
 
 ## Note
-This blog post has been created for completing the requirements of the SecurityTube Linux Assembly Expert certification: [http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert/]
+This blog post has been created for completing the requirements of the SecurityTube Linux Assembly Expert certification: (http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert/)
 
 
 Student ID: SLAE-1525
