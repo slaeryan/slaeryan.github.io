@@ -326,8 +326,10 @@ Cheers!
 ## Note
 This blog post has been created for completing the requirements of the SecurityTube Linux Assembly Expert certification: [http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert/](http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert/)
 
+<br />
 
 Student ID: SLAE-1525
 
+<br />
 
 You can find the repository [here](https://github.com/upayansaha/SLAE-Code-Repository).
