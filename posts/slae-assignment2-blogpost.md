@@ -12,4 +12,5 @@ So without any further ado let's get down with it!
 
 ## So what is Reverse TCP anyway?
 Let's look at a visual representation first and then we'll talk about it.
+<br \>
 ![Reverse TCP Overview](../assets/images/reverse_tcp_overview.png "Reverse TCP Overview")
