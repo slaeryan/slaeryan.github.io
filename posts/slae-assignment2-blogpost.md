@@ -298,7 +298,7 @@ Here is a working demo of the shellcode generator since the code is too long to 
 <script id="asciicast-Rw3QK6JoGw0Z69jPtz3jjeZGb" src="https://asciinema.org/a/Rw3QK6JoGw0Z69jPtz3jjeZGb.js" async></script>
 
 ## A working demo of the shellcode generated
-I have also created a shellcode loader which takes the shellcode in hex string format as console argument from the user and executes the shellcode after converting it. 
+I have also created a shellcode loader which takes the shellcode in hex string format as console argument from the user and executes the shellcode after converting it internally.
 
 This saves me from copying and pasting the shellcode C-string again and again in the shellcode.c code provided to us as a part of course-material and compiling and executing it(Yes, I'll plead guilty to being lazy!)
 
@@ -309,3 +309,23 @@ Here is the final demo of the Reverse TCP shellcode in action:
 <script id="asciicast-SsJ2joOfGVptz8Q0aNsCB402v" src="https://asciinema.org/a/SsJ2joOfGVptz8Q0aNsCB402v.js" async></script>
 
 ## Code Repository
+All the code referred to or used in this project is listed as follows:
+
+1. [The C Prototype](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%202/reverse_tcp.cpp).
+1. [The NASM source](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%202/reverse_tcp_shellcode.nasm).
+1. [compile.sh](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%202/compile.sh)
+1. [converter.py](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%202/converter.py).
+1. [Reverse TCP Shellcode Generator](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%202/gen_reverse_tcp_shellcode.py).
+1. [The Shellcode Loader Program](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%202/shellcode_loader).
+1. [shellcode_loader.cpp](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%202/shellcode_loader.cpp).
+
+Feel free to use and modify all of the above code as and when you see fit. 
+
+Cheers!
+
+## Note
+This blog post has been created for completing the requirements of the SecurityTube Linux Assembly Expert certification: http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert/
+
+Student ID: SLAE-1525
+
+You can find all of the code [here](https://github.com/upayansaha/SLAE-Code-Repository).
