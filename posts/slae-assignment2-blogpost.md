@@ -80,7 +80,7 @@ int main(int argc, char const *argv[])
 }
 ```
 
-And here is a fully-functional C++ source for a reverse shell payload. Stripping the C++ code down to it's essential details, we note the following syscalls to be made in our assembly code:
+And here is a fully-functional C source for a reverse shell payload. Stripping the C code down to it's essential details, we note the following syscalls to be made in our assembly code:
 
 1. socket
 1. connect
