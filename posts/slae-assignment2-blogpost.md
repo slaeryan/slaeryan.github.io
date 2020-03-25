@@ -1,7 +1,7 @@
-## SLAE Exam Assignment 2 - Creating a Reverse TCP shellcode
+# SLAE Exam Assignment 2 - Creating a Reverse TCP shellcode
 
-# Prologue
-So the second task that we have for our SLAE certification exam is creating a reverse TCP shellcode for x86/Linux architecture using the knowledge that we have gathered from the wonderful course and the techniques that we have accumulated over time. 
+## Prologue
+So the second task that we have for our SLAE certification exam is creating a reverse TCP shellcode for Linux/x86 architecture using the knowledge that we have gathered from the wonderful course and the techniques that we have accumulated over time. 
 To be honest this was easily one of my most favourite assignments that I had the pleasure of doing.
 Why so?
 Let me tell you why.
@@ -10,4 +10,4 @@ No more getting caught by AVs and EDRs and next-gen security products because no
 Also there's no ignoring the fact that we hacker tribes get a different joy from using our own custom tools wherever possible in red-teaming engagements/CTFs yada yada yada.
 So without any further ado let's get down with it!
 
-# What is Reverse TCP anyway?
+## So what is Reverse TCP anyway?
