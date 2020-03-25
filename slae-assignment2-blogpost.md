@@ -1,3 +1,0 @@
-## SLAE Assignment 2
-
-
