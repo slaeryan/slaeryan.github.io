@@ -29,7 +29,7 @@ But a Reverse TCP shell can be used in those scenarios because the firewall most
 
 So all in all, Reverse TCP shells are very useful in penetration testing and this payload is what we use on almost every occassion with a few exceptions.
 
-## A C Prototype
+## A C Prototype first
 If we are going to program in something as low-level as machine code it is only fair that we first create a prototype in a high-level language like C/C++ to conceptualize it and get a template for creating our assembly code right?
 
 ```c
