@@ -131,7 +131,7 @@ Also, not that the sockaddr_in consists of:
 
 1. The attacker IP address
 1. The attacker Port
-1. The addressing schema in this case IPv4 so it's value shall be 2
+1. The addressing schema(In this case it's IPv4 so it's value shall be 2)
 
 So let us start by pushing those into the stack. Note that I have configured the C2 a.k.a Command & Control/Attacker IP address and port to be configurable while assembling via nasm with the `-D` flag.
 
