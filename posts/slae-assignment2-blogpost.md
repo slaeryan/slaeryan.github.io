@@ -103,6 +103,7 @@ cdq                ; Clearing out EDX
 
 Note that we didn't use XOR'ing for clearing the EDX register instead we used cdq which actually copies the sign bit of EAX register into each bit position in EDX register essentially clearing it out. This saved us 3 bytes in the process ;)
 
+
 Now we will initiate the socket syscall using the good ol' software interrupt 80h.
 
 ```c
@@ -115,4 +116,5 @@ mov cl, 0x01
 ; socket() Syscall
 int 0x80
 ```
+
 
