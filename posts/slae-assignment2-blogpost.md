@@ -1,7 +1,7 @@
 # SLAE Exam Assignment 2 - Creating a Reverse TCP shellcode
 
 ## Prologue
-So the second task that we have for our SLAE certification exam is creating a reverse TCP shellcode for Linux/x86 architecture using the knowledge that we have gathered from the wonderful course and the techniques that we have accumulated over time. 
+So the second task that we have for our SLAE certification exam is creating a reverse TCP shellcode for Linux/x86 architecture using the knowledge that we have gathered from the wonderful course and the shellcoding techniques that we have accumulated over time. 
 To be honest this was easily one of my most favourite assignments that I had the pleasure of doing.
 Why so?
 Let me tell you why.
