@@ -33,6 +33,6 @@ published: true
 
 - **Jan 07, 2020:** [Cracking the Perimeter (CTP) and Offensive Security Certified Expert (OSCE) Guide](./posts/ctp-osce-guide.html)
 <br />
-- **Mar 25, 2020:** [SLAE Assignment 2 blogpost](./posts/slae-assignment2-blogpost.html)
+- **Mar 25, 2020:** [SLAE Exam Assignment 2](./posts/slae-assignment2-blogpost.html)
 
 <br />
