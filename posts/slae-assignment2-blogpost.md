@@ -1,3 +1,13 @@
 ## SLAE Exam Assignment 2 - Creating a Reverse TCP shellcode
 
-Enter text in [Markdown](http://daringfireball.net/projects/markdown/). Use the toolbar above, or click the **?** button for formatting help.
+# Prologue
+So the second task that we have for our SLAE certification exam is creating a reverse TCP shellcode for x86/Linux architecture using the knowledge that we have gathered from the wonderful course and the techniques that we have accumulated over time. 
+To be honest this was easily one of my most favourite assignments that I had the pleasure of doing.
+Why so?
+Let me tell you why.
+So we create Meterpreter reverse TCP payloads all the time for exploitation purposes right? But invariably what happens is our payload getting caught and detected by AVs and EDRs. But that's all history now.
+No more getting caught by AVs and EDRs and next-gen security products because now we can create our very own custom reverse TCP shellcode that is capable of bypassing all of the aforementioned security solutions!
+Also there's no ignoring the fact that we hacker tribes get a different joy from using our own custom tools wherever possible in red-teaming engagements/CTFs yada yada yada.
+So without any further ado let's get down with it!
+
+# What is Reverse TCP anyway?
