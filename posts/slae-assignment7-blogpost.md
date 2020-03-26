@@ -22,7 +22,7 @@ But what if we encrypt the PE/ELF executable?
 
 And run the executable by decrypting it successfully at run-time? It's a brilliant idea right? Kudos to whoever thought of that!
 
-The main theme here is to encrypt the executable ahead of time and insert a piece of code called the stub inside the payload that will do the decryption at runtime and execute our payload thereby bypassing static signature-based detection successfully because that happens pre-execution remember?
+The main theme here is to encrypt the payload ahead of time and insert a piece of code called the stub inside the payload that will do the decryption at runtime and execute our payload thereby bypassing static signature-based detection successfully because that happens pre-execution remember?
 
 This is how an encrypted payload looks exposed to VirusTotal.
 
