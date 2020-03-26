@@ -207,3 +207,21 @@ main()
 
 ## Code links:
 All the code referred to or used in this project is listed as follows:
+
+1. [shellcode_crypter.py](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%207/shellcode_crypter.py)
+1. [shellcode_decrypter.py](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%207/shellcode_decrypter.py)
+
+Feel free to use and modify all of the above code as and when you see fit. 
+
+Cheers!
+
+## Note
+This blog post has been created for completing the requirements of the SecurityTube Linux Assembly Expert certification:
+
+<br />
+
+[http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert/](http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert/)
+
+<br />
+
+Student ID: SLAE-1525
