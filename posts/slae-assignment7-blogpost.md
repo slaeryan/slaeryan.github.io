@@ -8,6 +8,6 @@ For this assignment, we could use any programming language of our choice and I c
 So what are we waiting for? Let's get down with it!
 
 ## But let's talk about the implementation details first!
-So we are going to be using a cryptographic library known as NaCl which is an abbreviation for is an abbreviation for "Networking and Cryptography library" as the principal encryption library.
+So we are going to be using a cryptographic library known as NaCl which is an abbreviation for is an abbreviation for "Networking and Cryptography library" as the principal encryption library for our crypter.
 
 Fortunately for us, since this library was created by a very well-known mathematician and cryptographer known as D.J. Bernstein, we do not need to worry about the security or the mathematical backend of this library and we can move on directly with the practical aspects of it.
