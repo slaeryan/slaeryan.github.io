@@ -26,7 +26,7 @@ The main theme here is to encrypt the executable ahead of time and insert a piec
 
 This is how an encrypted payload looks exposed to VirusTotal.
 
-!![VirusTotal Scan Clean](../assets/images/vt_scan_clean.png "VirusTotal Scan Clean")
+![VirusTotal Scan Clean](../assets/images/vt_scan_clean.png "VirusTotal Scan Clean")
 
 An important point to note is that using this technique we will only be able to bypass AVs relying on _static-analysis_ solely which is seldom the case nowadays since security products today use a hybrid technique of _static-analysis_ and _dynamic-analysis_ combined which is basically automatic execution of the binary in a secure environment and looking for suspicious behaviours/indicators to determine whether it is malicious or not and this going to catch our payload once we decrypt the payload.
 
