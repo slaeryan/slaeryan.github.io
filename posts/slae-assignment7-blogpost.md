@@ -215,15 +215,17 @@ Feel free to use and modify all of the above code as and when you see fit.
 
 Cheers!
 
-## Conclusion:
+## Acknowledgements:
 
 What a lovely journey this has been! All thanks to Vivek Ramachandran and Pentester Acacdemy for bringing such a wonderfully brilliant course and that too at an affordable price like this. I still can't comprehend that it's over! 
 
-SLAE is one of the first courses that I had the pleasure of attempting and I hope to persue my OSCP after this alongwith a whole bunch of other OFFSEC courses by Pentester Academy but one thing I can be sure of is that this course will forever be a turning point in my career.
+SLAE is one of the first courses that I had the pleasure of attempting and I hope to persue my OSCP after this alongwith a bunch of other OFFSEC courses offered by Pentester Academy but one thing I can be sure of is that this course will forever be a turning point in my career.
+
+Also, a shoutout to the people who have attempted this course before me for you have given me an inspiration and a map towards the right direction.
 
 To all reading this post I'll tell you this:
 
-_Give this a shot for I can assure that thou shall not be disappointed!_
+_Give SLAE a shot for I can assure that thou shall not be disappointed!_
 
 ## Note
 This blog post has been created for completing the requirements of the SecurityTube Linux Assembly Expert certification:
