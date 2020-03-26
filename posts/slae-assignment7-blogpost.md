@@ -216,7 +216,6 @@ Feel free to use and modify all of the above code as and when you see fit.
 Cheers!
 
 ## Acknowledgements:
-
 What a lovely journey this has been! All thanks to Vivek Ramachandran and Pentester Acacdemy for bringing such a wonderfully brilliant course and that too at an affordable price like this. I still can't comprehend that it's over! 
 
 SLAE is one of the first courses that I had the pleasure of attempting and I hope to persue my OSCP after this alongwith a bunch of other OFFSEC courses offered by Pentester Academy but one thing I can be sure of is that this course will forever be a turning point in my career.
