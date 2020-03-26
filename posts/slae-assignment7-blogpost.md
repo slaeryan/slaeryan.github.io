@@ -65,8 +65,8 @@ This is crucial because you as a red-teamer/pen-tester obviously do not want you
 
 Keep in mind that I have used the hostname here as an example only and in real-life there can be many factors that an operator might use as an environmental keying factor to determine friend-or-foe.
 
-## Encrypter Code
-The crypter code is as follows:
+## Crypter Code
+The Shellcode Crypter code is as follows:
 
 ```python
 # Filename: shellcode_crypter.py
@@ -127,7 +127,7 @@ main()
 ```
 
 ## Decrypter Code
-The decrypter code is as follows:
+The Shellcode Decrypter code is as follows:
 
 ```python
 # Filename: shellcode_decrypter.py
