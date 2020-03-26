@@ -66,7 +66,7 @@ This is crucial because you as a red-teamer/pen-tester obviously do not want you
 Keep in mind that I have used the hostname here as an example only and in real-life there can be many factors that an operator might use as an environmental keying factor to determine friend-or-foe.
 
 ## Crypter Code
-The Shellcode Crypter code is as follows:
+The shellcode crypter code is as follows:
 
 ```python
 # Filename: shellcode_crypter.py
@@ -127,7 +127,7 @@ main()
 ```
 
 ## Decrypter Code
-The Shellcode Decrypter code is as follows:
+The shellcode decrypter code is as follows:
 
 ```python
 # Filename: shellcode_decrypter.py
@@ -201,4 +201,9 @@ def main():
 main()
 ```
 
-## Working demo of Crypter
+## Working demo of the Shellcode Crypter
+
+<script id="asciicast-DnafdokXrpvHzydqbi9hhU0ry" src="https://asciinema.org/a/DnafdokXrpvHzydqbi9hhU0ry.js" async></script>
+
+## Code links:
+All the code referred to or used in this project is listed as follows:
