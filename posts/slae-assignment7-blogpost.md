@@ -201,7 +201,7 @@ def main():
 main()
 ```
 
-## Working demo of the Shellcode Crypter
+## A working demo of the Shellcode Crypter
 
 <script id="asciicast-DnafdokXrpvHzydqbi9hhU0ry" src="https://asciinema.org/a/DnafdokXrpvHzydqbi9hhU0ry.js" async></script>
 
