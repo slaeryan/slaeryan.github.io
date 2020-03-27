@@ -222,9 +222,9 @@ SLAE is one of the first courses that I had the pleasure of attempting and I hop
 
 Also, a shoutout to the people who have attempted this course before me for you have given me an inspiration and a map towards the right direction.
 
-To all reading this post I'll tell you this:
+To all reading this post who are looking to venture into the OFFSEC grounds I'll tell you this:
 
-_Give SLAE a shot for I can assure that thou shall not be disappointed!_
+_Give SLAE a shot for I can assure that thou shant be disappointed!_
 
 ## Note
 This blog post has been created for completing the requirements of the SecurityTube Linux Assembly Expert certification:
