@@ -18,7 +18,7 @@ Each shellcode is crafted for a specific purpose right? Say there's a Reverse TC
 
 Enter polymorphic shellcode!
 
-So this script-kiddie gives this assembly code that he found to an 1337 hacker and he in return gives him back a modified payload which surprisingly runs as expected without any detections much to this script-kiddie's surprise. So what did this 1337 hacker do?
+So this script-kiddie gives this assembly code that he found to an 1337 hacker and in return gets back a modified payload which surprisingly runs as expected without any detections much to this script-kiddie's surprise. So what did this 1337 hacker do?
 
 He basically modified the source that he received to beat _static signature analysis_. In other words, he created a polymorphic shellcode from the original source that has the same functionality but a different signature this time since he addded some new instructions, deleted some old instructions, added some NOP instructions, switched the algorithm somewhere yada yada yada.
 
