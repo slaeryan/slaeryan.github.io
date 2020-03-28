@@ -14,7 +14,7 @@ Polymorphism comes from the Greek words: _poly_ meaning "many" and _morph_ meani
 
 Now let's understand what we mean by polymorphic shellcode with the help of a tiny example.
 
-Each shellcode is crafted for a specific purpose right? Say there's a Reverse TCP shellcode which connects back to an attacker server for execution of arbritary commands. This shellcode was used many times in the past by an attacker along with an exploit to get access to a remote machine and exfiltrate data. Now the AV/EDR vendors have caught up to it and they have written signatures to detect this payload. Say a wannabe pen-tester has somehow gotten their hands on this payload and they too want to use this payload so they quickly decide to test this payload in a live-environment of their own before deploying it but alas! As soon as they fire up the payload it gets detected by a commercial AV solution. This can't be any good!
+Each shellcode is crafted for a specific purpose right? Say there's a Reverse TCP shellcode which connects back to an attacker server for execution of arbritary commands. This shellcode was used many times in the past by an attacker along with an exploit to get access to a remote machine and exfiltrate data. Now the AV/EDR vendors have caught up to it and they have written signatures to detect this payload. Say a wannabe pen-tester has somehow gotten their hands on this payload and they too want to use this payload so they quickly decide to test it in a live test environment of their own before deploying it but alas! As soon as they fire up the payload it gets detected by a commercial AV solution. This can't be any good!
 
 Enter polymorphic shellcode!
 
