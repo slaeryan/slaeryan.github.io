@@ -7,7 +7,7 @@ What's more? We were told that extra brownie-points would be given if the polymo
 
 So without any further ado, let's get down with it!
 
-## What is polymorphic shellcode?
+## What is a polymorphic shellcode?
 It is impossible to explain polymorphic shellcode if we don't understand what is polymorphism.
 
 Polymorphism comes from the Greek words: _poly_ meaning "many" and _morph_ meaning "forms". In other words it roughly translates to "many forms" of the same thing.
