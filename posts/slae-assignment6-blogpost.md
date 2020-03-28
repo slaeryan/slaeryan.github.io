@@ -10,7 +10,7 @@ So without any further ado, let's get down with it!
 ## What is a polymorphic shellcode?
 It is impossible to explain polymorphic shellcode if we don't understand what is polymorphism.
 
-Polymorphism comes from the Greek words: _poly_ meaning "many" and _morph_ meaning "forms". In other words it roughly translates to "many forms" of the same thing.
+Polymorphism comes from the Greek words: _poly_ meaning "many" and _morph_ meaning "forms". In other words it roughly translates to "many forms of the same thing".
 
 Now let's understand what we mean by polymorphic shellcode with the help of a tiny example.
 
