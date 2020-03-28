@@ -177,7 +177,7 @@ For this one I actually took a different approach altogether and ended up minimi
 
 The assembly source is commented throughout ergo I won't be discussing that in more details.
 
-With that, we conclude our blog post on creating polymorphic shellcodes.
+With that, we conclude our blog post on creating polymorphic shellcode.
 
 ## Code links:
 All the code referred to or used in this project is listed as follows:
