@@ -63,9 +63,8 @@ Size Reduction: `9%`
 
 For the first assignment I took a very simple shellcode which executes /bin/sh so I will not go into too much detail on how it works. I just bastardized the execve call and made the following modifications:
 
-1. 
-1.
-1.
+1. Removed the null termination push after /bin//sh
+1. Removed the ECX pointing to argv[]
 
 Let's see a demo of the shellcode in action now:
 
