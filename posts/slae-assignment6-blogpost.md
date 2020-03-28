@@ -173,7 +173,7 @@ I have saved the best for the last and it's needless to say this is a shellcode 
 
 For this one I actually took a different approach altogether and ended up minimising the shellcode length by `10 bytes`. Here is what I have done:
 
-1. The original shellcode uses execve on /usr/sbin/reboot to cause a system reboot. I searched the linux syscall table online and found that there is a separate syscall for reboot(0x58) and I decided to execute that syscall rather than trying to remove optional instructions from the original shellcode. Result is a completely polymorphic shellcode that is 10 bytes lesser than the original. 
+1. The original shellcode uses execve on /usr/sbin/reboot to cause a system reboot. I searched the linux syscall table online and found that there is a separate syscall for reboot(0x58) and I decided to execute that syscall rather than trying to remove optional instructions from the original shellcode in an effort to minimise it as much as possible. The result is a completely polymorphic shellcode that is 10 bytes lesser than the original. 
 
 The assembly source is commented throughout ergo I won't be discussing that in more details.
 
