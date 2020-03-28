@@ -56,7 +56,9 @@ int 0x80               ; Execute the system call
 ```
 
 Length of original shellcode: `23 bytes`
+
 Length of polymorphic shellcode: `21 bytes`
+
 Size Reduction: 9%
 
 For the first assignment I took a very simple shellcode which executes /bin/sh so I will not go into too much detail on how it works. I just bastardized the execve call and made the following modifications:
