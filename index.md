@@ -27,7 +27,7 @@ published: true
 
 **Twitter:**
 
-**HackTheBox:** &lt;script src=&quot;https://www.hackthebox.eu/badge/255823&quot;&gt;&lt;/script&gt;
+**HackTheBox:** <script src="https://www.hackthebox.eu/badge/56695"></script>
 
 **Contact:** upayansaha@icloud.com
 
