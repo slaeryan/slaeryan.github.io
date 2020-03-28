@@ -78,7 +78,7 @@ Original assembly source:
 ```nasm
 xor eax, eax
 push eax
-push dword 0x4b434148  #You can change it !
+push dword 0x4b434148
 mov al, 0x27
 mov ebx, esp
 inc cx
