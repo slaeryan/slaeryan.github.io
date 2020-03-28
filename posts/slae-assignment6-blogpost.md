@@ -169,3 +169,34 @@ Length of polymorphic shellcode: `26 bytes`
 
 Size Reduction: `28%`
 
+I have saved the best for the last, needless to say this is a shellcode that forces a system reboot.
+
+For this one I actually took a different approach altogether and ended up minimising the shellcode length by `10 bytes`. Here is what I have done:
+
+1. The original shellcode uses execve on /usr/sbin/reboot to cause a system reboot. I searched the linux syscall table online and found that there is a separate syscall for reboot(0x58) and I decided to execute that syscall rather than trying to remove optional instructions from the original shellcode. Result is a completely polymorphic shellcode that is 10 bytes lesser than the original. 
+
+The assembly source is commented throughout ergo I won't be discussing that in more details.
+
+With that, we conclude our blog post on creating polymorphic shellcode.
+
+## Code links:
+All the code referred to or used in this project is listed as follows:
+
+1. [1st polymorphic shellcode](https://github.com/upayansaha/SLAE-Code-Repository/tree/master/Assignment%206/1st%20Shellcode)
+1. [2nd polymorphic shellcode](https://github.com/upayansaha/SLAE-Code-Repository/tree/master/Assignment%206/2nd%20Shellcode)
+1. [3rd polymorphic shellcode](https://github.com/upayansaha/SLAE-Code-Repository/tree/master/Assignment%206/3rd%20Shellcode)
+
+Feel free to use and modify all of the above code as and when you see fit. 
+
+Cheers!
+
+## Note:
+This blog post has been created for completing the requirements of the SecurityTube Linux Assembly Expert certification:
+
+<br />
+
+[http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert/](http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert/)
+
+<br />
+
+Student ID: SLAE-1525
