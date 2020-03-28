@@ -37,4 +37,6 @@ published: true
 
 - **Mar 25, 2020:** [SLAE Exam Assignment 2 - Creating a Reverse TCP shellcode](./posts/slae-assignment2-blogpost.html)
 
-- **Mar 26, 2020:** [SLAE Exam Assignment 7 - Creating a custom shellcode crypter](./posts/slae-assignment7-blogpost.html)
+- **Mar 30, 2020:** [SLAE Exam Assignment 6 - Creating polymorphic shellcode](./posts/slae-assignment6-blogpost.html)
+
+- **Mar 31, 2020:** [SLAE Exam Assignment 7 - Creating a custom shellcode crypter](./posts/slae-assignment7-blogpost.html)
