@@ -169,7 +169,7 @@ Length of polymorphic shellcode: `26 bytes`
 
 Size Reduction: `28%`
 
-I have saved the best for the last and it's needless to say this is a shellcode that forces a system reboot.
+I have saved the best for the last and it's needless to say this is a shellcode that will force a system reboot.
 
 For this one I actually took a different approach altogether and ended up minimising the shellcode length by `10 bytes`. Here is what I have done:
 
