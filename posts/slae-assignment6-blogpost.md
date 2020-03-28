@@ -22,7 +22,7 @@ So this script-kiddie gives this assembly code that he found to an 1337 hacker a
 
 He basically modified the source that he received to beat _static signature analysis_. In other words, he created a polymorphic shellcode from the original source that has the same functionality but a different signature this time since he **addded some new instructions, deleted some old instructions, added some NOP instructions, switched the algorithm somewhere yada yada yada.**
 
-Now that we know what is a polymorphic shellcode and how it is useful for us, let's get our hands dirty with creating some!
+Now that we know what is a polymorphic shellcode and how it could be useful to us, let's get our hands dirty with creating some!
 
 ## First polymorphic shellcode - execve(/bin/sh)
 [Here](http://shell-storm.org/shellcode/files/shellcode-827.php) is the link to the original shellcode.
