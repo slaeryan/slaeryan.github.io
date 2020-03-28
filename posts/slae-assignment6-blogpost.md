@@ -117,7 +117,7 @@ This is a shellcode which will create a directory named "HACK"(modifiable), set 
 
 The modifications made for creating the polymorphic shellcode are as follows:
 
-1. Removed the XOR'ing of EAX for the exit syscall because we don't really need that.
+1. Removed the XOR'ing of EAX to clear itself for the exit syscall because we don't really need that.
 1. Removed the INC of CX by 1 before syscall of mkdir as an optional argument because again it is not strictly necessary.
 
 There isn't much left to further decrease the size but hey we did decrease it by 14%.
