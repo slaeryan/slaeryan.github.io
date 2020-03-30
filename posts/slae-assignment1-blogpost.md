@@ -10,7 +10,7 @@ Let's take a look at a visual representation first and then we shall get down to
 
 ![Bind TCP Overview](../assets/images/bind_tcp_overview.png "Bind TCP Overview")
 
-As is illustrated by the image, the victim/target machine opens a port and listens for an incoming connection request by the attacker. After a connection is established successfully between them, the target can execute any abritary command as instructed by the target machine.
+As is illustrated by the image, the victim/target machine opens a port and listens for an incoming connection request by the attacker. After a connection is established successfully between them, the target can now execute any abritary command as instructed by the attacker machine.
 
 In other words, the victim is running the TCP server and the attacker is running the TCP client code.
 
