@@ -34,7 +34,7 @@ published: true
 <br />
 
 # Posts
-- **Mar 25, 2020:** [SLAE Exam Assignment 1 - Creating a Bind TCP Shellcode](./posts/slae-assignment1-blogpost.html)
+- **Mar 25, 2020:** [SLAE Exam Assignment 1 - Creating a Bind TCP shellcode](./posts/slae-assignment1-blogpost.html)
 
 - **Mar 26, 2020:** [SLAE Exam Assignment 2 - Creating a Reverse TCP shellcode](./posts/slae-assignment2-blogpost.html)
 
