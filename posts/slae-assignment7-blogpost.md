@@ -18,11 +18,11 @@ To better understand it, let's look at something.
 
 So this is how a standard meterpreter shell looks without any form of encryption when scanned with different AV products. Nearly all AVs possess the ability to catch and quarantine them almost immediately. Hmmmm...
 
-But what if we encrypt the PE/ELF executable? 
+But what if we encrypt the PE/ELF executable? And run the executable by decrypting it successfully at run-time?
 
-And run the executable by decrypting it successfully at run-time? It's a brilliant idea right? Kudos to whoever thought of that!
+The main theme here is to encrypt the payload ahead of time and insert a piece of code called the stub inside the payload that will do the decryption at runtime and execute our payload thereby bypassing static signature-based detection successfully because the AV engine can't crack the encrypted payload pre-execution.
 
-The main theme here is to encrypt the payload ahead of time and insert a piece of code called the stub inside the payload that will do the decryption at runtime and execute our payload thereby bypassing static signature-based detection successfully because that happens pre-execution remember?
+It's a brilliant idea right? Kudos to whoever thought of that!
 
 This is how an encrypted payload looks exposed to VirusTotal.
 
@@ -127,7 +127,7 @@ main()
 ```
 
 ## Decrypter Code
-The shellcode decrypter code is as follows:
+The shellcode decrypter/loader code is as follows:
 
 ```python
 # Filename: shellcode_decrypter.py
