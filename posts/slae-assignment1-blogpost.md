@@ -71,5 +71,29 @@ int main(int argc, char const *argv[])
 }
 ```
 
+And here is a fully-functional C source for a bind shell payload. Stripping the C code down to it's essential details, we note the following syscalls to be made in our assembly code:
+
+1. socket
+1. bind
+1. listen
+1. accept
+1. dup2
+1. execve
+
+Wonderful! Now let's get started with recreating the payload in ASM.
+
+## Creating the Assembly program
+### Clearing registers
+The first set of instructions are almost always the same which is clearing the register sets we will be using in our program.
+
+```nasm
+; Clearing the first 4 registers for 1st Syscall - socket()
+xor eax, eax       ; May also sub OR mul for zeroing out
+xor ebx, ebx       ; Clearing out EBX 
+xor ecx, ecx       ; Clearing out ECX
+cdq                ; Clearing out EDX 
+```
+
+Note that we didn't use XOR'ing for clearing the EDX register instead we used `cdq` which actually copies the sign bit of EAX register into each bit position in EDX register essentially clearing it out. This saved us 3 bytes in the process ;)
 
 
