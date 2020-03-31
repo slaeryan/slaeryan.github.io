@@ -251,8 +251,8 @@ global _start
 
 section .text
 _start:
-
-	; Clearing the first 4 registers for 1st Syscall - socket()
+	
+    ; Clearing the first 4 registers for 1st Syscall - socket()
 	xor eax, eax          ; May also sub OR mul for zeroing out
 	xor ebx, ebx          ; Clearing out EBX 
 	xor ecx, ecx          ; Clearing out ECX
