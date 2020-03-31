@@ -119,7 +119,7 @@ int 0x80
 mov ebx, eax
 ```
 
-Now moving to setup the sockaddr_in struct
+Now moving to setup the sockaddr_in struct.
 ### Setting up the sockaddr_in struct for connect syscall
 Note from the C prototype that the sockaddr_in struct consists of:
 
