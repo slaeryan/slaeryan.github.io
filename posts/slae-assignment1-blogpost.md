@@ -305,8 +305,8 @@ _start:
     
     mov ebx, eax           ; Storing the return value connection socket fd in EAX to EBX for later usage
     mov cl, 0x3            ; Initializing a counter variable = 3 for loop
-
-	; dup2() Syscall in loop
+	
+    ; dup2() Syscall in loop
     loop_dup2:
     mov al, 0x3f           ; dup2() Syscall number = 63 OR 0x3f
     dec ecx                ; Decrement ECX by 1
