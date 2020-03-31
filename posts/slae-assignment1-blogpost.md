@@ -305,7 +305,7 @@ _start:
     
 	; Storing the return value connection socket fd in EAX to EBX for later usage
 	mov ebx, eax
-    ; Initializing a counter variable = 3 for loop
+	; Initializing a counter variable = 3 for loop
 	mov cl, 0x3    
 
 	; dup2() Syscall in loop
