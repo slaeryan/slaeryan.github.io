@@ -154,7 +154,7 @@ int 0x80               ; Execute the bind syscall
 The listen() arguments can be summarized as follows:
 
 1. int sockfd - this is a reference to the socket fd that was created in the first syscall, still set in EBX
-1. 0 - since we will immediately accept the first incoming connection
+1. 0 - since we will immediately accept the first incoming connection - we will clear ECX for this
 
 Based on these facts, let's initiate the listen syscall.
 
