@@ -213,7 +213,7 @@ jnz short loop_dup2   ; Jump back to loop_dup2 label until ZF is set
 ```
 
 ### Execve syscall
-At last now that we have created a socket, established a connection and duplicated the file descriptors, now what?
+At last now that we have established a connection and duplicated the file descriptors, now what?
 
 Now we execute `/bin/sh` using Execve-Stack method that we learnt previously to execute commands on the target machine remotely.
 
