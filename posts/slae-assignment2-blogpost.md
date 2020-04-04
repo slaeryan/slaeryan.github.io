@@ -326,7 +326,7 @@ This blog post has been created for completing the requirements of the SecurityT
 
 <br />
 
-[http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert/](http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert/)
+[http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert/](https://www.pentesteracademy.com/course?id=3)
 
 <br />
 
