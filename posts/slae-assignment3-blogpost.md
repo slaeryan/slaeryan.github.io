@@ -31,4 +31,6 @@ Okay okay I get it but as far as I knew when a program tries to read unallocated
 Here comes Skape's out-of-the-box solution. He has devised a way to use the `access()` syscall to check whether a page of memory is accessible or not by using the memory address as argument and by checking the error code returned by the syscall, we can determine whether the page is accessible or not. This enables us to scan the memory safely.
 
 Needless to say, if the page is inaccessible then it should skip to the next page directly otherwise it should continue scanning the page looking for our "egg".
+### One final note
+
 
