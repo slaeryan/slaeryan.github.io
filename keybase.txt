@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/upayansaha
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://upayansaha.github.io
+  * I am upayansaha (https://keybase.io/upayansaha) on keybase.
+  * I have a public key ASCLGoBIgwBcNYPooRT3gZCvEO0aaHs0L7-McDXV2cIjdAo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120ff82ed17ffe01b520852da262964c40ba58a7ac4929375def23da8eda0c899ad0a",
+      "host": "keybase.io",
+      "kid": "01208b1a804883005c3583e8a114f78190af10ed1a687b342fbf8c7035d5d9c223740a",
+      "uid": "153e9d093295fa994a9a4768b56e8b19",
+      "username": "upayansaha"
+    },
+    "merkle_root": {
+      "ctime": 1586084558,
+      "hash": "1b30c19eb36322f90ef0b722748329cc0cd0943af2d63aa143d77ec05fcd65d564554bfa26ca04f01d5c586411493ffd5399cceb825c365fd447c8e296758a42",
+      "hash_meta": "6cac774bfa52f0069606b549adb9cf5dcec08dcf0276791711d458cc7d7a0fac",
+      "seqno": 15771420
+    },
+    "service": {
+      "entropy": "MW68JKe2/SZ871ZwAB9iWJQ5",
+      "hostname": "upayansaha.github.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "5.3.0"
+  },
+  "ctime": 1586084590,
+  "expire_in": 504576000,
+  "prev": "329365fe7b110915633e04ef9fb77f38da2bf22da81c9f582b65584a751e69e6",
+  "seqno": 27,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgixqASIMAXDWD6KEU94GQrxDtGmh7NC+/jHA11dnCI3QKp3BheWxvYWTESpcCG8QgMpNl/nsRCRVjPgTvn7d/ONor8i2oHJ9YK2VYSnUeaebEIPvTuFr1aKKMUBp3KCG7n8524YZ5nlfpkXbSFDcTW64lAgHCo3NpZ8RA+613BN4F20blkODL+qVZfrfiD5T2paIx6ruG4jKLZhiQoclKVhC73OtqFWOrN65juKqDfj9bPNeE4O6pga7gAahzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIAgCdhxL5AYDs+3B5CU0XWOA5P9wc7tZHhstLU5U2txGo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/upayansaha
+
+==================================================================
