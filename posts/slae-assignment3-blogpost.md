@@ -34,4 +34,8 @@ Needless to say, if the page is inaccessible then it should skip to the next pag
 ### One final note
 One last important matter to discuss is what should we consider as this "egg" that we are talking about?
 
-In order for the egg-hunter to transfer the execution flow to the secondary payload as soon as it finds the egg, the egg itself must be an executable. 
+In order for the egg-hunter to transfer the execution flow to the secondary payload stored somewhere else in the memory as soon as it finds the egg, the egg itself must be an executable.
+
+Also, a single instance(4 bytes) of the egg shall be present in the egg-hunter itself so as to enable it to find it in memory by comparison right? Now there might be a scenario where the egg-hunter accidentally finds itself in memory thinking it has found the egg when it actually hasn't. So we must keep the egg as something unique.
+
+In light of these issues, Skape has devised an 8-byte executable egg by simply appending the egg to itself making it unique and easily identifiable in the memory. We shall also be using the original "egg" for the purposes of this blog post. 
