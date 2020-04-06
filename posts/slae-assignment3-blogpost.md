@@ -1,7 +1,7 @@
 ## SLAE Exam Assignment 3 - Creating an Egg-hunter shellcode
 
 ## Prologue
-The third assignment for our SLAE Certification exam is creating an egg-hunter shellcode and configuring it in such a way so as to make it's payloads configurable.
+The third assignment for our SLAE Certification exam is creating an egg-hunter shellcode in such a way so as to make it's secondary payload configurable.
 
 Egg-hunter remains an extremely important topic for study by exploitation analysts and rightfully so. 
 
