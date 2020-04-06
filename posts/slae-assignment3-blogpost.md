@@ -32,5 +32,6 @@ Here comes Skape's out-of-the-box solution. He has devised a way to use the `acc
 
 Needless to say, if the page is inaccessible then it should skip to the next page directly otherwise it should continue scanning the page looking for our "egg".
 ### One final note
+One last important matter to discuss is what should we consider as this "egg" that we are talking about?
 
-
+In order for the egg-hunter to transfer the execution flow to the secondary payload as soon as it finds the egg, the egg itself must be an executable. 
