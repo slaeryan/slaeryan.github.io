@@ -91,7 +91,7 @@ There's not much to explain in this source as I have commented in-detail on almo
 
 Also, one important point to note is that the default `PAGE_SIZE` of Linux/x86 is `4kB` or `4096 bytes` which becomes `0x1000` in hex. This would introduce null-characters in our egg-hunter shellcode if we use it which is not exactly desirable. 
 
-As a workaround for this problem, we perform bitwise OR operation on the current `DX` value with `4095` OR `0xfff` and increment `DX` by 1 in `check_page` function in a loop to align the pages properly and make it a multiple of `PAGE_SIZE`. Example: 4096(4095or0xfff=4095 + 1), 8192(4096or0xfff=8191 + 1), 12288(8192or0xfff=12287 + 1) and so on...
+As a workaround for this problem, we perform bitwise OR operation on the current `DX` value with `4095` OR `0xfff` and increment `DX` by 1 in `check_page` function in a loop to align the pages properly and make it a multiple of `PAGE_SIZE`.   Example: 4096(4095or0xfff=4095 + 1), 8192(4096or0xfff=8191 + 1), 12288(8192or0xfff=12287 + 1) and so on...
 
 This enables us to search through all the memory pages iteratively without skipping any and it's quite a clever trick devised by Skape!
 
