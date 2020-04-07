@@ -10,7 +10,7 @@ So without any further ado, let's get down with it!
 ## So what is an egg-hunter anyway?
 Imagine that you have found a buffer overflow exploit in a vulnerable software running in a remote machine but the buffer size or the space controlled by you is not nearly enough to fit a Bind/Reverse TCP shellcode :(
 
-What do you do then?
+What if I told you there's a way?
 
 Enter the Egg-hunter.
 
