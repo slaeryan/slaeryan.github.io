@@ -66,7 +66,7 @@ _start:
 
     ; Function to skip to next page
     turn_page:             
-    or dx, 0xfff           ; Bitwise OR of DX value with 0xfff
+    or dx, 0xfff           ; Bitwise OR of current DX value with 0xfff
 
     ; Function to check whether the following 8 bytes of memory page is accessible or not
     check_page:
