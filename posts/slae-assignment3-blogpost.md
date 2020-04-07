@@ -10,7 +10,7 @@ So without any further ado, let's get down with it!
 ## So what is an egg-hunter anyway?
 Imagine that you have found a buffer overflow exploit in a vulnerable software running in a remote machine but the buffer size or the space controlled by you is not nearly enough to fit a Bind/Reverse TCP shellcode :(
 
-What if I told you there's a way?
+What if I told you there is a way?
 
 Enter the Egg-hunter.
 
@@ -22,7 +22,7 @@ I would recommend all the readers of this blog to read the paper first and then 
 
 I shall not discuss the paper in-depth in this blog-post. However, I shall mention some key concepts required for the analysis and implementation of an egg-hunter payload.
 ### Egg-hunter payload explained in a sentence
-The egg-hunter is a shellcode usually optimized and small in size which is designed to find the final stage larger shellcode marked by an "egg"(4-8 bytes of data) and redirect execution flow to the secondary payload once it finds it in the virtual address space.
+The egg-hunter is a shellcode usually optimized and small in size which is designed to find the final stage larger shellcode marked by an "egg"(4-8 bytes of data) and redirect execution flow to it once it finds it in the virtual address space.
 ### But how does it work?
 The way the egg-hunter works is by iterating through the pages of memory and looking for the "egg" until its found.
 
@@ -79,7 +79,7 @@ _start:
     popad                  ; Restore the register values as we preserved in the stack
     jz turn_page           ; Jump to next page if we got EFAULT otherwise continue
 
-    ; Now that we know the memeory is accessible, we will search for our target!
+    ; Now that we know the memory is accessible, we will search for our target!
     cmp [edx], ebx         ; Check if we got the egg in [EDX]
     jnz check_page         ; If not zero - Egg not found! Check the next 8 bytes of the page otherwise if zero - we already found the first 4 bytes of the egg
     cmp [edx+0x4], ebx     ; Check the next 4 bytes [EDX+4] to confirm the kill
@@ -87,7 +87,7 @@ _start:
     jmp edx                ; Transfer control to the secondary payload
 ```
 
-There's not much to exaplain in this source as I have commented in-detail on almost every line of code. Note the optimizations in various parts of the code to minimize the number of instructions as far as possible. 
+There's not much to explain in this source as I have commented in-detail on almost every line of code. Note the optimizations in various parts of the code to minimize the number of instructions as far as possible. 
 
 Also, one important point to note is that the default `PAGE_SIZE` of Linux/x86 is `4kB` or `4096 bytes` which becomes `0x1000` in hex. This would introduce null-characters in our egg-hunter shellcode if we use it which is not exactly desirable. 
 
@@ -140,7 +140,7 @@ int main(int argc, char* argv[])
 ```
 
 ## A working demo of the egg-hunter shellcode:
-Well all talk and no fun is bad which is why here's a demo of the egg-hunter shellcode which we made just now in action. Enjoy;)
+Well, all talk and no fun is bad which is why here's a demo of the egg-hunter shellcode which we made just now in action. Enjoy;)
 
 <script id="asciicast-NtBMAHCYIw2BHzcL20bcYSJtS" src="https://asciinema.org/a/NtBMAHCYIw2BHzcL20bcYSJtS.js" async></script>
 
