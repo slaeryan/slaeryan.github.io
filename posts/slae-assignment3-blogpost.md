@@ -28,7 +28,7 @@ The way the egg-hunter works is by iterating through the pages of memory and loo
 
 Okay okay I get it but as far as I knew when a program tries to read unallocated memory in Linux, the program will crash throwing a `SIGSEGV` right?
 
-Here comes Skape's out-of-the-box solution. He has devised a way to use the `access()` syscall to check whether a page of memory is accessible or not by using the memory address as argument and by checking the error code returned by the syscall, we can determine whether the page is accessible or not. This enables us to scan the memory safely.
+Here comes Skape's out-of-the-box solution. He has devised a way to use the `access()` syscall to check whether a page of memory is accessible or not by using the memory address as argument and by checking the error-code(0xf2 OR EFAULT) returned by the syscall, we can determine whether the page is accessible or not. This enables us to scan the memory safely.
 
 Needless to say, if the page is inaccessible then it should skip to the next page directly otherwise it should continue scanning the page looking for our "egg".
 ### One final note
@@ -66,7 +66,7 @@ _start:
 
     ; Function to skip to next page
     turn_page:             
-    or dx, 0xfff           ; Bitwise OR of DX value - To load 4095 in DX
+    or dx, 0xfff           ; Bitwise OR of DX value with 0xfff - To load 4095 in DX
 
     ; Function to check whether the following 8 bytes of memory page is accessible or not
     check_page:
@@ -87,5 +87,13 @@ _start:
     jmp edx                ; Transfer control to the secondary payload
 ```
 
-There's not much to exaplain in this source as I have commented in-detail on almost every line of code. 
+There's not much to exaplain in this source as I have commented in-detail on almost every line of code. Note the various optimizations in various parts of the code to minimize the number of instructions as far as possible. 
+
+Also, one important point to note is that the default `PAGE_SIZE` of Linux/x86 is `4kB` or `4096 bytes` which becomes `0x1000` in hex. This would introduce null-characters in our egg-hunter shellcode if we use it which is not exactly desirable. 
+
+As a workaround for this problem, we perform bitwise OR operation on `DX` value with `4095` OR `0xfff` and increment `DX` in `check_page` function to align the pages properly and make it a multiple of `PAGE_SIZE` like 4095|0xfff = 4096, 4096|0xfff = 8191, 8191|0xfff = 12287 and so on...
+
+This enables us to search through all the memory pages without skipping any and it is quite a clever trick devised by Skape!
+
+## Egg-hunter shellcode
 
