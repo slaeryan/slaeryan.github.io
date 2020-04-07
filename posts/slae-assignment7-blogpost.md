@@ -63,7 +63,7 @@ The benefits of doing this are that if the current environment is the intended t
 
 This is crucial because you as a red-teamer obviously do not want your shellcode to execute on a blue-teamer/AVs automated malware analysis environment where it will determine it's true nature by running the code in a sandboxed-environment first.
 
-Keep in mind that I have used the hostname here as an example only and in real-life there can be other host/network-specific identifiers that an operator might use as an environmental keying factor to identify the target.
+Keep in mind that I have used the hostname here as an example only and in real-life there can be other host/network-specific identifiers that an operator might use as an environmental keying factor for target confirmation.
 
 On a side-note, this feature could be trivial to identify should this reach the hands of a blue-team which would then point to a highly-targeted attack. To counter that, A possible improvement upon this would be to use the hashed value of the target identifier as the passphrase to make the life of the reverse-engineers a lot more frustrating ;)
 
