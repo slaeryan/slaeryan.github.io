@@ -66,7 +66,7 @@ _start:
 
     ; Function to skip to next page
     turn_page:             
-    or dx, 0xfff           ; Bitwise OR of DX value with 0xfff - To load 4095 in DX
+    or dx, 0xfff           ; Bitwise OR of DX value with 0xfff
 
     ; Function to check whether the following 8 bytes of memory page is accessible or not
     check_page:
@@ -91,7 +91,7 @@ There's not much to exaplain in this source as I have commented in-detail on alm
 
 Also, one important point to note is that the default `PAGE_SIZE` of Linux/x86 is `4kB` or `4096 bytes` which becomes `0x1000` in hex. This would introduce null-characters in our egg-hunter shellcode if we use it which is not exactly desirable. 
 
-As a workaround for this problem, we perform bitwise OR operation on `DX` value with `4095` OR `0xfff` and increment `DX` in `check_page` function to align the pages properly and make it a multiple of `PAGE_SIZE` like 4095|0xfff = 4096, 4096|0xfff = 8191, 8191|0xfff = 12287 and so on...
+As a workaround for this problem, we perform bitwise OR operation on `DX` value with `4095` OR `0xfff` and increment `DX` in `check_page` function to align the pages properly and make it a multiple of `PAGE_SIZE` like  = 4096(4095|0xfff + 1), 8192(4096|0xfff + 1), 12288(8192|0xfff + 1) and so on...
 
 This enables us to search through all the memory pages without skipping any and it is quite a clever trick devised by Skape!
 
