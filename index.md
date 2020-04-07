@@ -38,7 +38,7 @@ published: true
 
 - **Mar 26, 2020:** [SLAE Exam Assignment 2 - Creating a Reverse TCP shellcode](./posts/slae-assignment2-blogpost.html)
 
-- **Mar 27, 2020:** [SLAE Exam Assignment 3 - Creating an Egghunter shellcode](./posts/slae-assignment3-blogpost.html)
+- **Mar 27, 2020:** [SLAE Exam Assignment 3 - Creating an Egg-hunter shellcode](./posts/slae-assignment3-blogpost.html)
 
 - **Mar 28, 2020:** [SLAE Exam Assignment 4 - Creating a custom shellcode encoder](./posts/slae-assignment4-blogpost.html)
 
