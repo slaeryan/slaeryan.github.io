@@ -65,7 +65,7 @@ This is crucial because you as a red-teamer obviously do not want your shellcode
 
 Keep in mind that I have used the hostname here as an example only and in real-life there can be other host/network-specific identifiers that an operator might use as an environmental keying factor to identify the target.
 
-On a side-note, this feature could be trivial to identify should this reach the hands of a blue-team which would then point to a highly-targeted attack. To counter that, A possible improvement upon this would be to use the hashed value of the target identifier as the passphrase to make the life of the reverse-engineers a lot more difficult ;)
+On a side-note, this feature could be trivial to identify should this reach the hands of a blue-team which would then point to a highly-targeted attack. To counter that, A possible improvement upon this would be to use the hashed value of the target identifier as the passphrase to make the life of the reverse-engineers a lot more frustrating ;)
 
 ## Crypter Code
 The shellcode crypter code is as follows:
