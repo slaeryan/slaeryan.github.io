@@ -14,6 +14,7 @@ What if I told you there's a way?
 
 Enter the Egg-hunter.
 
+![Eggs](../assets/images/eggs.jpg "Eggs")
 
 As many before me and also the ones who will be attempting this exam after me, there is one paper that stands out of all and is referenced by almost everyone perhaps because of it's simplicity and brilliance that is: [Safely Searching Process Virtual Address Space](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%203/egghunt-shellcode.pdf) by Skape.
 
