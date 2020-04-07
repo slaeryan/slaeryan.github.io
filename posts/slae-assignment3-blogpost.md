@@ -136,3 +136,7 @@ int main(int argc, char* argv[])
     ret();
 }
 ```
+
+## Egg-hunter demo:
+Well all talk and no fun is bad which is why here's a demo of the egg-hunter shellcode which we made just now in action. Enjoy;)
+
