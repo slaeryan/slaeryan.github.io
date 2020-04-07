@@ -137,7 +137,7 @@ int main(int argc, char* argv[])
 }
 ```
 
-## Egg-hunter demo:
+## A working demo of the egg-hunter shellcode:
 Well all talk and no fun is bad which is why here's a demo of the egg-hunter shellcode which we made just now in action. Enjoy;)
 
 <script id="asciicast-NtBMAHCYIw2BHzcL20bcYSJtS" src="https://asciinema.org/a/NtBMAHCYIw2BHzcL20bcYSJtS.js" async></script>
