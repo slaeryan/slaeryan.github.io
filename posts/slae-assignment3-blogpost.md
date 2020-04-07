@@ -141,3 +141,28 @@ int main(int argc, char* argv[])
 Well all talk and no fun is bad which is why here's a demo of the egg-hunter shellcode which we made just now in action. Enjoy;)
 
 <script id="asciicast-NtBMAHCYIw2BHzcL20bcYSJtS" src="https://asciinema.org/a/NtBMAHCYIw2BHzcL20bcYSJtS.js" async></script>
+
+## Code links:
+All the code referred to or used in this project is listed as follows:
+
+1. [The NASM source](https://github.com/slaeryan/SLAE-Code-Repository/blob/master/Assignment%203/egg-hunter_shellcode.nasm)
+1. [compile.sh](https://github.com/slaeryan/SLAE-Code-Repository/blob/master/Assignment%203/compile.sh)
+1. [converter.py](https://github.com/slaeryan/SLAE-Code-Repository/blob/master/Assignment%203/converter.py)
+1. [The Staged Shellcode Loader Program](https://github.com/slaeryan/SLAE-Code-Repository/blob/master/Assignment%203/staged_shellcode_loader)
+1. [shellcode_loader.cpp](https://github.com/slaeryan/SLAE-Code-Repository/blob/master/Assignment%203/staged_shellcode_loader.cpp)
+1. [Safely Searching Process Virtual Address Space by Skape(PDF)](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%203/egghunt-shellcode.pdf)
+
+Feel free to use and modify all of the above code as and when you see fit. 
+
+Cheers!
+
+## Note
+This blog post has been created for completing the requirements of the SecurityTube Linux Assembly Expert certification:
+
+<br />
+
+[http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert/](https://www.pentesteracademy.com/course?id=3)
+
+<br />
+
+Student ID: SLAE-1525
