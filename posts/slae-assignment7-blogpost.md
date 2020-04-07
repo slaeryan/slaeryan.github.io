@@ -54,16 +54,18 @@ Also my code is beautifully commented to clear any doubts that might arise ;)
 ### Environmental Keying for shellcode security
 One last thing I want to mention before we jump into the code is a feature that I am quite proud of.
 
-So instead of using an encryption passphrase from the user and hardcoding that same passphrase in the stub to decrypt the shellcode at run-time what I have done is known as ***environmental keying***.
+So instead of using an encryption passphrase from the user and hardcoding that same passphrase in the stub to decrypt the shellcode at run-time what I have done is known as ***environmental keying*** or in other words hardcoding a host/network-specific target identifier which is available during the creation of the payload and at run-time as the passphrase.
 
-Suppose I am targeting a company, I would first do my recce and find out the hostname used by machines in their network. Next I am going to encrypt my shellcodes using that hostname and then begin delivery of the payload.
-At runtime, the stub dynamically retrieves the hostname of the computer it is being executed upon and tries to decrypt the shellcode using that hostname as passphrase.
+Suppose I am targeting a company, I would first do my recce and find out the hostname used by the machine in their network. Next, I am going to encrypt my shellcode using that hostname as the passphrase and then begin delivery of the payload.
+At runtime, the stub dynamically retrieves the hostname of the computer it is being executed upon and tries to decrypt the shellcode using that hostname as the passphrase.
 
-The benefits of doing this are that if the current environment is the intended target for the shellcode only then the shellcode would execute otherwise decryption and ultimately execution would fail. 
+The benefits of doing this are that if the current environment is the intended target for the shellcode only then the shellcode would execute otherwise for any unauthorised target the decryption and ultimately execution would fail. 
 
-This is crucial because you as a red-teamer/pen-tester obviously do not want your shellcode to execute on a blue-teamer/AVs simulated malware analysis environment where it will either determine it's nature or dissect and reverse-engineer your payload which can't be any good.
+This is crucial because you as a red-teamer obviously do not want your shellcode to execute on a blue-teamer/AVs automated malware analysis environment where it will determine it's true nature by running the code in a sandboxed-environment first.
 
-Keep in mind that I have used the hostname here as an example only and in real-life there can be many factors that an operator might use as an environmental keying factor to determine friend-or-foe.
+Keep in mind that I have used the hostname here as an example only and in real-life there can be other host/network-specific identifiers that an operator might use as an environmental keying factor to identify the target.
+
+On a side-note, this feature could be trivial to identify should this reach the hands of a blue-team which would then point to a highly-targeted attack. To counter that, A possible improvement upon this would be to use the hashed value of the target identifier as the passphrase to make the life of the reverse-engineers a lot more difficult ;)
 
 ## Crypter Code
 The shellcode crypter code is as follows:
