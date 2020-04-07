@@ -22,15 +22,15 @@ I would recommend all the readers of this blog to read the paper first and then 
 
 I shall not discuss the paper in-depth in this blog-post. However, I shall mention some key concepts required for the analysis and implementation of an egg-hunter payload.
 ### Egg-hunter payload explained in a sentence
-The egg-hunter is a shellcode usually optimized and small in size which is designed to find the final stage larger shellcode marked by an "egg"(4-8 bytes of data) and redirect execution flow to it once it finds it in the virtual address space.
+The egg-hunter is a shellcode usually optimized and small in size which is designed to find the final stage larger shellcode marked by an "egg"(4-8 bytes of data) and redirect execution flow to the secondary payload once it finds it in the virtual address space.
 ### But how does it work?
 The way the egg-hunter works is by iterating through the pages of memory and looking for the "egg" until its found.
 
-Okay okay I get it but as far as I knew when a program tries to read unallocated memory in Linux, the program will crash throwing a `SIGSEGV` right?
+Okay okay I get it but as far as I knew when a program tries to read unallocated memory in Linux, the program will crash throwing a `SIGSEGV` right? So how do you figure that out in advance?
 
 Here comes Skape's out-of-the-box solution. He has devised a way to use the `access()` syscall to check whether a page of memory is accessible or not by using the memory address as argument and by checking the error-code(_0xf2 OR EFAULT_) returned by the syscall, we can determine whether the page is accessible or not. This enables us to scan the memory safely.
 
-Needless to say, if the page is inaccessible then it should skip to the next page directly otherwise it should continue scanning the page looking for our "egg".
+Needless to say, if the page is inaccessible then it should skip to the next page directly otherwise it should continue scanning the memory page looking for our "egg".
 ### One final note
 One last important matter to discuss is what should we consider as this "egg" that we are talking about?
 
@@ -87,13 +87,13 @@ _start:
     jmp edx                ; Transfer control to the secondary payload
 ```
 
-There's not much to exaplain in this source as I have commented in-detail on almost every line of code. Note the various optimizations in various parts of the code to minimize the number of instructions as far as possible. 
+There's not much to exaplain in this source as I have commented in-detail on almost every line of code. Note the optimizations in various parts of the code to minimize the number of instructions as far as possible. 
 
 Also, one important point to note is that the default `PAGE_SIZE` of Linux/x86 is `4kB` or `4096 bytes` which becomes `0x1000` in hex. This would introduce null-characters in our egg-hunter shellcode if we use it which is not exactly desirable. 
 
-As a workaround for this problem, we perform bitwise OR operation on the current `DX` value with `4095` OR `0xfff` and increment `DX` by 1 in `check_page` function in a loop to align the pages properly and make it a multiple of `PAGE_SIZE` like  = 4096(4095or0xfff=4095 + 1), 8192(4096or0xfff=8191 + 1), 12288(8192or0xfff=12287 + 1) and so on...
+As a workaround for this problem, we perform bitwise OR operation on the current `DX` value with `4095` OR `0xfff` and increment `DX` by 1 in `check_page` function in a loop to align the pages properly and make it a multiple of `PAGE_SIZE`. Example: 4096(4095or0xfff=4095 + 1), 8192(4096or0xfff=8191 + 1), 12288(8192or0xfff=12287 + 1) and so on...
 
-This enables us to search through all the memory pages in an incremental fashion without skipping any and it's quite a clever trick devised by Skape!
+This enables us to search through all the memory pages iteratively without skipping any and it's quite a clever trick devised by Skape!
 
 ## Egg-hunter shellcode
 Let's compile the assembly source with the `compile.sh` script and then subject the ELF32 binary produced to the `converter.py` script to extract the shellcode.
@@ -107,7 +107,7 @@ Here's the egg-hunter shellcode:
 Looks to be null-free and also the size comes as `39 bytes` as described by Skape.
 
 ## Staged shellcode loader
-Here's the source of the staged shellcode loader which egg-hunter which in-turn loads the secondary payload(currently configured as a MSF execve /bin/sh payload):
+Here's the source of the staged shellcode loader which executes the egg-hunter shellcode which in-turn loads the secondary shellcode(currently configured as a MSF execve /bin/sh payload):
 
 ```c
 // Contact: upayansaha@icloud.com
