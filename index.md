@@ -21,15 +21,15 @@ published: true
 <br />
 <br />
 
-**GitHub:** [https://github.com/upayansaha](https://github.com/upayansaha)
+**GitHub:** [https://github.com/upayansaha](https://github.com/slaeryan)
 
 **Linkedin:** [https://www.linkedin.com/in/upayansaha](https://www.linkedin.com/in/upayan-saha-404881192/)
 
-**Twitter:**
+**Twitter:** [@slaeryan](https://www.twitter.com/slaeryan/)
 
 **HackTheBox:** <script src="https://www.hackthebox.eu/badge/255823"></script>
 
-**Contact:** upayansaha@icloud.com
+**Contact:** upayansaha@icloud.com | slaeryan@protonmail.ch
 
 <br />
 
