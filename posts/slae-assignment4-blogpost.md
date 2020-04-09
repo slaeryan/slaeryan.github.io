@@ -22,4 +22,4 @@ So with that being explained many of you might have used the famous(or rather in
 
 Worry not! Here's how you can create your own shellcode encoder from scratch.
 
-## Creating an encoder prototype
+## Creating an Encoder prototype
