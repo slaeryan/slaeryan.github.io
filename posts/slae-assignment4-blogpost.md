@@ -23,7 +23,14 @@ So with that being explained many of you might have used the famous(or rather in
 Worry not! Here's how you can create your own shellcode encoder from scratch.
 
 ## Encoding algorithm
-For the purposes of this blog post I have chosen a variation _ROT-13_ of one of the earliest ciphers - _Caesar cipher_.
+There can be many algorithms for encoding a shellcode inlcuding(but not limited to):
+1. Adding garbage bytes in specific positions
+1. XOR'ing the bytes with a hard-coded single byte key
+1. Shifting the bytes by some specific positions
+1. Exchanging consecutive bytes
+Or a chain of these abovementioned techniques in any desired way etc. 
+
+For the purposes of this blog post however, I have chosen a variation _ROT-13_ of one of the earliest ciphers - _Caesar cipher_.
 
 In other words, ROT-13 is a Caesar cipher with n=13 or every character in the original message is substituited by 13 places which means we are simply going to add 13(0x0d) to every byte in the original shellcode to obfuscate it and then subtract the same from the encoded shellcode to reverse the effect before execution.
 
@@ -136,3 +143,48 @@ Here's a demo of the stub in action:
 <script id="asciicast-zHWcBIMJJiDi5pmqCiQpmwrTg" src="https://asciinema.org/a/zHWcBIMJJiDi5pmqCiQpmwrTg.js" async></script>
 
 ## Final step: Creating the Encoder
+Our final step is to somehow add the stub to the the encoded shellcode itself such that it is self-contained.
+
+What do I mean by that?
+
+It means that the output of the shellcode encoder will be sufficient enough to be executed by itself and won't require another "stager" to run it since we are adding the stub to decode the shellcode to it.
+
+Making this was super-easy. First I converted the decoder NASM stub ELF executable to a shellcode hex string using `converter.py` script. After removing the encoded shellcode which was hard-coded in, I embedded the remaining part in this encoder script. Rest is same as creating the prototype encoder - ROT-13 encoding the input shellcode. I have also created a shellcode loader program which basically takes the shellcode as console argument in hex string format and executes it(saves me from copy-paste-compile cycle - lazy!)
+
+This script also outputs the encoded shellcode in C-string format for those of you wishing to keep it test it that way.
+
+One thing to keep in mind is that using a shellcode encoder your output shellcode size will increase almost always because even though our algorithm doesn't add garbage bytes for obfuscation the stub is added to the encoded shellcode making it bigger than the original.
+
+The size of the stub is 16 bytes. So whatever is your original shellcode length, adding 16 to that would be the length of the encoded shellcode.
+
+Since the code is a bit long to be included here I have refrained from adding it here. You can find the link to the source-code of this shellcode encoder if you scroll below.
+
+Here is a demo of the final shellcode encoder in action:
+
+<script id="asciicast-xrd1mdY0Btt23MyiQAzO1ku6s" src="https://asciinema.org/a/xrd1mdY0Btt23MyiQAzO1ku6s.js" async></script>
+
+## Code links:
+All the code referred to or used in this project is listed as follows:
+
+1. [The Encoder Prototype](https://github.com/slaeryan/SLAE-Code-Repository/blob/master/Assignment%204/encoder_proto.py)
+1. [The NASM Stub source](https://github.com/slaeryan/SLAE-Code-Repository/blob/master/Assignment%204/rot13_decoder_stub_shellcode.nasm)
+1. [compile.sh](https://github.com/slaeryan/SLAE-Code-Repository/blob/master/Assignment%204/compile.sh)
+1. [converter.py](https://github.com/slaeryan/SLAE-Code-Repository/blob/master/Assignment%204/converter.py)
+1. [The Final Shellcode Encoder](https://github.com/slaeryan/SLAE-Code-Repository/blob/master/Assignment%204/shellcode_encoder.py)
+1. [The Shellcode Loader Program](https://github.com/slaeryan/SLAE-Code-Repository/blob/master/Assignment%204/shellcode_loader)
+1. [shellcode_loader.cpp](https://github.com/slaeryan/SLAE-Code-Repository/blob/master/Assignment%204/shellcode_loader.cpp)
+
+Feel free to use and modify all of the above code as and when you see fit. 
+
+Cheers!
+
+## Note
+This blog post has been created for completing the requirements of the SecurityTube Linux Assembly Expert certification:
+
+<br />
+
+[http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert/](https://www.pentesteracademy.com/course?id=3)
+
+<br />
+
+Student ID: SLAE-1525
