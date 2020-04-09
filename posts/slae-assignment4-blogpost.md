@@ -130,3 +130,9 @@ _start:
 ```
 
 We are using the JMP-CALL-POP technique here to subtract every byte by 13(0x0d) which will get our original shellcode back and then we transfer our execution flow to the original shellcode. The code is commented on every line to help us understand what's going on in each step and honestly there's not much to explain here.
+
+Here's a demo of the stub in action:
+
+<script id="asciicast-zHWcBIMJJiDi5pmqCiQpmwrTg" src="https://asciinema.org/a/zHWcBIMJJiDi5pmqCiQpmwrTg.js" async></script>
+
+## Final step: Creating the Encoder
