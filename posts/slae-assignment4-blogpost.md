@@ -81,6 +81,10 @@ main()
 
 This script just takes a shellcode as input from user and encodes it by adding 13(0x0d to each byte and then prints it. Keep in mind, this is just the prototype encoder and it doesn't incorporate a stub for decoding yet. Also, I am not a coder so please forgive the errors which might have gone unnoticed by my eyes and the messy code in general.
 
+Here's a demo of the prototype in action:
+
+<script id="asciicast-yrj6KgSJj9OnZFHoCh2n91kEV" src="https://asciinema.org/a/yrj6KgSJj9OnZFHoCh2n91kEV.js" async></script>
+
 So let's make the stub now.
 
 ## Creating a decoder NASM stub
