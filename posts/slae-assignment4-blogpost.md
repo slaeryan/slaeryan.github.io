@@ -18,7 +18,7 @@ It obfuscates the shellcode which may hide it's true intentions from some AV/EDR
 
 Ergo, always use encryption for implant security, AV/EDR evasion and Encoders for a preliminary obfuscation and removing bad characters. Ideally, you would want to use both. Refer to [Blog Post 7](https://slaeryan.github.io/posts/slae-assignment7-blogpost.html) for a primer on creating your own shellcode crypter.
 
-So many of you might have used the famous(or rather infamous!)Shikata Ga Nai Encoder from Metasploit package to obfuscate or bypass some AVs till you burnt out and now all payloads keep getting attributed :(
+So with that being explained many of you might have used the famous(or rather infamous!)Shikata Ga Nai Encoder from Metasploit package to obfuscate or bypass some AVs till it got burnt out and now all payloads keep getting attributed :(
 
 Worry not! Here's how you can create your own shellcode encoder from scratch.
 
