@@ -54,6 +54,6 @@ Aaah! Looks much more familiar now doesn't it?
 
 Let's analyze it now.
 
-First, we push 0x0b or 11 in decimal which is the syscall number for execve() into the stack and pop it into EAX which should contain the syscall number remember? Then we clear EDX register using `cwd` and push it into the stack. After that we proceed with setting up the arguments for execve() which in this case is "/bin/sh"(0x68732f = hs/ & 0x6e69622f = nib/). Note that `/bin/sh` is reversed due to the little-endianess of the x86 architecture. Finally, we execute the execve syscall using the good old software interrupt 80h.
+First, we push 0x0b or 11 in decimal which is the syscall number for execve() into the stack and pop it into EAX which should contain the syscall number remember? Then we clear EDX register using `cwd` and push it into the stack. After that we proceed with setting up the arguments for execve() which in this case is "/bin/sh"(0x68732f = **hs/** & 0x6e69622f = **nib/**). Note that `/bin/sh` is reversed due to the little-endianess of the x86 architecture. Finally, we execute the execve syscall using the good old software interrupt 80h.
 
 
