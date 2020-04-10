@@ -42,7 +42,7 @@ Fortunately enough for us there's a powerful tool known as `libemu` which allows
 
 Assuming you have already installed the tool, let's look at how to generate a graph:
 ```
-msfvenom -p linux/x86/exec CMD=/bin/sh --arch x86 -f c | sctest -vvv -Ss 100000 -G linux-x86-exec.dot
+msfvenom -p linux/x86/exec CMD=/bin/sh --arch x86 -f raw | sctest -vvv -Ss 100000 -G linux-x86-exec.dot
 dot linux-x86-exec.dot -Tpng -o linux-x86-exec.png
 ```
 
