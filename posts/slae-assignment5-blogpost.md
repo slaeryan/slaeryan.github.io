@@ -34,4 +34,15 @@ unsigned char buf[] =
 "\x62\x69\x6e\x2f\x73\x68\x00\x57\x53\x89\xe1\xcd\x80";
 ```
 
+But this is basically an array of opcodes and doesn't make much sense does it eh?
+
+Honestly it'd be good if we could look at a C equivalent or better yet a visual representation of the flow right?
+
+Fortunately enough for us there's a powerful tool known as `libemu` which allows us to do the same and more.
+
+Assuming you have already installed the tool, let's look at how to generate a graph:
+```
+msfvenom -p linux/x86/exec CMD=/bin/sh --arch x86 -f c | sctest -vvv -Ss 100000 -G linux-x86-exec.dot
+dot linux-x86-exec.dot -Tpng -o linux-x86-exec.png
+```
 
