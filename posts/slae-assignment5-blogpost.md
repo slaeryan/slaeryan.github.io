@@ -14,7 +14,7 @@ For the purposes of this blog post I have chosen three payloads namely:
 
 So without any further ado, here it it goes.
 
-## Analyzing linux/x86/exec CMD=/bin/sh
+## Analyzing linux/x86/exec shellcode
 As might be evident from the name, this is an execve shellcode and you can specify what to execute using the `CMD=` flag. Let's go ahead with `/bin/sh`.
 
 We can generate the shellcode C-string using this command:
