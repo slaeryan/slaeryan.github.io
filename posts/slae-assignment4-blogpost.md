@@ -3,39 +3,40 @@
 ## Prologue
 The fourth assignment that we have for our SLAE Certification exam is creating a custom shellcode encoder using all that we have learnt so far from the course.
 
-In this blog post I am going to discuss what is a shellcode encoder, walk you guys through the creation process and at last show you a demo of what we have created.
+In this blog post, I am going to discuss what is a shellcode encoder, walk you guys through the creation process and at last show you a demo of what we have created.
 
 So without any further ado, here it goes!
 
 ## Shellcode Encoder Explained
 So the big question is what's a shellcode encoder?
 
-I'd define an encoder as a piece of code that takes your shellcode as input and encodes/obfuscates/morphs it in way such that all bad characters including null bytes, new lines etc are removed from the shellcode and also appends a small stub to the shellcode which aids in decoding/changing it back to the original shellcode for execution on the target system.
+I'd define an encoder as a piece of code that takes your shellcode as input and encodes/obfuscates/morphs it in a way such that all bad characters including null bytes, new lines etc are removed from the shellcode and also appends a small stub to the shellcode which aids in decoding/changing it back to the original shellcode for execution on the target system.
 
 This has another obvious benefit apart from removing bad characters as many of you might know from practical experience.
 
-It obfuscates the shellcode which may hide it's true intentions from some AV/EDR solutions therefore lowering the detection rate on some site like VirusTotal but make no mistake, **AV evasion is not the primary objective of using a shellcode encoder** and it provides no real security to your payload because there's **no encryption happening** which means the encoding/obfuscation is usually trivial to reverse.
+It obfuscates the shellcode which may hide it's true intentions from some AV/EDR solutions, therefore, lowering the detection rate on some site like VirusTotal but make no mistake, **AV evasion is not the primary objective of using a shellcode encoder** and it provides no real security to your payload because there's **no encryption happening** which means the encoding/obfuscation is usually trivial to reverse.
 
-Ergo, always use encryption for implant security, AV/EDR evasion and Encoders for a preliminary obfuscation and removing bad characters. Ideally, you would want to use both first encoding and then encrypting the payload. Refer to [Blog Post 7](https://slaeryan.github.io/posts/slae-assignment7-blogpost.html) for a primer on creating your own shellcode crypter.
+Ergo, always use encryption for implant security, AV/EDR evasion and Encoders for a preliminary obfuscation and removing bad characters. Ideally, you would want to use both, first encoding and then encrypting the payload. Refer to [Blog Post 7](https://slaeryan.github.io/posts/slae-assignment7-blogpost.html) for a primer on creating your own shellcode crypter.
 
 So with that being explained many of you might have used the famous(or rather infamous!)Shikata Ga Nai Encoder from Metasploit package to obfuscate or bypass some AVs till it got burnt out and now all payloads keep getting attributed :(
 
 Worry not! Here's how you can create your own shellcode encoder from scratch.
 
 ## Encoding algorithm
-There can be many algorithms for encoding a shellcode inlcuding(but not limited to):
+There can be many algorithms for encoding a shellcode including(but not limited to):
 1. Adding garbage bytes in specific positions
-1. XOR'ing the bytes with a hard-coded single byte key
+1. XORing the bytes with a hard-coded single-byte key
 1. Shifting the bytes by some specific positions
 1. Exchanging consecutive bytes
+
 Or a chain of these abovementioned techniques in any desired way etc. 
 
-For the purposes of this blog post however, I have chosen a variation _ROT-13_ of one of the earliest ciphers - _Caesar cipher_.
+For the purposes of this blog post however, I have chosen a cipher named _ROT-13_ which is one of the variations of the earliest known ciphers - _Caesar cipher_.
 
-In other words, ROT-13 is a Caesar cipher with n=13 or every character in the original message is substituited by 13 places which means we are simply going to add 13(0x0d) to every byte in the original shellcode to obfuscate it and then subtract the same from the encoded shellcode to reverse the effect before execution.
+In other words, ROT-13 is a Caesar cipher with n=13 or every character in the original message is substituted by 13 places which means we are simply going to add 13(0x0d) to every byte in the original shellcode to obfuscate it and then subtract the same from the encoded shellcode to reverse the effect before execution.
 
 The reasons for choosing so are simple:
-1. It will be easy to implement and easy for all the readers to comprehend.
+1. It will be easy to implement and easy for all readers to comprehend.
 1. We don't need to bypass AVs using an encoder so we don't exactly need a very complicated chained multiple encoding schema.
 1. Furthermore, I admit to being lazy :0
 
@@ -97,7 +98,7 @@ So let's make the stub now.
 ## Creating a decoder NASM stub
 First, let's talk about what's a stub. A stub is basically a piece of code which is usually appended to the encoded shellcode to aid in decoding and execution of the encoded shellcode. 
 
-In other words, we want to create a Linux/x86 assembly code into which our encoded shellcode from previous step is embedded and it will execute the shellcode after decoding it successfully.
+In other words, we want to create a Linux/x86 assembly code into which our encoded shellcode from the previous step is embedded and it will execute the shellcode after decoding it successfully.
 
 Here's the NASM source:
 
@@ -136,14 +137,14 @@ _start:
     Shellcode: db 0x3e,0xcd,0x5d,0x75,0x3c,0x3c,0x80,0x75,0x75,0x3c,0x6f,0x76,0x7b,0x96,0xf0,0x5d,0x96,0xef,0x60,0x96,0xee,0xbd,0x18,0xda,0x8d,0x0d
 ```
 
-We are using the JMP-CALL-POP technique here to subtract every byte by 13(0x0d) which will get our original shellcode back and then we transfer our execution flow to the original shellcode. The code is commented on every line to help us understand what's going on in each step and honestly there's not much to explain here.
+We are using the JMP-CALL-POP technique here to subtract every byte by 13(0x0d) which will get our original shellcode back and then we transfer our execution flow to the original shellcode. The code is commented on every line to help us understand what's going on in each step and honestly, there's not much to explain here.
 
 Here's a demo of the stub in action:
 
 <script id="asciicast-zHWcBIMJJiDi5pmqCiQpmwrTg" src="https://asciinema.org/a/zHWcBIMJJiDi5pmqCiQpmwrTg.js" async></script>
 
 ## Final step: Creating the Encoder
-Our final step is to somehow add the stub to the the encoded shellcode itself such that it is self-contained.
+Our final step is to somehow add the stub to the encoded shellcode itself such that it is self-contained.
 
 What do I mean by that?
 
@@ -157,7 +158,7 @@ One thing to keep in mind is that using a shellcode encoder your output shellcod
 
 The size of the stub is 16 bytes. So whatever is your original shellcode length, adding 16 to that would be the length of the encoded shellcode.
 
-Since the code is a bit long to be included here I have refrained from adding it here. You can find the link to the source-code of this shellcode encoder if you scroll below.
+Since the code is a bit long to be included here I have refrained from adding it here. You can find the link to the source code of this shellcode encoder if you scroll below.
 
 Here is a demo of the final shellcode encoder in action:
 
