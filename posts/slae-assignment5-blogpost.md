@@ -46,7 +46,7 @@ msfvenom -p linux/x86/exec CMD=/bin/sh --arch x86 -f raw | sctest -vvv -Ss 10000
 dot linux-x86-exec.dot -Tpng -o linux-x86-exec.png
 ```
 
-Let me paste the image here for a detailed analysis:
+Let me paste the image here to aid in the analysis:
 
 ![linux-x86-exec](../assets/images/linux-x86-exec.png "linux-x86-exec")
 
