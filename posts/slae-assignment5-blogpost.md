@@ -22,7 +22,7 @@ We can generate the shellcode C-string using this command:
 msfvenom -p linux/x86/exec CMD=/bin/sh --arch x86 -f c
 ```
 
-The generated shellcode is:
+The generated shellcode is as follows:
 ```
 [-] No platform was selected, choosing Msf::Module::Platform::Linux from the payload
 No encoder or badchars specified, outputting raw payload
