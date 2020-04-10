@@ -36,7 +36,7 @@ unsigned char buf[] =
 
 But this is basically an array of opcodes and doesn't make much sense does it eh?
 
-Honestly it'd be good if we could look at a C equivalent or better yet a visual representation of the flow right?
+Honestly it'd be good if we could look at the NASM source or better yet a visual representation of the flow right?
 
 Fortunately enough for us there's a powerful tool known as `libemu` which allows us to do the same and more.
 
