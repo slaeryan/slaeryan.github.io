@@ -49,3 +49,9 @@ dot linux-x86-exec.dot -Tpng -o linux-x86-exec.png
 Let me paste the image here for a detailed analysis:
 
 ![linux-x86-exec](../assets/images/linux-x86-exec.png "linux-x86-exec")
+
+Aaah! Makes much more sense now doesn't it?
+
+First, we push 0x0b or 11 in decimal which is the syscall number for execve() into the stack and pop it into EAX which should contain the syscall number remember?
+
+Then we clear EDX register using `cwd` and push it into the stack. After that we proceed with setting up the arguments for execve() which in this case is "/bin/sh" using EDI.
