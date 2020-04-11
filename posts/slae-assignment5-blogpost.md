@@ -72,3 +72,26 @@ dot linux-x86-bindshell.dot -Tpng -o linux-x86-bindshell.png
 Let me include the image here to aid in the analysis:
 
 ![linux-x86-bindshell](../assets/images/linux-x86-bindshell.png "linux-x86-bindshell")
+
+Whoa! This looks bigger than I expected:( Don't get disheartened, let's start with identifying the syscalls first, rest will be taken care of automatically. 
+
+The syscalls are:
+1. socket()
+2. bind()
+3. listen()
+4. accept()
+5. dup2()
+6. execve()
+
+Brilliant! Correlating with [Blog Post 1](https://slaeryan.github.io/posts/slae-assignment1-blogpost.html) where we created our own Bind TCP shellcode, we can see that the syscalls match in the exact order. Let's move in now for a deeper analysis.
+
+### socket syscall
+We can see that EBX is cleared using XORing with itself. Then we clear `EAX` using `mul` instruction(clever trick!) and set up the stack for the socket syscall arguments:
+
+1. domain - AF_INET = 0x02 for IPv4 addressing schema
+2. type - SOCK_STREAM = 0x01 for a full-duplex byte stream socket communication
+3. protocol - default 0x00 for single protocol support
+
+After that we load the syscall number for socket = 0x066 in the lower part of EAX and execute the syscall.
+### bind syscall
+
