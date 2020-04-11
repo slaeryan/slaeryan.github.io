@@ -43,6 +43,7 @@ Fortunately enough for us there's a powerful tool known as `libemu` which allows
 Assuming you have already installed the tool, let's look at how to generate a graph:
 ```
 msfvenom -p linux/x86/exec CMD=/bin/sh --arch x86 -f raw | sctest -vvv -Ss 100000 -G linux-x86-exec.dot
+
 dot linux-x86-exec.dot -Tpng -o linux-x86-exec.png
 ```
 
@@ -55,5 +56,16 @@ Aaah! Looks pretty familiar now doesn't it? Some of you might have even analyzed
 First, we push 0x0b or 11 in decimal which is the syscall number for execve() into the stack and pop it into EAX which should contain the syscall number remember? Then we clear EDX register using `cwd` and push it into the stack. After that we proceed with setting up the arguments for execve() which in this case is "/bin/sh"(0x68732f = **hs/** & 0x6e69622f = **nib/**). Note that `/bin/sh` is reversed due to the little-endianess of the x86 architecture and also note that the usage of **-c** flag(0x632d) which actually reads the command from the _command_string_ rather than STDIN. Finally, we execute the execve syscall using the good old software interrupt _80h_.
 
 ## Analyzing linux/x86/shell_bind_tcp shellcode
+This is a standard bind TCP shell payload(stageless) from Metasploit.
 
+We can generate the payload using the following command:
+```
+msfvenom -p linux/x86/shell_bind_tcp LPORT=8080 -f c
+```
+And by piping the raw payload to the `sctest` tool, we can also generate a graph as follows:
+```
+msfvenom -p linux/x86/shell_bind_tcp LPORT=8080 -f raw | sctest -vvv -Ss 100000 -G linux-x86-bindshell.dot
+
+dot linux-x86-bindshell.dot -Tpng -o linux-x86-bindshell.png
+```
 
