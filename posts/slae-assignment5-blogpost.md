@@ -9,8 +9,8 @@ If your answer is no then this is your chance to peek a glimpse at everything th
 
 For the purposes of this blog post I have chosen three payloads namely:
 1. linux/x86/exec
-1. 
-1.
+1. linux/x86/shell_bind_tcp
+1. linux/x86/shell_reverse_tcp
 
 So without any further ado, here it it goes.
 
@@ -50,10 +50,10 @@ Let me paste the image here to aid in the analysis:
 
 ![linux-x86-exec](../assets/images/linux-x86-exec.png "linux-x86-exec")
 
-Aaah! Looks much more familiar now doesn't it?
+Aaah! Looks pretty familiar now doesn't it? Some of you might have even analyzed it already as it's quite simple now but let's do a short analysis anyway.
 
-Let's analyze it now.
+First, we push 0x0b or 11 in decimal which is the syscall number for execve() into the stack and pop it into EAX which should contain the syscall number remember? Then we clear EDX register using `cwd` and push it into the stack. After that we proceed with setting up the arguments for execve() which in this case is "/bin/sh"(0x68732f = **hs/** & 0x6e69622f = **nib/**). Note that `/bin/sh` is reversed due to the little-endianess of the x86 architecture and also note that the usage of **-c** flag(0x632d) which actually reads the command from the _command_string_ rather than STDIN. Finally, we execute the execve syscall using the good old software interrupt _80h_.
 
-First, we push 0x0b or 11 in decimal which is the syscall number for execve() into the stack and pop it into EAX which should contain the syscall number remember? Then we clear EDX register using `cwd` and push it into the stack. After that we proceed with setting up the arguments for execve() which in this case is "/bin/sh"(0x68732f = **hs/** & 0x6e69622f = **nib/**). Note that `/bin/sh` is reversed due to the little-endianess of the x86 architecture. Finally, we execute the execve syscall using the good old software interrupt 80h.
+## Analyzing linux/x86/shell_bind_tcp shellcode
 
 
