@@ -148,3 +148,28 @@ This step is almost identical to the bind syscall step in the Bind TCP payload w
 Finally we execute the execve() syscall with **/bin/sh** to get an interactive shell on the target machine. This part is pretty self-explanatory and we have gone through it many times before.
 
 With this we have officially completed the analysis of three metasploit shellcodes.
+
+## Code links:
+All the materials referred to or used in this project is listed as follows:
+
+1. [linux-x86-exec.dot](https://github.com/slaeryan/SLAE-Code-Repository/blob/master/Assignment%205/linux-x86-exec.dot)
+1. [linux-x86-exec.png](https://github.com/slaeryan/SLAE-Code-Repository/blob/master/Assignment%205/linux-x86-exec.png)
+1. [linux-x86-bindshell.dot](https://github.com/slaeryan/SLAE-Code-Repository/blob/master/Assignment%205/linux-x86-bindshell.dot)
+1. [linux-x86-bindshell.png](https://github.com/slaeryan/SLAE-Code-Repository/blob/master/Assignment%205/linux-x86-bindshell.png)
+1. [linux-x86-reverseshell.dot](https://github.com/slaeryan/SLAE-Code-Repository/blob/master/Assignment%205/linux-x86-reverseshell.dot)
+1. [linux-x86-reverseshell.png](https://github.com/slaeryan/SLAE-Code-Repository/blob/master/Assignment%205/linux-x86-reverseshell.png)
+
+Feel free to use any of the above resources as and when you see fit. 
+
+Cheers!
+
+## Note
+This blog post has been created for completing the requirements of the SecurityTube Linux Assembly Expert certification:
+
+<br />
+
+[http://securitytube-training.com/online-courses/securitytube-linux-assembly-expert/](https://www.pentesteracademy.com/course?id=3)
+
+<br />
+
+Student ID: SLAE-1525
