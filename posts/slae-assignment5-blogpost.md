@@ -147,7 +147,7 @@ This step is almost identical to the bind syscall step in the Bind TCP payload w
 ### execve syscall
 Finally we execute the execve() syscall with **/bin/sh** to get an interactive shell on the target machine. This part is pretty self-explanatory and we have gone through it many times before.
 
-With this we have officially completed the analysis of three metasploit shellcodes.
+With this we have officially completed the analysis of three shellcodes from the Metasploit framework.
 
 ## Code links:
 All the materials referred to or used in this project is listed as follows:
