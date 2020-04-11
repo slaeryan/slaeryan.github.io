@@ -116,10 +116,9 @@ Now moving to setup the sockaddr_in struct.
 ### Setting up the sockaddr_in struct for bind syscall
 Note from the C prototype that the sockaddr_in struct consists of:
 
-1. The server IP address - we will leave it empty for localhost/we will not push it into the stack since it's not strictly necessary and we'll be able to save a byte
+1. The server IP address - we will leave it to 0(0.0.0.0) to enable listening on all interfaces
 1. The addressing schema(In this case it's IPv4 so it's value shall be 2 or 0x02)
 1. The listening port
-1. 0 to enable listening on all interfaces
 
 So let us start by pushing those into the stack. Note that I have configured the C2 a.k.a Command & Control/Listening port to be configurable while assembling via nasm with the `-D` flag.
 
