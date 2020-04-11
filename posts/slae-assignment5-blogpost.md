@@ -86,7 +86,7 @@ The syscalls are:
 Brilliant! Correlating with [Blog Post 1](https://slaeryan.github.io/posts/slae-assignment1-blogpost.html) where we created our own Bind TCP shellcode, we can see that the syscalls match in the exact order. Let's move in now for a deeper analysis.
 
 ### socket syscall
-We can see that EBX is cleared using XORing with itself. Then we clear `EAX` using `mul` instruction(clever trick!) and set up the stack for the socket syscall arguments:
+We can see that EBX is cleared using XORing with itself. Then we clear `EAX` using `mul` instruction(clever trick to save bytes!) and set up the stack for the socket syscall arguments:
 
 1. domain - AF_INET = 0x02 for IPv4 addressing schema
 2. type - SOCK_STREAM = 0x01 for a full-duplex byte stream socket communication
@@ -96,12 +96,14 @@ After that we load the syscall number for socket = 0x167 in the lower part of EA
 ### bind syscall
 This is the step where we push into the stack for the sockaddr_in struct arguments with:
 
-1. The server IP address - empty for self
+1. The server IP address - 0x00(0.0.0.0) to enable listening on all interfaces
 2. The addressing schema - 0x02 for IPv4 addressing schema
 3. The listening port - 0x901f(LPORT=8080, little-endian)
-4. 0 to enable listening on all interfaces
 
-Now we adjust the stack for the bind syscall arguments with the previously created sockaddr_in struct, the socket file descriptor created in the first syscall and load the appropiate syscall number in EAX before executing the syscall.
+Now we set the stack for the bind syscall arguments with the the socket file descriptor created in the first syscall, socklen_t addrlen = 16 and the previously created sockaddr_in struct in a reverse-order(little endianess!) and load the appropiate syscall number in EAX before finally executing the syscall.
 ### listen syscall
+This step should be easy to comprehend. Two things we should note here is that how they load into EAX the sockfd by directly referencing a location on the stack where it's located and loading of 0x04(SYS_LISTEN) into the lower part of EBX before executing the syscall
+### accept syscall
+
 
 
