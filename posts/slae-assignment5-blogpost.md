@@ -69,3 +69,6 @@ msfvenom -p linux/x86/shell_bind_tcp LPORT=8080 -f raw | sctest -vvv -Ss 100000 
 dot linux-x86-bindshell.dot -Tpng -o linux-x86-bindshell.png
 ```
 
+Let me include the image here to aid in the analysis:
+
+![linux-x86-bindshell](../assets/images/linux-x86-bindshell.png "linux-x86-bindshell")
