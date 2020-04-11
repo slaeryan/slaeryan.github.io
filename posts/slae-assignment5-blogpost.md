@@ -136,5 +136,7 @@ When that's done let's move in for the detailed analysis but not before identify
 3. connect()
 4. execve()
 
+We can verify this with the help of [Blog Post 2](https://slaeryan.github.io/posts/slae-assignment2-blogpost.html) where we created our own Reverse TCP shellcode.
+
 ### socket syscall
 
