@@ -102,8 +102,7 @@ This is the step where we push into the stack for the sockaddr_in struct argumen
 
 Now we set the stack for the bind syscall arguments with the the socket file descriptor created in the first syscall, socklen_t addrlen = 16 and the previously created sockaddr_in struct in a reverse-order(little endianess!) and load the appropiate syscall number in EAX before finally executing the syscall.
 ### listen syscall
-This step should be easy to comprehend. Two things we should note here is that how they load into EAX the sockfd by directly referencing a location on the stack where it's located and loading of 0x04(SYS_LISTEN) into the lower part of EBX before executing the syscall
+This step should be easy to comprehend. Two things we should note here is that how they load into `EAX` the sockfd by directly referencing a location on the stack where it's located and loading of 0x04(SYS_LISTEN) into the lower part of EBX before loading the appropiate syscall number in EAX and executing the syscall
 ### accept syscall
-
-
-
+In this step we just increment `EBX` by 1 making it 0x05 which is equal to SYS_ACCEPT. Then as usual we load the syscall value in EAX and execute the syscall.
+### dup2 syscall
