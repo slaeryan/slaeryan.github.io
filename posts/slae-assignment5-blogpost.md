@@ -92,6 +92,16 @@ We can see that EBX is cleared using XORing with itself. Then we clear `EAX` usi
 2. type - SOCK_STREAM = 0x01 for a full-duplex byte stream socket communication
 3. protocol - default 0x00 for single protocol support
 
-After that we load the syscall number for socket = 0x066 in the lower part of EAX and execute the syscall.
+After that we load the syscall number for socket = 0x167 in the lower part of EAX and execute the syscall.
 ### bind syscall
+This is the step where we push into the stack for the sockaddr_in struct arguments with:
+
+1. The server IP address - empty for self
+2. The addressing schema - 0x02 for IPv4 addressing schema
+3. The listening port - 0x901f(LPORT=8080, little-endian)
+4. 0 to enable listening on all interfaces
+
+Now we adjust the stack for the bind syscall arguments with the previously created sockaddr_in struct, the socket file descriptor created in the first syscall and load the appropiate syscall number in EAX before executing the syscall.
+### listen syscall
+
 
