@@ -10,9 +10,9 @@ Almost all of us have used the Metasploit framework's `msfvenom` tool at some po
 If your answer is no then this is your chance to peek a glimpse at everything that happens under the hood of this powerful tool when you generate a payload.
 
 For the purposes of this blog post I have chosen three payloads namely:
-1. linux/x86/exec
-1. linux/x86/shell_bind_tcp
-1. linux/x86/shell_reverse_tcp
+1. **linux/x86/exec**
+1. **linux/x86/shell_bind_tcp**
+1. **linux/x86/shell_reverse_tcp**
 
 So without any further ado, here it goes.
 
