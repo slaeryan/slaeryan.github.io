@@ -1,16 +1,18 @@
 # SLAE Exam Assignment 1 - Creating a Bind TCP shellcode
 
+**Reading Time:** _10 minutes_
+
 ## Prologue
 The first assignment for the SLAE certification exam is creating a Bind TCP shellcode for Linux/x86 architecture using the shellcoding knowledge that we have accumulated from the SLAE course and from our self-learning process.
 
-So without any further ado, let's get down with it shall we?
+So without any further ado, let's get down with it, shall we?
 
 ## So what is Bind TCP anyway?
 Let's take a look at a visual representation first and then we shall get down to the details.
 
 ![Bind TCP Overview](../assets/images/bind_tcp_overview.png "Bind TCP Overview")
 
-As is illustrated by the image, the victim/target machine opens a port and listens or waits for an incoming connection request by the attacker who then connects to it. After a connection is established successfully between them, the target can now execute any abritary command as instructed by the attacker machine.
+As is illustrated by the image, the victim/target machine opens a port and listens or waits for an incoming connection request by the attacker who then connects to it. After a connection is established successfully between them, the target can now execute any arbritary command as instructed by the attacker machine.
 
 In other words, the victim is running the TCP server and the attacker is running the TCP client code.
 
@@ -71,7 +73,7 @@ int main(int argc, char const *argv[])
 }
 ```
 
-And here is a fully-functional C source for a bind shell payload. Stripping the C code down to it's essential details, we note the following syscalls to be made in our assembly code:
+And here is a fully-functional C source for a bind shell payload. Stripping the C code down to its essential details, we note the following syscalls to be made in our assembly code:
 
 1. socket
 1. bind
@@ -117,7 +119,7 @@ Now moving to setup the sockaddr_in struct.
 Note from the C prototype that the sockaddr_in struct consists of:
 
 1. The server IP address - we will leave it to 0(0.0.0.0) to enable listening on all interfaces
-1. The addressing schema(In this case it's IPv4 so it's value shall be 2 or 0x02)
+1. The addressing schema(In this case it's IPv4 so its value shall be 2 or 0x02)
 1. The listening port
 
 So let us start by pushing those into the stack. Note that I have configured the C2 a.k.a Command & Control/Listening port to be configurable while assembling via nasm with the `-D` flag.
@@ -133,7 +135,7 @@ push word 0x02
 
 Now that we have finished setting up the sockaddr_in struct, let's move on to the bind() syscall.
 ### Bind syscall
-These bind() arguments can be summarized as follows:
+The bind() arguments can be summarized as follows:
 
 1. int sockfd – this is a reference to the socket fd that was created in the first syscall, this is why we moved EAX into EBX
 1. struct sockaddr_in server – this is a pointer to the location on the stack of the sockaddr struct that we just created
@@ -322,7 +324,7 @@ _start:
 ```
 
 ## A Bind TCP shellcode generator
-Now for the next part of the assignment we have to modify the shellcode so as to make it's C2 port number configurable.
+Now for the next part of the assignment we have to modify the shellcode so as to make its C2 port number configurable.
 
 I have also taken the liberty to create a shellcode generator where the C2 Port is fed in and it spits out the shellcode in hex string and byte string format. What's more? It also generates the ELF payload just in case we need that and it also looks cool ;)
 
