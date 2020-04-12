@@ -3,7 +3,7 @@
 **Reading Time:** _6 minutes_
 
 ## Prologue
-The third assignment for our SLAE Certification exam is creating an egg-hunter shellcode in such a way so as to make it's secondary payload configurable.
+The third assignment for our SLAE Certification exam is creating an egg-hunter shellcode in such a way so as to make its secondary payload configurable.
 
 Egg-hunter remains an extremely important topic for study by exploitation analysts and rightfully so. 
 
@@ -18,7 +18,7 @@ Enter the Egg-hunter.
 
 ![Eggs](../assets/images/eggs.jpg "Eggs")
 
-As many before me and also the ones who will be attempting this exam after me, there is one paper that stands out of all and is referenced by almost everyone perhaps because of it's simplicity and brilliance that is: [Safely Searching Process Virtual Address Space](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%203/egghunt-shellcode.pdf) by Skape.
+As many before me and also the ones who will be attempting this exam after me, there is one paper that stands out of all and is referenced by almost everyone perhaps because of its simplicity and brilliance that is: [Safely Searching Process Virtual Address Space](https://github.com/upayansaha/SLAE-Code-Repository/blob/master/Assignment%203/egghunt-shellcode.pdf) by Skape.
 
 I would recommend all the readers of this blog to read the paper first and then come back here.
 
@@ -28,9 +28,9 @@ The egg-hunter is a shellcode usually optimized and small in size which is desig
 ### But how does it work?
 The way the egg-hunter works is by iterating through the pages of memory and looking for the "egg" until its found.
 
-Okay okay I get it but as far as I knew when a program tries to read unallocated memory in Linux, the program will crash throwing a `SIGSEGV` right? So how do you figure that out in advance?
+Okay okay, I get it but as far as I knew when a program tries to read unallocated memory in Linux, the program will crash throwing a `SIGSEGV` right? So how do you figure that out in advance?
 
-Here comes Skape's out-of-the-box solution. He has devised a way to use the `access()` syscall to check whether a page of memory is accessible or not by using the memory address as argument and by checking the error-code(_0xf2 OR EFAULT_) returned by the syscall, we can determine whether the page is accessible or not. This enables us to scan the memory safely.
+Here comes Skape's out-of-the-box solution. He has devised a way to use the `access()` syscall to check whether a page of memory is accessible or not by using the memory address as the argument and by checking the error-code(_0xf2 OR EFAULT_) returned by the syscall, we can determine whether the page is accessible or not. This enables us to scan the memory safely.
 
 Needless to say, if the page is inaccessible then it should skip to the next page directly otherwise it should continue scanning the memory page looking for our "egg".
 ### One final note
