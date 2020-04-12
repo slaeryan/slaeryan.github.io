@@ -1,5 +1,7 @@
 # SLAE Exam Assignment 4 - Creating a custom shellcode encoder
 
+**Reading Time:** _7 minutes_
+
 ## Prologue
 The fourth assignment that we have for our SLAE Certification exam is creating a custom shellcode encoder using all that we have learnt so far from the course.
 
