@@ -3,7 +3,7 @@
 **Reading Time:** _9 minutes_
 
 ## Prologue
-After an absolutely amazing journey that was the x86 Assembly Language and Shellcoding on Linux course brought to us by our instructor Vivek Ramachandran and Pentester Academy, this is the last but definitely not the least enjoyable assignment that we had to do for our SLAE certification i.e. create a custom shellcode crypter that will allow us to bypass AV/EDR signatures.
+After an amazing journey that was the x86 Assembly Language and Shellcoding on Linux course brought to us by our instructor Vivek Ramachandran and Pentester Academy, this is the last but definitely not the least enjoyable assignment that we had to do for our SLAE certification i.e. create a custom shellcode crypter that will allow us to bypass AV/EDR signatures.
 
 For this assignment, we could use any programming language of our choice and I chose **Python3**(Hey! why not?) simply because it's a breeze to create prototypes in Python before finally implementing it in some language like C/C++. 
 
