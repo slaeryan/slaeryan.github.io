@@ -1,5 +1,7 @@
 # SLAE Exam Assignment 2 - Creating a Reverse TCP shellcode
 
+**Reading Time:** _10 minutes_
+
 ## Prologue
 So the second task that we have for our SLAE certification exam is creating a reverse TCP shellcode for Linux/x86 architecture using the knowledge that we have gathered from the wonderful course and the shellcoding techniques that we have accumulated over time.
 
@@ -7,9 +9,9 @@ To be honest this was easily one of my most favourite assignments that I had the
 
 Why so? Let me tell you why.
 
-So we create Meterpreter reverse TCP payloads all the time for exploitation purposes right? But invariably what happens is our payload getting caught and detected by AVs and EDRs. But that's all history now.
+So we create Meterpreter reverse TCP payloads all the time for exploitation purposes, right? But invariably what happens is our payload getting caught and detected by AVs and EDRs. But that's all history now.
 No more getting caught by AVs and EDRs and next-gen security products because now we can create our very own custom reverse TCP shellcode that is capable of bypassing all of the aforementioned security solutions!
-Also there's no ignoring the fact that we hacker tribes get a different joy from using our own custom tools wherever possible in red-teaming engagements/CTFs yada yada yada.
+Also, there's no ignoring the fact that we hacker tribes get a different joy from using our own custom tools wherever possible in red-teaming engagements/CTFs yada yada yada.
 
 So without any further ado let's get down with it!
 
@@ -20,14 +22,14 @@ Let's look at a visual representation first and then we'll talk about it.
 
 We can clearly see from this image that in case of a Reverse TCP shell, the client a.k.a. the victim/target machine beacons out to the server a.k.a. the attacker machine who is listening for connections at a specified port. Now after the server receives a connection, it can then send out commands to the client for it to execute on the victim machine.
 
-Since the direction of connection is reversed from a Bind TCP connection(first post remember?), it is also known as Reverse TCP.
+Since the direction of the connection is reversed from a Bind TCP connection(first post remember?), it is also known as Reverse TCP.
 
 So how is this useful?
 
 Well in certain restricted environments which is almost always the case you will not be able to use a Bind TCP shell to get access because the firewall is going to block the incoming connection request to the victim machine.
 But a Reverse TCP shell can be used in those scenarios because the firewall most likely will not block a machine of their own network from making a connection attempt to an outside machine!
 
-So all in all, Reverse TCP shells are very useful in penetration testing and this payload is what we use on almost every occassion with a few exceptions.
+So all in all, Reverse TCP shells are very useful in penetration testing and this payload is what we use on almost every occasion with a few exceptions.
 
 ## A C Prototype first
 If we are going to program in something as low-level as machine code it is only fair that we first create a prototype in a high-level language like C/C++ to conceptualize it and get a template for creating our assembly code right?
@@ -80,7 +82,7 @@ int main(int argc, char const *argv[])
 }
 ```
 
-And here is a fully-functional C source for a reverse shell payload. Stripping the C code down to it's essential details, we note the following syscalls to be made in our assembly code:
+And here is a fully-functional C source for a reverse shell payload. Stripping the C code down to its essential details, we note the following syscalls to be made in our assembly code:
 
 1. socket
 1. connect
@@ -119,13 +121,13 @@ int 0x80
 mov ebx, eax
 ```
 
-Now moving to setup the sockaddr_in struct.
+Now moving to set up the sockaddr_in struct.
 ### Setting up the sockaddr_in struct for connect syscall
 Note from the C prototype that the sockaddr_in struct consists of:
 
 1. The attacker IP address
 1. The attacker Port
-1. The addressing schema(In this case it's IPv4 so it's value shall be 2)
+1. The addressing schema(In this case it's IPv4 so its value shall be 2)
 
 So let us start by pushing those into the stack. Note that I have configured the C2 a.k.a Command & Control/Attacker IP address and port to be configurable while assembling via nasm with the `-D` flag.
 
@@ -283,7 +285,7 @@ _start:
 ```
 
 ## A Reverse TCP shellcode generator
-Now for the next part of the assignment we have to modify the shellcode so as to make it's C2 IP address and port number configurable.
+Now for the next part of the assignment, we have to modify the shellcode so as to make its C2 IP address and port number configurable.
 
 I have also taken the liberty to create a shellcode generator where the C2 IP and the Port are fed in and it spits out the shellcode in hex string and byte string format. What's more? It also generates the ELF payload just in case we need that and it also looks cool ;)
 
