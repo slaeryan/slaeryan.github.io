@@ -104,13 +104,13 @@ This is the step where we push into the stack for the sockaddr_in struct argumen
 
 Now we set the stack for the bind syscall arguments with the socket file descriptor created in the first syscall, socklen_t addrlen = 16 and the previously created sockaddr_in struct in a reverse-order(little-endianness!) and load the appropriate syscall number in `EAX` before finally executing the syscall.
 ### listen syscall
-This step should be easy to comprehend. Two things we should note here is that how they load into `EAX` the sockfd by directly referencing a location on the stack where it's located and loading of 0x04 or SYS_LISTEN into the lower part of `EBX` before loading the appropriate syscall number in `EAX` and executing the syscall
+This step should be easy to comprehend. Two things we should note here is that how they load into `EAX` the sockfd by directly referencing a location on the stack where it's located and loading of 0x04 or _SYS_LISTEN_ into the lower part of `EBX` before loading the appropriate syscall number in `EAX` and executing the syscall.
 ### accept syscall
-In this step, we just increment `EBX` by 1 making it 0x05 which is equal to SYS_ACCEPT. Then, as usual, we load the syscall value in `EAX` and execute the syscall.
+In this step, we just increment `EBX` by 1 making it 0x05 which is equal to _SYS_ACCEPT_. Then, as usual, we load the syscall value in `EAX` and execute the syscall.
 ### dup2 syscall
 We are going to duplicate into our accepted connection socket which we got back from the previous step the STDIN/0, STDOUT/1, and STDERR/2 file descriptors(fd) to make the connection interactive in this step. In the first instruction, `EBX` now has the value of `EAX` which contains the connection socket. `ECX` will be used as the counter register here. After that, the syscall value for dup2 is pushed into the stack and the syscall is executed. For the next iteration, the `ECX` is decremented and the loop continues until the Sign Flag(SF) is set.
 ### execve syscall
-The last step is actually all too familiar now that is executing the "/bin/sh" to enable the attackers to execute any command on the machine remotely. There is not much to discuss here as it's pretty standard.
+The last step is actually all too familiar now that is executing the `/bin/sh` to enable the attackers to execute any command on the machine remotely. There is not much to discuss here as it's pretty standard.
 
 ## Analyzing linux/x86/shell_reverse_tcp shellcode
 This is again a standard Reverse TCP payload(not to be confused with Meterpreter!) from the Metasploit framework.
