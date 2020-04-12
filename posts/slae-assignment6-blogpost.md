@@ -1,5 +1,7 @@
 ## SLAE Exam Assignment 6 - Creating polymorphic shellcode
 
+**Reading Time:** _7 minutes_
+
 ## Prologue
 The second last assignment of the SLAE certification exam was quite an intriguing one. We were told to take three shellcodes of our choosing from [shell-storm](https://www.shell-storm.org/shellcode/) or [exploit-db](https://www.exploit-db.com/shellcodes) and create Polymorphic versions of those to evade _static signature-based_ AV/EDRs. Needless to say, it was a quite fun and brain-racking challenge.
 
@@ -10,17 +12,17 @@ So without any further ado, let's get down with it!
 ## What is a polymorphic shellcode?
 It is impossible to explain polymorphic shellcode if we don't understand what is polymorphism.
 
-Polymorphism comes from the Greek words: _poly_ meaning "many" and _morph_ meaning "forms". In other words it roughly translates to "many forms of the same thing".
+Polymorphism comes from the Greek words: _poly_ meaning "many" and _morph_ meaning "forms". In other words, it roughly translates to "many forms of the same thing".
 
 Now let's understand what we mean by polymorphic shellcode with the help of a tiny example.
 
-Each shellcode is crafted for a specific purpose right? Say there's a Reverse TCP shellcode which connects back to an attacker server for execution of arbritary commands. This shellcode was used many times in the past by an attacker along with an exploit to get access to a remote machine and exfiltrate data. Now the AV/EDR vendors have caught up to it and they have written signatures to detect this payload. Say a wannabe pen-tester has somehow gotten their hands on this payload and they too want to use this payload so they quickly decide to test it in a live test environment of their own before deploying it but alas! As soon as they fire up the payload it gets detected by a commercial AV solution. This can't be any good!
+Each shellcode is crafted for a specific purpose, right? Say there's a Reverse TCP shellcode which connects back to an attacker server for execution of arbritrary commands. This shellcode was used many times in the past by an attacker along with an exploit to get access to a remote machine and exfiltrate data. Now the AV/EDR vendors have caught up to it and they have written signatures to detect this payload. Say a wannabe pen-tester has somehow gotten their hands on this payload and they too want to use this payload so they quickly decide to test it in a live test environment of their own before deploying it but alas! As soon as they fire up the payload it gets detected by a commercial AV solution. This can't be any good!
 
 Enter polymorphic shellcode!
 
-So this script-kiddie gives this assembly code that he found to an 1337 hacker and in return gets back a modified payload which surprisingly runs as expected without any detections much to this script-kiddie's surprise. So what did this 1337 hacker do?
+So this script-kiddie gives this assembly code that he found to a l33t hacker and in return gets back a modified payload which surprisingly runs as expected without any detections much to this script-kiddie's surprise. So what did this 1337 hacker do?
 
-He basically modified the source that he received to beat _static signature analysis_. In other words, he created a polymorphic shellcode from the original source that has the same functionality but a different signature this time since he **addded some new instructions, deleted some old instructions, added some NOP instructions, switched the algorithm somewhere yada yada yada.**
+He basically modified the source that he received to beat _static signature analysis_. In other words, he created a polymorphic shellcode from the original source that has the same functionality but a different signature this time since he **added some new instructions, deleted some old instructions, added some NOP instructions, switched the algorithm somewhere yada yada yada.**
 
 Now that we know what is a polymorphic shellcode and how it could be useful to us, let's get our hands dirty with creating some!
 
@@ -61,7 +63,7 @@ Length of polymorphic shellcode: `21 bytes`
 
 Size Reduction: `9%`
 
-For the first assignment I took a very simple shellcode which executes /bin/sh so I will not go into too much detail on how it works. I just bastardized the execve call and made the following modifications:
+For the first assignment, I took a very simple shellcode which executes /bin/sh so I will not go into too much detail on how it works. I just bastardized the execve call and made the following modifications:
 
 1. Removed the null termination push after /bin//sh
 1. Removed the ECX pointing to argv[]
@@ -171,9 +173,9 @@ Size Reduction: `28%`
 
 I have saved the best for the last and it's needless to say this is a shellcode that will force a system reboot.
 
-For this one I actually took a different approach altogether and ended up minimising the shellcode length by `10 bytes`. Here is what I have done:
+For this one, I actually took a different approach altogether and ended up minimising the shellcode length by `10 bytes`. Here is what I have done:
 
-1. The original shellcode uses execve on /usr/sbin/reboot to cause a system reboot. I searched the linux syscall table online and found that there is a separate syscall for reboot(0x58) and I decided to execute that syscall rather than trying to remove optional instructions from the original shellcode in an effort to minimise it as much as possible. The result is a completely polymorphic shellcode that is 10 bytes lesser than the original. 
+1. The original shellcode uses execve on /usr/sbin/reboot to cause a system reboot. I searched the Linux syscall table online and found that there is a separate syscall for reboot(0x58) and I decided to execute that syscall rather than trying to remove optional instructions from the original shellcode in an effort to minimise it as much as possible. The result is a completely polymorphic shellcode that is 10 bytes lesser than the original. 
 
 The assembly source is commented throughout ergo I won't be discussing that in more details.
 
