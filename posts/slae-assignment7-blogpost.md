@@ -1,9 +1,11 @@
 # SLAE Exam Assignment 7 - Creating a custom shellcode crypter
 
-## Prologue
-After an absolutely amazing journey that was the x86 Assembly Language and Shellcoding on Linux course brought to us by our instructor Vivek Ramachandran and Pentester Academy, this is the last but definetely not the least enjoyable assignment that we had to do for our SLAE certification i.e. create a custom shellcode crypter that will allow us to bypass AV/EDR signatures.
+**Reading Time:** _9 minutes_
 
-For this assignment, we could use any programming language of our choice and I chose **Python3**(Hey! why not?) simply beacause it's a breeze to create prototypes in Python before finally implementing it in some language like C/C++. 
+## Prologue
+After an absolutely amazing journey that was the x86 Assembly Language and Shellcoding on Linux course brought to us by our instructor Vivek Ramachandran and Pentester Academy, this is the last but definitely not the least enjoyable assignment that we had to do for our SLAE certification i.e. create a custom shellcode crypter that will allow us to bypass AV/EDR signatures.
+
+For this assignment, we could use any programming language of our choice and I chose **Python3**(Hey! why not?) simply because it's a breeze to create prototypes in Python before finally implementing it in some language like C/C++. 
 
 So what are we waiting for? Let's get down with it!
 
@@ -16,13 +18,13 @@ To better understand it, let's look at something.
 
 ![VirusTotal Scan](../assets/images/vt_scan.png "VirusTotal Scan")
 
-So this is how a standard meterpreter shell looks without any form of encryption when scanned with different AV products. Nearly all AVs possess the ability to catch and quarantine them almost immediately. Hmmmm...
+So this is how a standard meterpreter shell looks without any form of encryption when scanned with different AV products. Nearly all AVs possess the ability to catch and quarantine them almost immediately. Hmmm...
 
 But what if we encrypt the PE/ELF executable? And run the executable by decrypting it successfully at run-time?
 
 The main theme here is to encrypt the payload ahead of time and insert a piece of code called the stub inside the payload that will do the decryption at runtime and execute our payload thereby bypassing static signature-based detection successfully because the AV engine can't crack the encrypted payload pre-execution.
 
-It's a brilliant idea right? Kudos to whoever thought of that!
+It's a brilliant idea, right? Kudos to whoever thought of that!
 
 This is how an encrypted payload looks exposed to VirusTotal.
 
@@ -30,7 +32,7 @@ This is how an encrypted payload looks exposed to VirusTotal.
 
 An **important point** to note is that using this technique we will only be able to bypass AVs relying on _static-analysis_ solely which is seldom the case nowadays since security products today use a hybrid technique of _static-analysis_ and _dynamic-analysis_ combined which is basically automatic execution of the binary in a sandboxed environment and looking for suspicious behaviours/indicators to determine whether it is malicious or not and this going to catch our payload once we decrypt the payload.
 
-Of course there are workarounds for this too but those are the topics of another discussion.
+Of course, there are workarounds for this too but those are the topics of another discussion.
 
 ## Implementation details
 So we are going to be using a cryptographic library known as NaCl which is an abbreviation for "Networking and Cryptography library" as the principal encryption library for our crypter.
@@ -49,7 +51,7 @@ We are going to be using a Python module known as `PyNaCl` to use this library i
 There's not much to explain about the encryption/decryption process since it's pretty self-explanatory and the developers of this Python module have done a got job explaining it and creating a wonderfully detailed documentation.
 Have a look at it [here](https://pynacl.readthedocs.io/en/stable/).
 
-Also my code is beautifully commented to clear any doubts that might arise ;)
+Also, my code is beautifully commented to clear any doubts that might arise ;)
 
 ### Environmental Keying for shellcode security
 One last thing I want to mention before we jump into the code is a feature that I am quite proud of.
@@ -216,15 +218,15 @@ Feel free to use and modify all of the above code as and when you see fit.
 Cheers!
 
 ## Acknowledgements:
-What a lovely journey this has been! All thanks to Vivek Ramachandran and Pentester Acacdemy for bringing such a wonderfully brilliant course and that too at an affordable price like this. I still can't comprehend that it's over! 
+What a lovely journey this has been! All thanks to Vivek Ramachandran and Pentester Academy for bringing such a wonderfully brilliant course and that too at an affordable price like this. I still can't comprehend that it's over! 
 
-SLAE is one of the first courses that I had the pleasure of attempting and I hope to persue my OSCP after this alongwith a bunch of other OFFSEC courses offered by Pentester Academy but one thing I can be sure of is that this course will forever be a turning point in my career.
+SLAE is one of the first courses that I had the pleasure of attempting and I hope to pursue my OSCP after this along with a bunch of other OFFSEC courses offered by Pentester Academy but one thing I can be sure of is that this course will forever be a turning point in my career.
 
-Also, a shoutout to the people who have attempted this course before me for you have given me an inspiration and a map towards the right direction.
+Also, a shoutout to the people who have attempted this course before me for you have given me an inspiration and a map pointing towards the right direction.
 
 To all reading this post who are looking to venture into the OFFSEC grounds I'll tell you this:
 
-_Give SLAE a shot for I can assure that thou shant be disappointed!_
+_Give SLAE a shot for I can assure that thou shan't be disappointed!_
 
 ## Note
 This blog post has been created for completing the requirements of the SecurityTube Linux Assembly Expert certification:
