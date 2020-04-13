@@ -64,7 +64,7 @@ _start:
 
     mov ebx, 0x50905090    ; Moving the 4-byte egg to EBX register
     xor ecx, ecx           ; Clearing ECX register
-    mul ecx                ; Clearing EAX and EDX
+    mul ecx                ; Clearing EAX
 
     ; Function to skip to next page
     turn_page:             
