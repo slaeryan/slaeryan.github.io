@@ -48,8 +48,8 @@ published: true
 
 - **Mar 31, 2020:** [SLAE Exam Assignment 4 - Creating a custom shellcode encoder](./posts/slae-assignment4-blogpost.html)
 
-- **Apr 4 , 2020:** [SLAE Exam Assignment 5 - Analyzing MSFVenom payloads](./posts/slae-assignment5-blogpost.html)
+- **Apr 4, 2020:**  [SLAE Exam Assignment 5 - Analyzing MSFVenom payloads](./posts/slae-assignment5-blogpost.html)
 
-- **Apr 7, 2020:** [SLAE Exam Assignment 6 - Creating polymorphic shellcode](./posts/slae-assignment6-blogpost.html)
+- **Apr 7, 2020:**  [SLAE Exam Assignment 6 - Creating polymorphic shellcode](./posts/slae-assignment6-blogpost.html)
 
 - **Apr 10, 2020:** [SLAE Exam Assignment 7 - Creating a custom shellcode crypter](./posts/slae-assignment7-blogpost.html)
