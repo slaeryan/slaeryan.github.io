@@ -1,6 +1,6 @@
 # SLAE Exam Assignment 5 - Analyzing MSFVenom payloads
 
-**Reading Time:** _8 minutes_
+**Reading Time:** _6 minutes_
 
 ## Prologue
 The fifth assignment for our SLAE certification exam is analyzing three shellcodes from the Metasploit MSFVenom tool and writing a suitable report for the same.
