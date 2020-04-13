@@ -75,7 +75,7 @@ Let me include the image here to aid in the analysis:
 
 ![linux-x86-bindshell](../assets/images/linux-x86-bindshell.png "linux-x86-bindshell")
 
-Whoa! This looks bigger than I expected:( Don't get disheartened, let's start with identifying the syscalls first, rest will be taken care of automatically. 
+Whoa! This looks bigger than I expected :( Don't get disheartened, let's start with identifying the syscalls first, rest will be taken care of automatically. 
 
 The syscalls are:
 1. socket()
@@ -94,7 +94,7 @@ We can see that `EBX` is cleared using XORing with itself. Then we clear `EAX` u
 2. type - SOCK_STREAM = 0x01 for a full-duplex byte stream socket communication
 3. protocol - default 0x00 for single protocol support
 
-After that, we load the syscall number for socket = 0x167 in the lower part of EAX and execute the syscall.
+After that, we load the syscall number for socket in the lower part of EAX and execute the syscall.
 ### bind syscall
 This is the step where we push into the stack for the sockaddr_in struct arguments with:
 
@@ -102,7 +102,7 @@ This is the step where we push into the stack for the sockaddr_in struct argumen
 2. The addressing schema - 0x02 for IPv4 addressing schema
 3. The listening port - 0x901f(LPORT=8080, little-endian)
 
-Now we set the stack for the bind syscall arguments with the socket file descriptor created in the first syscall, socklen_t addrlen = 16 and the previously created sockaddr_in struct in a reverse-order(little-endianness!) and load the appropriate syscall number in `EAX` before finally executing the syscall.
+Now we set the stack for the bind syscall arguments with the socket file descriptor created in the first syscall, socklen_t addrlen = 16 and the previously created sockaddr_in struct in a reverse-order and load the appropriate syscall number in `EAX` before finally executing the syscall.
 ### listen syscall
 This step should be easy to comprehend. Two things we should note here is that how they load into `EAX` the sockfd by directly referencing a location on the stack where it's located and loading of 0x04 or _SYS_LISTEN_ into the lower part of `EBX` before loading the appropriate syscall number in `EAX` and executing the syscall.
 ### accept syscall
