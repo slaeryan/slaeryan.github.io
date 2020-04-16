@@ -1,70 +1,62 @@
+
+
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ site.description }}</title>
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-
-    {% seo %}
-    
-    {% if site.google_analytics %}
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-    <script>
+<head>
+   <meta charset='utf-8'>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>{{ site.description }}</title>
+   <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+   {% seo %}
+   {% if site.google_analytics %}
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+   <script>
       if (document.domain !== '127.0.0.1') {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
+      
         gtag('config', '{{ site.google_analytics }}');
       }
-    </script>
-    {% endif %}
-  </head>
-
-  <body>
-
-    <header>
+   </script>
+   {% endif %}
+</head>
+<body>
+   <header>
       <div class="container">
-        <h1><a style="color:inherit; text-decoration: none;" href="/">{{ site.title | default: site.github.repository_name }}</a></h1>
-        <h2>{{ site.description | default: site.github.project_tagline }}</h2>
-
-        <section id="downloads">
-          {% if site.show_downloads %}
+         <h1><a style="color:inherit; text-decoration: none;" href="/">{{ site.title | default: site.github.repository_name }}</a></h1>
+         <h2>{{ site.description | default: site.github.project_tagline }}</h2>
+         <section id="downloads">
+            {% if site.show_downloads %}
             <a href="{{ site.github.zip_url }}" class="btn">Download as .zip</a>
             <a href="{{ site.github.tar_url }}" class="btn">Download as .tar.gz</a>
-          {% endif %}
-          {% if site.show_repo %}
+            {% endif %}
+            {% if site.show_repo %}
             <a href="{{ site.github.repository_url }}" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-          {% endif %}
-        </section>
+            {% endif %}
+         </section>
       </div>
-    </header>
-
-    <div class="container">
+   </header>
+   <div class="container">
       <section id="main_content">
-        {{ content }}
+         {{ content }}
       </section>
-    </div>
-    {% include new-window-fix.html %}
-    <!-- Default Statcounter code for Personal Blog
-    https://slaeryan.github.io -->
-    <script type="text/javascript">
-    var sc_project=12239812; 
-    var sc_invisible=1; 
-    var sc_security="cadcd86b"; 
-    var sc_https=1; 
-    </script>
-  <script type="text/javascript"
-  src="https://www.statcounter.com/counter/counter.js"
-  async></script>
-  <noscript><div class="statcounter"><a title="Web Analytics"
-  href="https://statcounter.com/" target="_blank"><img
-  class="statcounter"
-  src="https://c.statcounter.com/12239812/0/cadcd86b/1/"
-  alt="Web Analytics"></a></div></noscript>
-  <!-- End of Statcounter Code -->
-  </body>
+   </div>
+   {% include new-window-fix.html %}
+   <!-- Default Statcounter code for Personal Blog https://slaeryan.github.io -->
+   <script type="text/javascript">
+      var sc_project=12239812;
+      var sc_invisible=1;
+      var sc_security="cadcd86b";
+      var sc_https=1;
+   </script>
+   <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+   <noscript>
+      <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/12239812/0/cadcd86b/1/" alt="Web Analytics"></a></div>
+   </noscript>
+   <!-- End of Statcounter Code -->
+</body>
 </html>
+
