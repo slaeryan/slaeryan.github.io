@@ -372,6 +372,8 @@ This blog post has been created for completing the requirements of the SecurityT
 
 Student ID: SLAE-1525
 
+<br />
+
 <div id="disqus_thread"></div>
 <script>
 
