@@ -15,7 +15,7 @@ published: true
 
 **Current Location:** Kolkata, IN
 
-**Certifications:** None yet
+**Certifications:** SLAE
 
 <br clear="left"/>
 <br />
