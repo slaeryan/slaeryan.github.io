@@ -37,7 +37,7 @@ published: true
 
 <div>
   <a class="donate-with-crypto"
-     href="https://commerce.coinbase.com/checkout/dc8637be-ad15-4a2a-933c-b05f6ba6629b">
+     href="https://commerce.coinbase.com/checkout/860e4301-3c92-40df-b181-3d23ec3db910">
     Donate with Crypto
   </a>
   <script src="https://commerce.coinbase.com/v1/checkout.js?version=201807">
