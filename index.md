@@ -33,9 +33,7 @@ published: true
 
 **PGP Key:** [Here](https://raw.githubusercontent.com/slaeryan/slaeryan.github.io/master/Upayan%20PGP%20Public%20Key.asc)
 
-**BTC:** 3Py7ZjeGcLmXgLM4mXgEo9PK7uWtFmGxh2
-
-**ZCash:** t1TAjpGrpsWqh6yogTtWMiaBMuN2wEzWUKV
+**Keybase:** [https://keybase.io/upayansaha](https://keybase.io/upayansaha)
 
 <div>
   <a class="donate-with-crypto"
