@@ -35,7 +35,16 @@ published: true
 
 **BTC:** 3Py7ZjeGcLmXgLM4mXgEo9PK7uWtFmGxh2
 
-**ZCash:** t1TAjpGrpsWqh6yogTtWMiaBMuN2wEzWUKV 
+**ZCash:** t1TAjpGrpsWqh6yogTtWMiaBMuN2wEzWUKV
+
+<div>
+  <a class="donate-with-crypto"
+     href="https://commerce.coinbase.com/checkout/dc8637be-ad15-4a2a-933c-b05f6ba6629b">
+    Donate with Crypto
+  </a>
+  <script src="https://commerce.coinbase.com/v1/checkout.js?version=201807">
+  </script>
+</div>
 
 <br />
 
