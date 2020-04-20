@@ -1,6 +1,6 @@
 # How I bypassed "next-generation" Cylance Smart AntiVirus in less than 15 minutes
 
-**Reading Time:** 
+**Reading Time:** __
 
 ## Prologue
 Hello folks, In this blog-post, I am going to show you guys how I was able to bypass a "next-generation" Antivirus named Cylance Smart AV which supposedly uses neural networks for threat detection compared to traditional detection mechanisms.
@@ -33,7 +33,7 @@ Of course we would need to set up a test environment to run the scenario. Here a
 
 1. A latest version of Windows 10 build with all security hotfixes installed - This is going to be our target machine.
 1. A Linux box loaded with Metasploit framework - The attacker machine.
-1. A copy of Cylance Smart AV with all features enabled - You may get a "trial" version for a month($5).
+1. A copy of Cylance Smart AV with all features enabled - You may get a "trial" version for a month(5 USD).
 
 I'd strongly recommend to set up a Windows VM using VirtualBox/VMWare instead of using your production machine. Since there are plenty of resources available online on how to do so and considering the fact that there's not much to explain here, I will leave this step as an exercise for the readers.
 
