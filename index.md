@@ -13,7 +13,7 @@ published: true
 
 **Profession:** Offensive Cyber Analyst
 
-**Current Location:** Kolkata, IN
+**Current Location:** Ring -2(SMM)
 
 **Certifications:** SLAE
 
