@@ -22,7 +22,7 @@ These are company claims anyway. But is it effective? How well does it perform i
 
 I did run the scenario and guess what? It was way easier than I thought and it didn't take me more than 15 minutes to prepare a lure mail with a payload stager that would download and execute our final stage payload to give us the shell.
 
-Yes, I have tried to keep the scenario as real and practical as possible which initiates from the Delivery phase of the Cyber Kill Chain(if you don't know what that is [here](https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html) is a link to read up on it).
+Yes, I have tried to keep the scenario as real and practical as possible which initiates from the Weaponization phase of the Cyber Kill Chain(if you don't know what that is [here](https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html) is a link to read up on it).
 
 This is not one of those impractical posts showing the results of a VirusTotal scan against a scratch-coded simple reverse shell to judge whether it'll pass as the payload for an actual red-teaming engagement and if so terming it as a bypass.
 
