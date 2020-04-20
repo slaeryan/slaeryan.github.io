@@ -26,7 +26,7 @@ Yes, I have tried to keep the scenario as real and practical as possible which i
 
 This is not one of those impractical posts showing the results of a VirusTotal scan against a scratch-coded simple reverse shell to judge whether it'll pass as the payload for an actual red-teaming engagement and if so terming it as a bypass.
 
-Before we begin I want to make it clear that I was neither employed by any company nor paid by an individual to perform these tests. All of this was done on personal interest and curiosity.
+Before we begin I want to make it clear that I was neither employed by any company nor paid by an individual to perform these tests. All of this was done on personal interest and curiosity just to confirm whether I could.
 
 ## Preparing the test environment
 Of course we would need to set up a test environment to run the scenario. Here are the things you'd need:
@@ -35,6 +35,6 @@ Of course we would need to set up a test environment to run the scenario. Here a
 1. A Linux box loaded with Metasploit framework - The attacker machine.
 1. A copy of Cylance Smart AV with all features enabled - You may get a "trial" version for a month(5 USD).
 
-I'd strongly recommend to set up a Windows VM using VirtualBox/VMWare instead of using your production machine. Since there are plenty of resources available online on how to do so and considering the fact that there's not much to explain here pertaining the main subject, I will leave this step as an exercise for the readers.
+I'd strongly recommend to set up a Windows VM using VirtualBox/VMWare instead of using your production machine. Since there are plenty of resources available online on how to do so and considering the fact that there's not much to explain here pertaining the main topic, I will leave this step as an exercise for the readers.
 
 Keep in mind, for simplicity's sake we are not using a VPS as the target machine. Therefore, it is your responsibility to set up the environment in such a way that both the machines are on the same local network.
