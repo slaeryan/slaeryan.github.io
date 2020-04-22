@@ -154,11 +154,19 @@ This means that if an attacker was to serve a HTA file (for example, via a malic
 
 So HTA files are not subject to the same stringent restrictions as HTML pages. What's more you can even use embedded JS or VBS code with ActiveX Object support such as `WScript.Shell`. This means you can potentially use an HTA to perform some malicious activity on the executing host machine. Sounds intriguing...
 
-So why don't we create an HTA that will download and execute our payload when it is run? In other words a stager which upon being run will download and execute the final stage payload. Let's do that!
+So why don't we create an HTA that will download and execute our payload when it is run? In other words a stager which upon being run will download and execute our shellcode loader program which in turn will execute our final _meterpreter_ shellcode. Let's do that!
 
 Here is the HTA source:
 
 ```html
+<!-- 
+Filename: htastager.hta
+Author: Upayan a.k.a. slaeryan
+Purpose: This is a HTA stager that will download a Base64 payload from a specified URL, decode it back to the original extension and then execute it. Also, it cleans this file and the Base64 payload from disk afterwards.
+Usage: Download and run from a browser or with mshta.exe 
+-->
+
+
 <!DOCTYPE html>
 <html>
 <head>
