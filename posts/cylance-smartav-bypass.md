@@ -298,10 +298,10 @@ This stage is known as the **Post-Exploitation** phase where the attackers perfo
 This may include installing other implants, achieving persistence so that the implant survives a reboot, confidential data exfiltration, keylogging, pivoting etc. among other things.
 
 ## A working demo of the bypass
-Here is a working demo of the attack in question which is successfully able to bypass Cylance Smart AV:
+Here is a working demo of the attack in question which is successfully able to bypass Cylance Smart V:
 
 <figure class="video_container">
-  <video width="auto" height="100%" controls="true" allowfullscreen="true" poster="../assets/images/cylance-smartav-logo.png">
+  <video width="100%" height="100%" controls="true" allowfullscreen="true" poster="../assets/images/cylance-smartav-logo.png">
     <source src="../assets/images/cylance-smartav-bypass.mp4" type="video/mp4">
   </video>
 </figure>
