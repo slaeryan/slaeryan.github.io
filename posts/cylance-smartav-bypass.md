@@ -235,13 +235,34 @@ In case you are wondering, yes this does drop **two** files on disk namely the B
 
 This is the reason the script is timed to cleanup after itself and delete the Base64 downloaded file and the HTA file from disk and close the `mshta.exe` process after a set time(60 seconds after execution). Note that you can't delete the payload binary on disk as it's a running process but a possible workaround could be to inject the _meterpreter_ code to another suitable, running Windows process once you get the shell and then attempt to delete the original payload binary. That way there shall be no artifacts to recover.
 
-I know what you are thinking, that I could have used a _Powershell_ payload for a file-less attack and avoided dropping to disks altogether. While _Powershell_ happened to be a very powerful tool in the arsenal of red-teamers, it's slowly losing it's potential thanks to the extensive logging and various protection mechanisms implemented by Microsoft these days.
+I know what you are thinking, that I could have used a _Powershell_ payload for a file-less attack and avoided dropping to disks altogether. While _Powershell_ happened to be a very powerful tool in the arsenal of red-teamers in the past, it's slowly losing it's potential thanks to the extensive logging employed and various protection mechanisms implemented by Microsoft these days.
 
 Another option as you might know is to launch the shellcode via JS/VBS shellcode launcher embedded in HTA eliminating the use of the loader binary. I haven't really experimented with it but you can do so via this wonderful tool: [https://github.com/mdsecactivebreach/CACTUSTORCH](https://github.com/mdsecactivebreach/CACTUSTORCH)
 
 Also, feel free to explore the myriad sea of oppurtunities using MS Office phishing techniques like _VBA Macros(pretty much dead!), DDE, XLM(Macro 4.0), SYLK(Excel) etc._
 
+Okay so now that we have prepared the HTA, how are we going to serve it to the victim?
 
+I made use of another lovely tool developed by [@Arno0x0x](https://twitter.com/Arno0x0x) called [EmbedInHTML](https://github.com/Arno0x/EmbedInHTML). 
 
+Quoting from his project README, 
+
+```hta
+What this tool does is taking a file (any type of file), encrypt it, and embed it into an HTML file as ressource, along with an automatic download routine simulating a user clicking on the embedded ressource.
+
+Then, when the user browses the HTML file, the embedded file is decrypted on the fly, saved in a temporary folder, and the file is then presented to the user as if it was being downloaded from the remote site. Depending on the user's browser and the file type presented, the file can be automatically opened by the browser.
+```
+
+If you are feeling creative, this is the time to exploit that by modifying the template for the HTML page shown to the target.
+
+Setting this up was relatively an easy task using:
+
+```
+./embedInHTML.py -k mysecretkey -f htastager_obfuscated.hta -m application/hta -o index.html
+```
+
+Great! Now all the target needs to do is visit this webpage hosted somewhere and click through a warning to run the HTA and that's all.
+
+## Phase 3 of Kill Chain - Delivery
 
 
