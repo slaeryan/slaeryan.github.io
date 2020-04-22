@@ -274,5 +274,6 @@ python3 -m http.server 8000
 
 Do not forget to start the _Metasploit exploit handler_ as well!
 
-## Profit!!!
+## Summing it all up together
+
 
