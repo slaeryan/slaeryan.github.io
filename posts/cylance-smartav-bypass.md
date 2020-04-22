@@ -154,7 +154,9 @@ This means that if an attacker was to serve a HTA file (for example, via a malic
 
 So HTA files are not subject to the same stringent restrictions as HTML pages. What's more, you can even use embedded JS or VBS code with ActiveX Object support such as `WScript.Shell`. This means you can potentially use an HTA to perform some malicious activity on the executing host machine. Sounds intriguing...
 
-So why don't we create an HTA that will download and execute our payload when it is run? In other words, a stager which upon being run will download and execute our shellcode loader program which in turn will execute our final _meterpreter_ shellcode. Let's do that!
+So why don't we create an HTA stager? 
+
+In other words, a HTA which upon being run will download our shellcode loader program from a remote server and execute it which in turn will execute our final _meterpreter_ shellcode. Let's do that!
 
 Keep in mind that HTML Applications are executed using `mshta.exe`.
 
@@ -274,6 +276,6 @@ python3 -m http.server 8000
 
 Do not forget to start the _Metasploit exploit handler_ as well!
 
-## Summing it all up together
-
+## Profit!!!
+Now all the attacker needs to do is wait for the victim to visit the malicious webpage, click on "Run" to run the HTA file,
 
