@@ -295,5 +295,8 @@ Of course now they can perform all sorts of malicious activity like for example 
 
 This stage is known as the ***Post-Exploitation*** phase.
 
-## A working demo of the scenario
+## A working demo of the attack
+Here is a working demo of the attack in question which is successfully able to bypass Cylance Smart AV:
+
+
 
