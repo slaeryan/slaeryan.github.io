@@ -125,6 +125,8 @@ int main()
 
 This is a simple C code for in-memory shellcode execution that executes the shellcode which we generated before within the memory of the local process. It is pretty self-explanatory and the code is commented throughout so that there's no confusion as to what happens in each line. Follow the instructions commented at the top of the source and you should have a `payload.exe` in your current working directory.
 
+The size of the final payload should be around `13 kB` which is not bad.
+
 And congratulations because you have successfully completed the creation of the payload!
 
 Initially, I thought I would have to use some advanced shellcode injection techniques such as Atom Bombing, EarlyBird APC Queue Code Injection, Ghostwriting or some type of shatter-style attacks or at least a very basic CreateRemoteThread Injection to inject the shellcode into a remote process and execute it in an effort to evade Cylance Smart AV but I discovered to my surprise that you don't even need to go that far because this AV is oblivious to memory injection attacks completely ;)
