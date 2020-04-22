@@ -152,7 +152,7 @@ However, the difference with HTA files is that they run in full trust mode, with
 This means that if an attacker was to serve a HTA file (for example, via a malicious webpage) and convince the user to click through two warnings, then the attacker could run malicious code on the victim's computer. All without needing an exploit or bypassing any of the latest and greatest mitigations.
 ```
 
-So HTA files are not subject to the same stringent restrictions as HTML pages. What's more you can even use embedded JS or VBS code with ActiveX Objects such as `WScript.Shell`. This means you can potentially use an HTA to perform some malicious activity on the executing host machine. Sounds intriguing...
+So HTA files are not subject to the same stringent restrictions as HTML pages. What's more you can even use embedded JS or VBS code with ActiveX Object support such as `WScript.Shell`. This means you can potentially use an HTA to perform some malicious activity on the executing host machine. Sounds intriguing...
 
 So why don't we create an HTA that will download and execute our payload when it is run? In other words a stager which upon being run will download and execute the final stage payload. Let's do that!
 
