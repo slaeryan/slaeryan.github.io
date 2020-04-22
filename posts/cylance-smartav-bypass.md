@@ -300,5 +300,11 @@ This may include installing other implants, achieving persistence so that the im
 ## A working demo of the bypass
 Here is a working demo of the attack in question which is successfully able to bypass Cylance Smart AV:
 
+<figure class="video_container">
+  <video controls="true" allowfullscreen="true" poster="../assets/images/cylance-smartav-logo.png">
+    <source src="../assets/images/cylance-smartav-bypass.mp4" type="video/mp4">
+  </video>
+</figure>
+
 
 
