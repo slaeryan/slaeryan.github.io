@@ -301,10 +301,10 @@ This may include installing other implants, achieving persistence so that the im
 Here is a working demo of the attack in question which is successfully able to bypass Cylance Smart AV:
 
 <figure class="video_container">
-  <video width="auto" height="100%" controls="true" allowfullscreen="true" poster="../assets/images/cylance-smartav-logo.png">
+  <video width="auto" height="100%" controls="true" allowfullscreen="true">
     <source src="../assets/images/cylance-smartav-bypass.mp4" type="video/mp4">
   </video>
 </figure>
 
-
+I did shorten the video to maintain brevity but note that the actual time to receive a shell would be longer. Oh and please ignore the watermark.
 
