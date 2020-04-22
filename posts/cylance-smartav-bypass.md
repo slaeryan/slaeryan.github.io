@@ -241,7 +241,7 @@ Another option as you might know is to launch the shellcode via JS/VBS shellcode
 
 Also, feel free to explore the myriad sea of oppurtunities using MS Office phishing techniques like _VBA Macros(pretty much dead!), DDE, XLM(Macro 4.0), SYLK(Excel) etc._
 
-Okay so now that we have prepared the HTA, how are we going to serve it to the victim?
+Okay so now that we have prepared the HTA, how are we going to serve it to the victim in a secure manner?
 
 I made use of another lovely tool developed by [@Arno0x0x](https://twitter.com/Arno0x0x) called [EmbedInHTML](https://github.com/Arno0x/EmbedInHTML). 
 
