@@ -229,19 +229,18 @@ setTimeout(cleanup, 50000); // 60s - CHANGE THE SECONDS
 
 This is a simple HTML Application that will utilize `certutil.exe` to download our loader binary(Base64 encoded) from a remote URL, decode it back to EXE locally using the same(inspiration from the LOLBAS project) and then execute it on the host.
 
-Change the Timing parameters factoring into account the payload size, connectivity speed etc and also change the download URL(we are self-hosting for this scenario using:
-`python3 -m http.server 8000`). 
+Change the Timing parameters factoring into account the payload size, connectivity speed etc and also change the download URL(we are self-hosting for this scenario using `python3 -m http.server 8000`)
 The Timing parameters seem sufficient enough so not much tinkering is required. I'd further recommend using a JS obfuscator like [https://obfuscator.io](https://obfuscator.io) to obfuscate and RC4 encrypt the strings of the in-line JS code.
 
 In case you are wondering, yes this does drop **two** files on disk namely the Base64 encoded loader binary and the PE executable after converting it in the Microsoft Edge `TempState/Downloads` folder considering that you are using the default browser.
 
 This is the reason the script is timed to cleanup after itself and delete the Base64 downloaded file and the HTA file from disk and close the `mshta.exe` process after a set time(60 seconds after execution). Note that you can't delete the payload binary on disk as it's a running process but a possible workaround could be to inject the _meterpreter_ code to another suitable, running Windows process once you get the shell and then attempt to delete the original payload binary. That way there shall be no artifacts to recover.
 
-I know what you are thinking, that I could have used a Powershell payload for a file-less attack and avoided dropping to disks altogether. While Powershell happened to be a very powerful tool in the arsenal of red-teamers, it's slowly losing it's potential thanks to the extensive logging and various protection mechanisms implemented by Microsoft these days.
+I know what you are thinking, that I could have used a _Powershell_ payload for a file-less attack and avoided dropping to disks altogether. While _Powershell_ happened to be a very powerful tool in the arsenal of red-teamers, it's slowly losing it's potential thanks to the extensive logging and various protection mechanisms implemented by Microsoft these days.
 
 Another option as you might know is to launch the shellcode via JS/VBS shellcode launcher embedded in HTA eliminating the use of the loader binary. I haven't really experimented with it but you can do so via this wonderful tool: [https://github.com/mdsecactivebreach/CACTUSTORCH](https://github.com/mdsecactivebreach/CACTUSTORCH)
 
-Also, feel free to explore the myriad sea of oppurtunities using MS Office phishing techniques like VBA Macros(pretty much dead!), DDE, XLM(Macro 4.0), SYLK(Excel) etc.
+Also, feel free to explore the myriad sea of oppurtunities using MS Office phishing techniques like _VBA Macros(pretty much dead!), DDE, XLM(Macro 4.0), SYLK(Excel) etc._
 
 
 
