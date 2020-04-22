@@ -123,5 +123,22 @@ int main()
 }
 ```
 
+This is a simple C code for in-memory shellcode execution that executes the shellcode which we generated before within the memory of the local process. It is pretty self-explanatory and the code is commented throughout so that there's no confusion as to what happens in each line. Follow the instructions commented at the top of the source and you should have a `payload.exe` in your current working directory.
+
+And congratulations because you have successfully completed the creation of the payload!
+
+Initially, I thought I would have to use some advanced shellcode injection techniques such as Atom Bombing, EarlyBird APC Queue Code Injection, Ghostwriting or some type of shatter-style attacks or at least a very basic CreateRemoteThread Injection to inject the shellcode into a remote process and execute it in an effort to evade Cylance Smart AV but I discovered to my surprise that you don't even need to go that far because this AV is oblivious to memory injection attacks completely ;)
+
+Many of you might be even wondering why am I using a _meterpreter_ payload at all when I could have custom-coded a C2 framework from scratch that would bypass all these defences. Yes, I could have but for one I am not getting paid to write my own advanced C2 framework from scratch which can take quite a bit of time and also why bother with that when you can use a readily available Post-Exploitation framework like Metasploit to get the job done ;)
+
+This attack may also be done with Cobalt Strike and its _beacon_ payload.
+### Creating the Payload Stager
+Okay you have created the payload but now what? 
+
+You can't just give an EXE to a target and hope for him/her to double-click on it right?
+Maybe that would have worked five-six decades ago but sure as hell no one's clicking on an unsigned, shady, standalone EXE payload now.
+
+
+
 
 
