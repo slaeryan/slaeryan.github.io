@@ -291,7 +291,7 @@ msf5 exploit(multi/handler) > run
 meterpreter > 
 ```
 
-Of course now they can perform all sorts of malicious activity like for example running the infamous _Mimikatz_ to get NTLM hashes etc.
+Of course, now that the attackers have gotten a shell they can perform all sorts of malicious activities like for example running the infamous _Mimikatz_ module to get NTLM hashes etc.
 
 This stage is known as the ***Post-Exploitation*** phase.
 
