@@ -264,5 +264,14 @@ Setting this up was relatively an easy task using:
 Great! Now all the target needs to do is visit this webpage hosted somewhere and click through a warning to run the HTA and that's all.
 
 ## Phase 3 of Kill Chain - Delivery
+This is the step where you would host the malicious webpage(created in the previous step ) somewhere and send spear-phishing mails to the target with an appropiate target-specific lure with links to the webpage.
 
+For the purposes of this blog-post, I am self-hosting it on my Linux box using:
 
+```
+python3 -m http.server 8000
+```
+
+Do not forget to start the Metasploit handler as well.
+
+## Phase 4 of Kill Chain - 
