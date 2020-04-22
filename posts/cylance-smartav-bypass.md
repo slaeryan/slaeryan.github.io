@@ -227,7 +227,9 @@ setTimeout(cleanup, 50000); // 60s - CHANGE THE SECONDS
 
 This is a simple HTML Application that will utilize `certutil.exe` to download our loader binary(Base64 encoded) from a remote URL, decode it back to EXE locally using the same(inspiration from the LOLBAS project) and then execute it on the host.
 
-Change the Timing parameters factoring into account the payload size, connectivity speed etc and also change the download URL(we are self-hosting for this scenario using `python3 -m http.server 8000`). The Timing parameters seem sufficient enough so not much tinkering is required. I'd further recommend using a JS obfuscator like [https://obfuscator.io](https://obfuscator.io) to obfuscate and RC4 encrypt the strings of the in-line JS code.
+Change the Timing parameters factoring into account the payload size, connectivity speed etc and also change the download URL(we are self-hosting for this scenario using:
+`python3 -m http.server 8000`). 
+The Timing parameters seem sufficient enough so not much tinkering is required. I'd further recommend using a JS obfuscator like [https://obfuscator.io](https://obfuscator.io) to obfuscate and RC4 encrypt the strings of the in-line JS code.
 
 In case you are wondering, yes this does drop **two** files on disk namely the Base64 encoded loader binary and the PE executable after converting it in the Microsoft Edge `TempState/Downloads` folder considering that you are using the default browser.
 
