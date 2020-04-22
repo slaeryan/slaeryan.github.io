@@ -7,7 +7,7 @@ Hello folks, In this blog-post, I am going to show you guys how I was able to by
 
 Disclosure: This attack would specifically work on the Home edition of CylancePROTECT which is also known as Smart AV and not the Enterprise edition. We'll discuss this later on in this post but for now, fellow readers be forewarned.
 
-Without any further ado, let's begin our analysis.
+Without any further ado, let's begin our analysis of an attack.
 
 ## Introduction
 So this time I decided to try and run a simulated attack scenario against a host protected by Cylance Smart AV in an attempt to breach it.
