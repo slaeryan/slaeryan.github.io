@@ -158,7 +158,7 @@ So why don't we create an HTA that will download and execute our payload when it
 
 Here is the HTA source:
 
-```hta
+```html
 <!DOCTYPE html>
 <html>
 <head>
