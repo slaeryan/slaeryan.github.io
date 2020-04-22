@@ -295,7 +295,7 @@ Of course, now that the target machine is compromised they can perform all sorts
 
 This stage is known as the **Post-Exploitation** phase where the attackers perform various actions on the target machine so as to accomplish their initial goal(s).
 
-This may include installing other implants, achieving persistence so that the implant survives a reboot, confidential data exfiltration, keylogging, pivoting etc.
+This may include installing other implants, achieving persistence so that the implant survives a reboot, confidential data exfiltration, keylogging, pivoting etc. among other things.
 
 ## A working demo of the attack
 Here is a working demo of the attack in question which is successfully able to bypass Cylance Smart AV:
