@@ -138,7 +138,7 @@ This attack may also be done with Cobalt Strike and its _beacon_ payload.
 Okay you have created the payload but now what? 
 
 You can't just give an EXE to a target and hope for him/her to double-click on it right?
-Maybe that would have worked five-six decades ago but sure as hell no one's clicking on an unsigned, shady, standalone EXE payload now.
+Maybe that would have worked five-six decades ago but sure as hell no one's clicking on an unsigned, shady, standalone EXE payload without any reason now.
 
 
 
