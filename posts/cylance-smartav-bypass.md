@@ -237,7 +237,7 @@ I know what you are thinking, that I could have used a Powershell payload for a 
 
 Another option as you might know is to launch the shellcode via JS/VBS shellcode launcher embedded in HTA eliminating the use of the loader binary. I haven't really experimented with it but you can do so via this wonderful tool: [https://github.com/mdsecactivebreach/CACTUSTORCH](https://github.com/mdsecactivebreach/CACTUSTORCH)
 
-Also, you can explore the myriad sea of oppurtunities using MS Office phishing techniques like VBA Macros(pretty much dead!), DDE, XLM(Macro 4.0), SYLK(Excel) etc.
+Also, feel free to explore the myriad sea of oppurtunities using MS Office phishing techniques like VBA Macros(pretty much dead!), DDE, XLM(Macro 4.0), SYLK(Excel) etc.
 
 
 
