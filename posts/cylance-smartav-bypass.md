@@ -272,6 +272,7 @@ For the purposes of this blog-post, I am self-hosting it on my Linux box using:
 python3 -m http.server 8000
 ```
 
-Do not forget to start the Metasploit handler as well.
+Do not forget to start the _Metasploit exploit handler_ as well.
 
-## Phase 4 of Kill Chain - 
+## Profit!!!
+
