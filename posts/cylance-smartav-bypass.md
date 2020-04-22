@@ -293,7 +293,7 @@ meterpreter >
 
 Of course, now that the attackers have gotten a shell they can perform all sorts of malicious activities like for example running the infamous _Mimikatz_ module to get NTLM hashes etc.
 
-This stage is known as the ***Post-Exploitation*** phase.
+This stage is known as the **Post-Exploitation** phase.
 
 ## A working demo of the attack
 Here is a working demo of the attack in question which is successfully able to bypass Cylance Smart AV:
