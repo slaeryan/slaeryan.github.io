@@ -156,6 +156,8 @@ So HTA files are not subject to the same stringent restrictions as HTML pages. W
 
 So why don't we create an HTA that will download and execute our payload when it is run? In other words a stager which upon being run will download and execute our shellcode loader program which in turn will execute our final _meterpreter_ shellcode. Let's do that!
 
+Keep in mind that HTML Applicatons are executed using `mshta.exe`.
+
 Here is the HTA source:
 
 ```html
