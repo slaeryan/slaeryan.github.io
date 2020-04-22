@@ -1,6 +1,6 @@
 # How I bypassed "next-generation" Cylance Smart AntiVirus in less than 15 minutes
 
-**Reading Time:** __
+**Reading Time:** _16 minutes_
 
 ## Prologue
 Hello folks, In this blog-post, I am going to show you guys how I was able to bypass a "next-generation" Antivirus named Cylance Smart AV which supposedly uses neural networks for threat detection compared to traditional detection mechanisms.
@@ -291,5 +291,9 @@ msf5 exploit(multi/handler) > run
 meterpreter > 
 ```
 
-Of course now they can perform all sorts of malicious activity like running the infamous _Mimikatz_ to get NTLM hashes yada yada yada. 
+Of course now they can perform all sorts of malicious activity like for example running the infamous _Mimikatz_ to get NTLM hashes etc.
+
+This stage is known as the ***Post-Exploitation*** phase.
+
+## A working demo of the scenario
 
