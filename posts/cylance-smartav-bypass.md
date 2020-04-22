@@ -291,9 +291,11 @@ msf5 exploit(multi/handler) > run
 meterpreter > 
 ```
 
-Of course, now that the attackers have gotten a shell they can perform all sorts of malicious activities like for example running the infamous _Mimikatz_ module to get NTLM hashes etc.
+Of course, now that the target machine is compromised they can perform all sorts of malicious activities like for example running the infamous _Mimikatz_ module to get NTLM hashes etc.
 
-This stage is known as the **Post-Exploitation** phase.
+This stage is known as the **Post-Exploitation** phase where the attackers perform various actions on the target machine so as to accomplish their initial goal(s).
+
+This may include installing other implants, achieving persistence so that the implant survives a reboot, confidential data exfiltration, keylogging, pivoting etc.
 
 ## A working demo of the attack
 Here is a working demo of the attack in question which is successfully able to bypass Cylance Smart AV:
