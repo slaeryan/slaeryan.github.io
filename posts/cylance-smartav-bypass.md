@@ -142,9 +142,9 @@ Maybe that would have worked five-six decades ago but sure as hell no one's doub
 
 Well what about an HTML Application or HTA? 
 
-Quoting _nccgroup_[link](https://www.nccgroup.trust/uk/about-us/newsroom-and-events/blogs/2017/august/smuggling-hta-files-in-internet-exploreredge/),
+Quoting _nccgroup_ [link](https://www.nccgroup.trust/uk/about-us/newsroom-and-events/blogs/2017/august/smuggling-hta-files-in-internet-exploreredge/),
 
-```
+```hta
 A HTA file is usually made up of HTML and script such as JScript or VBScript, much like a normal web page.
 
 However, the difference with HTA files is that they run in full trust mode, with access to features that a normal web page wouldn’t have, such as ActiveX controls usually marked ‘unsafe for scripting’.
