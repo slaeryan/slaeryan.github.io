@@ -5,7 +5,10 @@
 ## Prologue
 Hello folks, In this blog-post, I am going to show you guys how I was able to bypass a "next-generation" Antivirus named Cylance Smart AV which supposedly uses neural networks for threat detection compared to traditional detection mechanisms.
 
-Disclosure: This attack should specifically work on the Home edition of CylancePROTECT which is also known as Smart AV and not the Enterprise edition. We'll discuss this later on in this post but for now, fellow readers be forewarned.
+Full Disclosure: 
+1. This attack should specifically work on the Home edition of CylancePROTECT which is also known as Smart AV and not the Enterprise edition. We'll discuss this later on in this post but for now, fellow readers be forewarned.
+1. While it can't be categorised as a vulnerability, it was reported to Cylance which means they had their time to fix it. They replied that it was out-of-scope for Cylance SmartAV to detect and block such advanced attacks. In other words, this bypass should still be valid.
+1. I do not condone any illegal activities by people with malicious intent involving the  knowledge gathered from this blog post.
 
 Without any further ado, let's begin our analysis of an attack.
 
@@ -129,7 +132,7 @@ The size of the final payload should be around `13 kB` which is not bad.
 
 And congratulations because you have successfully completed the creation of the payload!
 
-Initially, I thought I would have to use some advanced shellcode injection techniques such as Atom Bombing, EarlyBird APC Queue Code Injection, Ghostwriting or some type of shatter-style attacks or at least a very basic CreateRemoteThread Injection to inject the shellcode into a remote process and execute it in an effort to evade Cylance Smart AV but I discovered to my surprise that you don't even need to go that far because this AV is oblivious to memory injection attacks completely ;)
+Initially, I thought I would have to use some advanced shellcode injection techniques such as _Atom Bombing, EarlyBird APC Queue Code Injection, Ghostwriting or some type of shatter-style attacks or at least a very basic CreateRemoteThread Injection_ to inject the shellcode into a remote process and execute it in an effort to evade Cylance Smart AV but I discovered to my surprise that you don't even need to go that far because this AV is oblivious to memory injection attacks completely ;)
 
 Many of you might be even wondering why am I using a _meterpreter_ payload at all when I could have custom-coded a C2 framework from scratch that would bypass all these defences. Yes, I could have but for one I am not getting paid to write my own advanced C2 framework from scratch which can take quite a bit of time and also why bother with that when you can use a readily available Post-Exploitation framework like Metasploit to get the job done ;)
 
@@ -321,12 +324,14 @@ Does this mean this attack won't work on the Enterprise edition of Cylance? I ha
 
 Does this mean if I get the Enterprise edition of CylancePROTECT I will be protected from all kinds of attacks? Absolutely no! There have been many documented cases of bypasses against that too and let's leave alone the undocumented cases.
 
-I am not the first person to say this and I certainly won't be the last, but what we should always keep in mind is that AV/EDRs are not a silver-bullet that will protect us from all kinds of attacks. Security is a constant process and it cannot possibly be achieved through the usage of a security product and hoping that will keep all the bad guys at bay.
+I am not the first person to say this and I certainly won't be the last, but what we should always keep in mind is that AV/EDRs are not a silver bullet that will protect its clientele from all kinds of attacks. Security is a constant process and it cannot possibly be achieved through the usage of a security product and hoping that will keep all the bad guys at bay.
 
-This game between AV/EDRs and malwares is a constant cat-and-mouse game and it just happens that the mouse lives for today.
+I would encourage researchers to try this attack on other AV/EDR vendors and share the results of how they fare.
+
+This game between AV/EDRs versus malware is a constant cat-and-mouse game and it just happens so that the mouse lives for today.
 
 ## Support Me
-If you like reading my posts, please consider supporting me through some crypto so that I can continue my research and maintain the quality of my blog posts.
+If you liked reading this post, please consider supporting me through some crypto as a token of appreciation. This shall be used to continue my research and maintain the quality of my blog posts.
 
 You can do it right here:
 
@@ -341,7 +346,9 @@ You can do it right here:
 
 The name and email field is strictly not necessary and may be filled with bogus details but in case you want to put valid details, you shall receive an email of appreciation from me.
 
-You are just plain awesome for supporting me!
+You can also drop comments/suggestions/improvements and anything you want my way.
+
+That's it! You are just plain awesome for supporting Spectre Intelligence Blog!
 
 <br />
 
