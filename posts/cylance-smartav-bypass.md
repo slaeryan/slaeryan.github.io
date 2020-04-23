@@ -308,3 +308,17 @@ Here is a working demo of the attack in question which is successfully able to b
 
 I did shorten the video to maintain brevity but note that the actual time to receive a shell would be longer. Oh and please do ignore the watermark.
 
+## Conclusion
+So the burning question now would be how is this attack even possible in the first place if Cylance SmartAV does everything it claims?
+
+The answer to that question lies here:
+
+![Cylance Features Comparison](../assets/images/cylance-features-comparison.png "Cylance Features Comparison")
+
+As is evident from the products comparison page, Cylance SmartAV currently has no features to protect a host against memory exploitation attacks like the one demonstrated here. This is the reason why we were able to bypass it.
+
+Does this mean this attack won't work on the Enterprise edition of Cylance? I haven't tried it personally but probably not.
+
+Does this mean if I get the Enterprise edition of CylancePROTECT I will be protected from all kinds of attacks. Absolutely no! There have been many documented cases of bypasses against it too. And today the mouse lives to see another day.
+
+I am not the first person to say this and I certainly won't be the last, but what we should always keep in mind is that AV/EDRs are not a silver-bullet that will protect us from all kinds of attacks. Security is a constant process and it cannot possibly be achieved through the usage of a security product and hoping that will keep all the bad guys at bay.
