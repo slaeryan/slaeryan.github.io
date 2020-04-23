@@ -309,7 +309,7 @@ Here is a working demo of the attack in question which is successfully able to b
 I did shorten the video to maintain brevity but note that the actual time to receive a shell would be longer. Oh and please do ignore the watermark.
 
 ## Conclusion
-So the burning question now would be how is this attack even possible in the first place if Cylance SmartAV does everything it claims?
+So the burning question now would be how can a _meterpreter_ payload execute in the first place if Cylance SmartAV does everything it claims?
 
 The answer to that question lies here:
 
@@ -319,6 +319,41 @@ As is evident from the products comparison page, Cylance SmartAV currently has n
 
 Does this mean this attack won't work on the Enterprise edition of Cylance? I haven't tried it personally but probably not.
 
-Does this mean if I get the Enterprise edition of CylancePROTECT I will be protected from all kinds of attacks? Absolutely no! There have been many documented cases of bypasses against that too. And today the mouse lives to see another day.
+Does this mean if I get the Enterprise edition of CylancePROTECT I will be protected from all kinds of attacks? Absolutely no! There have been many documented cases of bypasses against that too and let's leave alone the undocumented cases.
 
 I am not the first person to say this and I certainly won't be the last, but what we should always keep in mind is that AV/EDRs are not a silver-bullet that will protect us from all kinds of attacks. Security is a constant process and it cannot possibly be achieved through the usage of a security product and hoping that will keep all the bad guys at bay.
+
+This game between AV/EDRs and malwares is a constant cat-and-mouse game and it just happens that the mouse lives for today.
+
+## Support Me
+If you like reading my posts, please consider supporting me through some crypto so that I can continue my research and maintain the quality of my blog posts.
+
+You can do it right here:
+
+<div>
+  <a class="donate-with-crypto"
+     href="https://commerce.coinbase.com/checkout/860e4301-3c92-40df-b181-3d23ec3db910">
+    Donate with Crypto
+  </a>
+  <script src="https://commerce.coinbase.com/v1/checkout.js?version=201807">
+  </script>
+</div>
+
+The name and email field is strictly not necessary and may be filled with bogus details but in case you want to put valid details, you shall receive an email of appreciation from me.
+
+You are just plain awesome for supporting me!
+
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = https://slaeryan.github.io;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = 8; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-slaeryan-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
