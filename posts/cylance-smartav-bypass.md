@@ -313,7 +313,7 @@ So the burning question now would be how is this attack even possible in the fir
 
 The answer to that question lies here:
 
-![Cylance Features Comparison](../assets/images/cylance-features-comparison.png "Cylance Features Comparison")
+![Cylance Feature Comparison](../assets/images/cylance-feature-comparison.png "Cylance Feature Comparison")
 
 As is evident from the products comparison page, Cylance SmartAV currently has no features to protect a host against memory exploitation attacks like the one demonstrated here. This is the reason why we were able to bypass it.
 
