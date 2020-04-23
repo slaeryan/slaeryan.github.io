@@ -354,7 +354,7 @@ You are just plain awesome for supporting me!
 /*
 var disqus_config = function () {
 this.page.url = https://slaeryan.github.io;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = 2; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+this.page.identifier = 8; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 };
 */
 (function() { // DON'T EDIT BELOW THIS LINE
