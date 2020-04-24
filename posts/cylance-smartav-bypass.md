@@ -46,7 +46,7 @@ Keep in mind, for simplicity's sake we are not using a VPS as the target machine
 ## Phase 2 of Kill Chain - Weaponization
 Considering that you've already done your homework on the target(Reconnaissance), we'll move on directly to Phase 2 of the Cyber Kill Chain i.e. creating the backdoor and coupling it with the exploit.
 ### Creating the Payload
-Our first step is to create the payload which will give us the remote access to the target machine via.
+Our first step is to create the payload which will give us the remote access to the target machine via a C2 channel.
 
 This is one of the most crucial parts of the attack as you'd need a payload that doesn't get picked up by Cylance Smart AV on the host. Initially, I experimented with _meterpreter_ exe/dlls but with no success. Before you can even bring your cursor close to the payload, it's gonna light up the Cylance panel showing an alert that a serious threat has been detected and removed successfully. This is well expected of course but I must say that I was kinda impressed with the response time of the AV.
 
