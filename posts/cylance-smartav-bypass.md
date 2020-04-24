@@ -5,9 +5,10 @@
 ## Prologue
 Hello folks, In this blog-post, I am going to show you guys how I was able to bypass a "next-generation" Antivirus named Cylance Smart AV which supposedly uses neural networks for threat detection compared to traditional detection mechanisms.
 
-Full Disclosure: 
+Full Disclosure:
+1. This blog is meant purely for red-teamers/researchers and in no way promotes or supports the defamation of the product or the team behind it in any way.
 1. This attack should specifically work on the Home edition of CylancePROTECT which is also known as Smart AV and not the Enterprise edition. We'll discuss this later on in this post but for now, fellow readers be forewarned.
-1. While it can't be categorised as a vulnerability, it was reported to Cylance which means they had their time to fix it. They replied that it was out-of-scope for Cylance SmartAV to detect and block such advanced attacks. In other words, this bypass should still be valid.
+1. While it can't be categorised as a vulnerability, it was reported to Cylance beforehand which means they had their time to fix it before this release. They replied that it was out-of-scope for Cylance SmartAV to detect and block such advanced attacks. In other words, this bypass should still be valid.
 1. I do not condone any illegal activities by people with malicious intent involving the  knowledge gathered from this blog post.
 
 Without any further ado, let's begin our analysis of an attack.
@@ -141,7 +142,7 @@ This attack may also be done with Cobalt Strike and its _beacon_ payload.
 Okay, you have created the payload but now what? 
 
 You can't just give an EXE to a target and hope for him/her to double-click on it, right?
-Maybe that would have worked five-six decades ago but sure as hell no one's double-clicking on an unsigned, shady, standalone EXE payload without a compelling reason these days.
+Maybe that would have worked in the past but sure as hell no one's double-clicking on an unsigned, shady, standalone EXE payload without a compelling reason these days.
 
 Well, what about an HTML Application or HTA? 
 
@@ -328,12 +329,14 @@ I am not the first person to say this and I certainly won't be the last, but wha
 
 I would encourage researchers to try this attack on other AV/EDR vendors and share the results of how they fare.
 
+With everything said and done, I still beleive that Cylance SmartAV is way ahead of its peers and I was impressed by the response time among other things.
+
 This game between AV/EDRs versus malware is a constant cat-and-mouse game and it just happens so that the mouse lives for today.
 
 ## Support Me
-If you liked reading this post, please consider supporting me through some crypto as a token of appreciation. This shall be used to continue my research and maintain the quality of my blog posts.
+If you liked reading this post, please consider supporting this blog through some crypto as a token of appreciation. This shall be used to continue my research and maintain the quality of the blog posts.
 
-You can do it right here:
+Do it right here:
 
 <div>
   <a class="donate-with-crypto"
@@ -344,7 +347,7 @@ You can do it right here:
   </script>
 </div>
 
-The name and email field is strictly not necessary and may be filled with bogus details but in case you want to put valid details, you shall receive an email of appreciation from me.
+The name and email field is strictly not necessary and may be filled with bogus details but in case you want to put valid details, you shall receive an appreciation email from me.
 
 You can also drop comments/suggestions/improvements and anything you want my way.
 
