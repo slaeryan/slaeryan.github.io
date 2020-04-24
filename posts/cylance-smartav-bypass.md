@@ -329,7 +329,7 @@ I am not the first person to say this and I certainly won't be the last, but wha
 
 I would encourage researchers to try this attack on other AV/EDR vendors and share the results of how they fare.
 
-With everything said and done, I still beleive that Cylance SmartAV is way ahead of its peers and I was impressed by the response time among other things.
+With everything said and done, I still believe that Cylance SmartAV is way ahead of its peers and I was impressed by the response time among other things.
 
 This game between AV/EDRs versus malware is a constant cat-and-mouse game and it just happens so that the mouse lives for today.
 
