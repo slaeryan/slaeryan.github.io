@@ -1,4 +1,4 @@
-# How I bypassed "next-generation" Cylance Smart AntiVirus in less than 15 minutes
+# How I evaded "next-generation" Cylance Smart AntiVirus in less than 15 minutes
 
 **Reading Time:** _16 minutes_
 
