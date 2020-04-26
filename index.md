@@ -61,4 +61,4 @@ published: true
 
 - **Apr 10, 2020:** [SLAE Exam Assignment 7 - Creating a custom shellcode crypter](./posts/slae-assignment7-blogpost.html)
 
-- **Apr 23, 2020:** [How I bypassed "next-generation" Cylance Smart AntiVirus in less than 15 minutes](./posts/cylance-smartav-bypass.html)
+- **Apr 23, 2020:** [How I evaded "next-generation" Cylance Smart AntiVirus in less than 15 minutes](./posts/cylance-smartav-bypass.html)
