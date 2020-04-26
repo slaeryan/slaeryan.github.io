@@ -319,7 +319,7 @@ The answer to that question lies here:
 
 ![Cylance Feature Comparison](../assets/images/cylance-feature-comparison.png "Cylance Feature Comparison")
 
-As is evident from the products comparison page, Cylance SmartAV currently has no features to protect a host against memory exploitation attacks like the one demonstrated here. This is the reason why we were able to bypass it.
+As is evident from the products comparison page, Cylance SmartAV currently has no features to protect a host against memory exploitation attacks like the one demonstrated here. This is the reason why we were able to evade it by utilizing this fact and that's exactly how the bad guys can too.
 
 Does this mean this attack won't work on the Enterprise edition of Cylance? Nope! Don't even bother trying it, it's going to light up like a firecracker in the CylancePROTECT panel.
 
