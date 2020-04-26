@@ -3,7 +3,7 @@
 **Reading Time:** _16 minutes_
 
 ## Prologue
-Hello folks, In this blog-post, I am going to show you guys how I was able to bypass a "next-generation" Antivirus named Cylance Smart AV which supposedly uses neural networks for threat detection compared to traditional detection mechanisms.
+Hello folks, In this blog-post, I am going to show you guys how I was able to evade a "next-generation" Antivirus named Cylance Smart AV which supposedly uses neural networks for threat detection compared to traditional detection mechanisms.
 
 Full Disclosure:
 1. This blog is meant purely for red-teamers/researchers and in no way promotes or supports the defamation of the product or the team behind it in any way.
@@ -302,7 +302,7 @@ This stage is known as the **Post-Exploitation** phase where the attackers perfo
 This may include installing other implants, achieving persistence so that the implant survives a reboot, confidential data exfiltration, keylogging, pivoting etc. among other things.
 
 ## A working demo of the bypass
-Here is a working demo of the attack in question which is successfully able to bypass Cylance Smart AV:
+Here is a working demo of the attack in question which is successfully able to evade Cylance Smart AV:
 
 <figure class="video_container">
   <video width="100%" height="auto" controls="true" allowfullscreen="true" poster="../assets/images/cylance-smartav-thumbnail.png">
@@ -321,9 +321,9 @@ The answer to that question lies here:
 
 As is evident from the products comparison page, Cylance SmartAV currently has no features to protect a host against memory exploitation attacks like the one demonstrated here. This is the reason why we were able to bypass it.
 
-Does this mean this attack won't work on the Enterprise edition of Cylance? I haven't tried it personally but probably not.
+Does this mean this attack won't work on the Enterprise edition of Cylance? Nope! Don't even bother trying it, it's going to light up like a firecracker in the CylancePROTECT panel.
 
-Does this mean if I get the Enterprise edition of CylancePROTECT I will be protected from all kinds of attacks? Absolutely no! There have been many documented cases of bypasses against that too and let's leave alone the undocumented cases.
+Does this mean if I get the Enterprise edition of CylancePROTECT I will be protected from all kinds of attacks? I do not think so. There have been many documented cases of bypasses against that too and let's leave alone the undocumented cases.
 
 I am not the first person to say this and I certainly won't be the last, but what we should always keep in mind is that AV/EDRs are not a silver bullet that will protect its clientele from all kinds of attacks. Security is a constant process and it cannot possibly be achieved through the usage of a security product and hoping that will keep all the bad guys at bay.
 
