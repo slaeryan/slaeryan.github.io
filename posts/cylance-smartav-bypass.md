@@ -8,7 +8,7 @@ Hello folks, In this blog-post, I am going to show you guys how I was able to ev
 Full Disclosure:
 1. This blog is meant purely for red-teamers/researchers and in no way promotes or supports the defamation of the product or the team behind it in any way.
 1. This attack should specifically work on the Home edition of CylancePROTECT which is also known as Smart AV and not the Enterprise edition. We'll discuss this later on in this post but for now, fellow readers be forewarned.
-1. While it can't be categorised as a vulnerability, it was reported to Cylance beforehand which means they had their time to fix it before this release. They replied that it was out-of-scope for Cylance SmartAV to detect and block such advanced attacks. In other words, this bypass should still be valid.
+1. While it can't be categorised as a vulnerability, it was reported to Cylance beforehand to which they replied that it was out-of-scope for Cylance SmartAV to detect and block such advanced attacks. In other words, this bypass should still be valid.
 1. I do not condone any illegal activities by people with malicious intent involving the  knowledge gathered from this blog post.
 
 Without any further ado, let's begin our analysis of an attack.
