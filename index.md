@@ -35,6 +35,9 @@ published: true
 
 **Keybase:** [https://keybase.io/upayansaha](https://keybase.io/upayansaha)
 
+**Patreon:**
+<a href="https://www.patreon.com/bePatron?u=33751219" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+
 <div>
   <a class="donate-with-crypto"
      href="https://commerce.coinbase.com/checkout/860e4301-3c92-40df-b181-3d23ec3db910">
@@ -43,10 +46,6 @@ published: true
   <script src="https://commerce.coinbase.com/v1/checkout.js?version=201807">
   </script>
 </div>
-
-<br />
-
-<a href="https://www.patreon.com/bePatron?u=33751219" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
 
 <br />
 
