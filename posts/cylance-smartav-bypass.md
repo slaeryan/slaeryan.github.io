@@ -333,10 +333,14 @@ With everything said and done, I still believe that Cylance SmartAV is way ahead
 
 This game between AV/EDRs versus malware is a constant cat-and-mouse game and it just happens so that the mouse lives for today.
 
-## Support Me
-If you liked reading this post, please consider supporting this blog through some crypto as a token of appreciation. This shall be used to continue my research and maintain the quality of the blog posts.
+## Support Spectre Intelligence Blog
+If you liked reading this post, consider buying me coffee or a beer(depending on the mood) as a token of appreciation.
 
-Do it right here:
+You can do it right here:
+
+<a href="https://www.patreon.com/bePatron?u=33751219" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+
+OR
 
 <div>
   <a class="donate-with-crypto"
@@ -346,8 +350,6 @@ Do it right here:
   <script src="https://commerce.coinbase.com/v1/checkout.js?version=201807">
   </script>
 </div>
-
-The name and email field is strictly not necessary and may be filled with bogus details but in case you want to put valid details, you shall receive an appreciation email from me.
 
 You can also drop comments/suggestions/improvements and anything you want my way.
 
