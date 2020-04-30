@@ -38,6 +38,8 @@ published: true
 **Patreon:**
 <a href="https://www.patreon.com/bePatron?u=33751219" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
 
+<br />
+
 <div>
   <a class="donate-with-crypto"
      href="https://commerce.coinbase.com/checkout/860e4301-3c92-40df-b181-3d23ec3db910">
