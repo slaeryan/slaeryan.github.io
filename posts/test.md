@@ -1,7 +1,5 @@
 # FalconZero
 
-![FALCONSTRIKE Logo](../assets/images/FALCONSTRIKE.png "FALCONSTRIKE Logo")
-
 <p align="center">
   <img src="../assets/images/FALCONSTRIKE.png">
 </p>
