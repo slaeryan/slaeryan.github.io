@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img src="../assets/images/offensive-tools-meme.png">
+  <img src="../assets/images/offensive-tools-meme.jpeg">
 </p>
 
 <br />
