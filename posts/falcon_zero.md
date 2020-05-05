@@ -8,7 +8,7 @@ You could dominate the world if you read this post from top to bottom and follow
 ![Offensive Tools Meme](../assets/images/offensive-tools-meme.jpeg "Offensive Tools Meme")
 
 ## TL;DR
-This tool is made [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://GitHub.com/Naereen/)
+This tool is made [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://GitHub.com/Naereen/) for red team operators and is being made available for free(as in free beer).
 
 It is available here: [https://github.com/slaeryan/FALCONSTRIKE](https://github.com/slaeryan/FALCONSTRIKE)
 
