@@ -8,7 +8,7 @@
 
 <br />
 
-![Offensive Tools Meme](../assets/images/offensive-tools-meme.jpeg "Offensive Tools Meme)
+![Offensive Tools Meme](../assets/images/offensive-tools-meme.jpeg "Offensive Tools Meme")
 
 <br />
 
