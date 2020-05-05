@@ -46,7 +46,7 @@ Detectability.
 
 Imagine if the blue-teams get hold of an undetonated implant, not only will the Dropper get compromised but also the Stage-2 payload which can't be any good.
 
-So it's best practise to separate the Dropper and the shellcode over network. In other words, the Dropper can connect to a remote server where the shellcode is hosted, fetch it from over there, prep it and then proceed to inject it into a host process on-the-fly which is exactly what has been implemented. Remember BYOL? Hope it makes a lot more sense now.
+So it's best practise to separate the Dropper and the shellcode over network. In other words, the Dropper can connect to a remote server where the shellcode is hosted, fetch it from over there, prep it and then proceed to inject it into a host process on-the-fly which is exactly what has been implemented. Remember BYOL? Hopefully it makes a lot more sense now.
 ### Usage of Github for fetching the Stage-2 payload
 Yep! You read that correctly. Github is used as the place where the payloads are stored. 
 The implant connects to the appropriate Github repository and fetches the payload from there.
