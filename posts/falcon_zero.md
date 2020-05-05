@@ -12,6 +12,11 @@ This tool is [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badge
 
 It is available here: [https://github.com/slaeryan/FALCONSTRIKE](https://github.com/slaeryan/FALCONSTRIKE)
 
+## Demo
+Let's take a quick look at a demo of the _FalconZero Implant Generation Utility_ and then we shall get down to the technicalities.
+
+<script id="asciicast-xGZ7B6Vn2byMWniewydzQCEco" src="https://asciinema.org/a/xGZ7B6Vn2byMWniewydzQCEco.js" async></script>
+
 ## Introduction
 Ever since I completed my SLAE, I am completely enchanted by the power of shellcode. This feeling was only augmented when I heard a podcast by the wonderful guys at FireEye's Mandiant Red Team where they advocated the usage of shellcode in red teaming engagements for it's flexibility and it's ability to evade AV/EDRs among other things.
 
@@ -57,7 +62,10 @@ Why such a choice?
 
 Simply because [Github](https://github.com) is largely considered a legitimate website and web traffic to Github will **not be considered malicious by network security products** and will probably not even be blocked in most organisations/offices as compared to using some attacker-owned web server hosting a payload which could be noisy as hell.
 
-As a bonus point, this would save the operator precious time and money too ;)
+Last time I checked there were no publicly-available tools that utilised Github as the shellcode docking station and this is the first of it's kind.
+I sincerely hope Github doesn't ban me from their platform now :)
+
+As a brownie point, this would save the operator precious time and money too ;)
 
 
 
@@ -66,9 +74,6 @@ As a bonus point, this would save the operator precious time and money too ;)
 
 
 
-
-
-<script id="asciicast-xGZ7B6Vn2byMWniewydzQCEco" src="https://asciinema.org/a/xGZ7B6Vn2byMWniewydzQCEco.js" async></script>
 
 [VT Scan Results](https://www.virustotal.com/gui/file/987505a6c969112378bd074b43fb474710ad1d50c07c96a3b9dfb87e7f94a2c8/detection)
 
