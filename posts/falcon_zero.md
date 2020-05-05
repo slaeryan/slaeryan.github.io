@@ -1,6 +1,14 @@
-# FalconZero
+# Introducing FalconZero - an undetectable, targeted implant for delivering second-stage payloads to the host machine
 
-<br />
+**Reading Time:** _16 minutes_
+
+## Prologue
+
+
+
+
+
+
 
 <p align="center">
   <img src="../assets/images/FALCONSTRIKE.png">
