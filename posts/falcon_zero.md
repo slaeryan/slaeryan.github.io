@@ -47,9 +47,9 @@ Some of the ways of storing the Stage-2 payload(shellcode) in the Stage-1 payloa
 
 While these techniques remain quite popular but keeping both the shellcode and Dropper bundled together(even if its encrypted) is probably not a good idea from an OPSEC perspective.
 
-This technique also helps us to evade some AV/EDRs if the Stage-1 implant is designed in such a way.
+This technique also helps us to evade some AV/EDRs if the Stage-1 implant is designed in such a way since Stage-2 is actually the one that is supposed to do most of the "dirty" work and hence has more chances of getting detected.
 
-Imagine if the blue-teams get hold of an undetonated implant, not only will the Dropper get compromised but also the Stage-2 payload which can't be any good. Instead, hosting the Stage-2 payload on a server is beneficial because you even have a kill-switch in your hands now(say you want to stop the op. simply delete the payload from the server and that's it).
+Imagine if the blue-teams get a hold of an undetonated implant, not only will the Dropper get compromised but also the Stage-2 payload which can't be any good. Instead, hosting the Stage-2 payload on a server is beneficial because you even have a kill-switch in your hands now(say you want to stop the op. simply delete the payload from the server and that's it).
 
 So it's best practise to separate the Dropper and the shellcode over network. In other words, the Dropper can connect to a remote server where the shellcode is hosted provided some conditions are met, fetch it from over there, prep it and then proceed to inject it into a host process on-the-fly which is exactly what has been implemented. Remember BYOL? Hopefully it makes a lot more sense now.
 ### Usage of Github for fetching the Stage-2 payload
