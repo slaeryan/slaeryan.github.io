@@ -12,17 +12,25 @@ This tool is [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badge
 
 It is available here: [https://github.com/slaeryan/FALCONSTRIKE](https://github.com/slaeryan/FALCONSTRIKE)
 
-
-
-
-
-
-
-
-
+## Introduction
 <p align="center">
   <img src="../assets/images/FALCONSTRIKE.png">
 </p>
+
+So what's FalconZero?
+
+You may think of FalconZero as a loading deck for malware. In other words, FalconZero 
+Ever since I completed by SLAE, I am completely enchanted by the power of shellcode. 
+
+
+
+
+
+
+
+
+
+
 
 <script id="asciicast-xGZ7B6Vn2byMWniewydzQCEco" src="https://asciinema.org/a/xGZ7B6Vn2byMWniewydzQCEco.js" async></script>
 
