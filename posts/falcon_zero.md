@@ -42,11 +42,11 @@ Some of the ways of storing the Stage-2 payload(shellcode) in the Stage-1 payloa
 
 While these techniques remain quite popular but keeping both the shellcode and Dropper bundled together(even if its encrypted) is probably not a good idea from an OPSEC perspective.
 
-Why so?
+Detectability.
 
 Imagine if the blue-teams get hold of an undetonated implant, not only will the Dropper get compromised but also the Stage-2 payload which can't be any good.
 
-So it's best practise to separate the Dropper and the shellcode over network. In other words, the Dropper can connect to a remote server where the shellcode is hosted, fetch it from over there, prep it and then proceed to inject it into a host process which is exactly what has been implemented.
+So it's best practise to separate the Dropper and the shellcode over network. In other words, the Dropper can connect to a remote server where the shellcode is hosted, fetch it from over there, prep it and then proceed to inject it into a host process on-the-fly which is exactly what has been implemented. Remember BYOL? Hope it makes a lot more sense now.
 ### Usage of Github for fetching the Stage-2 payload
 Yep! You read that correctly. Github is used as the place where the payloads are stored. 
 The implant connects to the appropriate Github repository and fetches the payload from there.
@@ -55,7 +55,7 @@ Why such a choice?
 
 Simply because [Github](https://github.com) is largely considered a legitimate website and web traffic to Github will **not be considered malicious by network security products** and will probably not even be blocked in most organisations/offices as compared to using some attacker-owned web server hosting a payload which could be noisy as hell.
 
-As a bonus point, this would save the operator time and money too ;)
+As a bonus point, this would save the operator precious time and money too ;)
 
 
 
