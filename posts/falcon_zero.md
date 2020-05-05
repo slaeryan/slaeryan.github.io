@@ -60,7 +60,7 @@ The implant connects to the appropriate Github repository and fetches the payloa
 
 Why such a choice?
 
-Simply because [Github](https://github.com) is largely considered a legitimate website and web traffic to Github will **not be considered malicious by network security products** and will probably not even be blocked in most organisations/offices as compared to using some attacker-owned web server hosting a payload which could be noisy as hell.
+Simply because [Github](https://github.com) is largely considered a legitimate website and web traffic to Github will **not be considered malicious by network security products** and will probably not even be blocked in most organisations/offices as opposed to using some attacker-owned web server hosting a payload which could be noisy as hell.
 
 Last time I checked there were no publicly-available tools that utilised Github as the shellcode docking station and this is the first of it's kind.
 I sincerely hope Github doesn't ban me from their platform now :)
