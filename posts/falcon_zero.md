@@ -5,8 +5,12 @@
 ## Warning Ahead!
 You could dominate the world if you read this post from top to bottom and follow all the instructions written here. Proceed at your own discretion, operator!
 
+![Offensive Tools Meme](../assets/images/offensive-tools-meme.jpeg "Offensive Tools Meme")
+
 ## TL;DR
-This tool is free(as in free beer) and is available here: [https://github.com/slaeryan/FALCONSTRIKE](https://github.com/slaeryan/FALCONSTRIKE)
+This tool is made [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://GitHub.com/Naereen/)
+
+It is available here: [https://github.com/slaeryan/FALCONSTRIKE](https://github.com/slaeryan/FALCONSTRIKE)
 
 
 
@@ -19,12 +23,6 @@ This tool is free(as in free beer) and is available here: [https://github.com/sl
 <p align="center">
   <img src="../assets/images/FALCONSTRIKE.png">
 </p>
-
-<br />
-
-![Offensive Tools Meme](../assets/images/offensive-tools-meme.jpeg "Offensive Tools Meme")
-
-<br />
 
 <script id="asciicast-xGZ7B6Vn2byMWniewydzQCEco" src="https://asciinema.org/a/xGZ7B6Vn2byMWniewydzQCEco.js" async></script>
 
