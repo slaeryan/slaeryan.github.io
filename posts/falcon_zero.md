@@ -13,14 +13,21 @@ This tool is [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badge
 It is available here: [https://github.com/slaeryan/FALCONSTRIKE](https://github.com/slaeryan/FALCONSTRIKE)
 
 ## Introduction
+Ever since I completed my SLAE, I am completely enchanted by the power of shellcode. This feeling was only augmented when I heard a podcast by the wonderful guys at FireEye's Mandiant Red Team where they advocated the usage of shellcode in red teaming engagements for it's flexibility and it's ability to evade AV/EDRs among other things.
+
+That's when I decided to play around with various shellcode injection techniques. Along the way, I thought of a ***cool*** technique and made a Stage-2 implant based on it.
+But why stop there? Why not add some neat features to it and create a framework to aid red teamers to generate these implants as quickly and cleanly as possible.
+
+That was the inception of the _FALCONSTRIKE_ project and _FalconZero_ is the first public release version Loader/Dropper of the _FALCONSTRIKE_ project. It implements the **BYOL(Bring Your Own Land)** approach as opposed to **LotL(Living off the Land)**.
+
 <p align="center">
   <img src="../assets/images/FALCONSTRIKE.png">
 </p>
 
-So what's FalconZero?
+You may think of _FalconZero_ as a loading deck for malware. In other words, _FalconZero_ is comparable to an undetectable gun that will fire a bullet(payload) on the host machine.
 
-You may think of FalconZero as a loading deck for malware. In other words, FalconZero 
-Ever since I completed by SLAE, I am completely enchanted by the power of shellcode. 
+This is the reason it may not be classified as a malware per-se but rather a facilitator of sorts that helps the malware get undetected on the host.
+
 
 
 
