@@ -2,7 +2,13 @@
 
 **Reading Time:** _16 minutes_
 
-## Prologue
+## Warning Ahead!
+You could dominate the world if you read this post from top to bottom and follow all the instructions written here. Proceed at your own discretion, operator!
+
+## TL;DR
+This tool is free(as in free beer) and is available here: [https://github.com/slaeryan/FALCONSTRIKE](https://github.com/slaeryan/FALCONSTRIKE)
+
+
 
 
 
