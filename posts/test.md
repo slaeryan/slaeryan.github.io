@@ -8,9 +8,7 @@
 
 <br />
 
-<p align="center">
-  <img src="../assets/images/offensive-tools-meme.jpeg">
-</p>
+![Offensive Tools Meme](../assets/images/offensive-tools-meme.jpeg "Offensive Tools Meme)
 
 <br />
 
