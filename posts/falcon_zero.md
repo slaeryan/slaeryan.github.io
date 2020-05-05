@@ -30,7 +30,7 @@ But it's not your standard run-off-the-mill shellcode loader(more on this later)
   <img src="../assets/images/FALCONSTRIKE.png">
 </p>
 
-You may think of _FalconZero_ as a loading deck for malware. In other words, _FalconZero_ is comparable to an undetectable gun that will fire a bullet(payload) on the host machine.
+You may think of _FalconZero_ as a loading dock for malware. In other words, _FalconZero_ is comparable to an undetectable gun that will fire a bullet(payload) on the host machine.
 
 This is the reason it may not be classified as a malware per-se but rather a facilitator of sorts that helps the malware get undetected on the host.
 
