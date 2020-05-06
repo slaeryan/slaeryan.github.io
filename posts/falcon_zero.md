@@ -120,7 +120,7 @@ This is a shellcode injection technique that works as follows:
 
 Credit goes to Mantvydas Baranauskas for describing this wonderful technique!
 
-## How to use it
+## Usage
 ```hta
 git clone https://github.com/slaeryan/FALCONSTRIKE.git
 cd FALCONSTRIKE
