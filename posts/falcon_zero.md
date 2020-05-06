@@ -120,8 +120,18 @@ This is a shellcode injection technique that works as follows:
 
 Credit goes to Mantvydas Baranauskas for describing this wonderful technique!
 
+## How to use it:
+```hta
+git clone https://github.com/slaeryan/FALCONSTRIKE.git
+cd FALCONSTRIKE
+pip3 install -r requirements.txt
+python3 generate_implant.py
+```
+Follow the on-screen instructions and you'll find the output in `bin` directory if everything goes well.
+
 ## AV Scan of _FalconZero_
 ![FalconZero v1.0 Antiscan Result](../assets/images/falcon_zero_antiscan.png "FalconZero v1.0 Antiscan Result")
+
 
 
 
