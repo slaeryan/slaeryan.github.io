@@ -83,7 +83,26 @@ Feel free to test it using [FLOSS](https://github.com/fireeye/flare-floss/releas
 ```
 
 ### Implant targeting
-test
+This is something that I have spoken of before. Instead of having malicious code that executes on arbritary systems, _FalconZero_ comes with a targeting feature which prevent its execution on non-targeted assets and ensuring deployment only happens iff host is the intended target.
+
+But we as red teams why should we care about it? This is why:
+
+1. To prevent accidental breaking of the rules of engagement. This will ensure that the malcode doesn't end being executed on any unintended host which are out of the scope.
+1. To hinder the efforts of blue teams trying to reverse engineer the implant on non-targeted assets and thwart analysis on automated malware sandboxes.
+
+Okay but how do we implement this? 
+
+Using something known as an environmental keying factor which could be any network/host specific identifier that is found out previously using reconnaisance.
+
+By hard-coding that value in the implant and comparing it at runtime, we can verify whether the executing host is the intended target or not.
+
+One problem that arises from this approach is that it would be trivial to extract that identifier from the binary if left in a plaintext format.
+
+So why don't we hash it? And compare the hashes at runtime instead of the original string? 
+
+_FalconZero_ uses the hostname as the environmental keying factor, hashes it using MD5 algorithm and what's more? It even encrypts that hash using XOR before hard-coding it to thwart all kinds of static analysis.
+
+As a result, reverse engineering this implant should be non-trivial.
 ### Killdate
 Think of killdates like a sort of expiry date for implants beyond which the implant will simply not execute. Obviously, this is quite an important feature as you'd want your implants to be rendered useless after the engagement ends.
 ### Address Of Entry Point Injection technique
