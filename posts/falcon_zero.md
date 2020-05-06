@@ -121,6 +121,8 @@ This is a shellcode injection technique that works as follows:
 Credit goes to Mantvydas Baranauskas for describing this wonderful technique!
 
 ## Usage
+There are many hard things in life but generating an implant shouldn't be one. This is the reason the `generate_implant.py` script has been created to make your life a breeze.
+The process is as simple as:
 ```hta
 git clone https://github.com/slaeryan/FALCONSTRIKE.git
 cd FALCONSTRIKE
