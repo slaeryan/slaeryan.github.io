@@ -124,6 +124,8 @@ Credit goes to Mantvydas Baranauskas for describing this wonderful technique! In
 There are many hard things in life but generating an implant shouldn't be one. This is the reason the `generate_implant.py` script has been created to make your life a breeze.
 The process is as simple as:
 ```hta
+First generate your shellcode as a hex string
+Upload it on Github and copy the Github raw URL
 git clone https://github.com/slaeryan/FALCONSTRIKE.git
 cd FALCONSTRIKE
 pip3 install -r requirements.txt
