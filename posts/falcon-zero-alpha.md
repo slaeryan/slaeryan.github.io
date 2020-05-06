@@ -106,9 +106,9 @@ As a result, reverse engineering this implant should be non-trivial.
 ### Killdate
 Think of killdates like a sort of expiry date for implants beyond which the implant will simply not execute. Obviously, this is quite an important feature as you'd want your implants to be rendered useless after the engagement ends.
 ### Address Of Entry Point Injection technique
-Thanks to [@spotless](https://twitter.com/spotless), _FalconZero_ utilises a shellcode injection technique that goes under the radar of many AV/EDRs since we do not need to allocate RWX memory pages in the host process which is a very noisy action.
+Thanks to [@spotheplanet](https://twitter.com/spotheplanet), _FalconZero_ utilises a shellcode injection technique that goes under the radar of many AV/EDRs since we do not need to allocate RWX memory pages in the host process which is a very noisy action.
 
-Quoting from his blog,
+Quoting from his [blog](https://ired.team),
 
 ```hta
 This is a shellcode injection technique that works as follows:
@@ -126,6 +126,7 @@ The process is as simple as:
 ```hta
 First generate your shellcode as a hex string
 Upload it on Github and copy the Github raw URL
+For testing(MessageBox shellcode): https://raw.githubusercontent.com/slaeryan/DigitalOceanTest/master/messagebox_shellcode_hex_32.txt
 git clone https://github.com/slaeryan/FALCONSTRIKE.git
 cd FALCONSTRIKE
 pip3 install -r requirements.txt
