@@ -30,10 +30,6 @@ But why stop there? Why not add some neat features to it and create a framework 
 That was the inception of the _FALCONSTRIKE_ project and _FalconZero_ is the first public release version Loader/Dropper of the _FALCONSTRIKE_ project. It implements the **BYOL(Bring Your Own Land)** approach as opposed to **LotL(Living off the Land)**.
 But it's not your standard run-off-the-mill shellcode loader(more on this later).
 
-<p align="center">
-  <img src="../assets/images/FALCONSTRIKE.png">
-</p>
-
 You may think of _FalconZero_ as a loading dock for malware. In other words, _FalconZero_ is comparable to an undetectable gun that will fire a bullet(payload) on the host machine.
 
 This is the reason it may not be classified as a malware per-se but rather a facilitator of sorts that helps the malware get undetected on the host.
@@ -66,7 +62,7 @@ Why such a choice?
 
 Simply because [Github](https://github.com) is largely considered a legitimate website and web traffic to Github will **not be considered malicious by network security products** and will probably not even be blocked in most organisations/offices as opposed to using some attacker-owned web server hosting a payload which could be noisy as hell.
 
-Last time I checked there were no publicly-available tools that utilised Github as the shellcode docking station and this is the first of it's kind.
+Last time I checked, I could not find any publicly available tools that utilised Github as the shellcode docking station so this would be the first of it's kind.
 I sincerely hope Github doesn't ban me from their platform now :)
 
 As a brownie point, this would save the operator precious time and money too ;)
