@@ -4,7 +4,7 @@
   <img src="../assets/images/FALCONSTRIKE.png">
 </p>
 
-**Reading Time:** _16 minutes_
+**Reading Time:** _10 minutes_
 
 ## Warning Ahead!
 You could dominate the world if you read this post from top to bottom and follow all the instructions written here. Proceed at your own discretion, operator!
