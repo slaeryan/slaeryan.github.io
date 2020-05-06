@@ -120,7 +120,7 @@ This is a shellcode injection technique that works as follows:
 
 Credit goes to Mantvydas Baranauskas for describing this wonderful technique!
 
-## How to use it:
+## How to use it
 ```hta
 git clone https://github.com/slaeryan/FALCONSTRIKE.git
 cd FALCONSTRIKE
@@ -129,14 +129,58 @@ python3 generate_implant.py
 ```
 Follow the on-screen instructions and you'll find the output in `bin` directory if everything goes well.
 
-## AV Scan of _FalconZero_
+## AV Scan of _FalconZero_ implant
 ![FalconZero v1.0 Antiscan Result](../assets/images/falcon_zero_antiscan.png "FalconZero v1.0 Antiscan Result")
 
+## Upgrades expected in the next release
+This is an alpha release version and depending on the response many more upgrades to existing functionalities are coming soon.
 
+Some of them are:
 
+1. Integrate various Sandbox detection algorithms.
+1. Integrate support for more stealthy shellcode injection techniques.
+1. Integrate function obfuscation to make it stealthier.
+1. Include a network component to callback to a C2 when a Stage-2 payload is released or to change targets/payloads and other options on-the-fly etc.
 
+Feel free to communicate any feature you want to see in the next release. Suggestions for improving existing features are also warmly welcome :)
 
+## Support this project
+If you find this project useful, consider buying me coffee or a beer(depending on the mood) as a token of appreciation.
 
-[VT Scan Results](https://www.virustotal.com/gui/file/987505a6c969112378bd074b43fb474710ad1d50c07c96a3b9dfb87e7f94a2c8/detection)
+You can do it right here:
 
-[Intezer Analyze Results](https://analyze.intezer.com/#/analyses/32930dbf-0bb4-4817-a682-75b3e87bbddb)
+<a href="https://www.patreon.com/bePatron?u=33751219" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+
+OR
+
+<div>
+  <a class="donate-with-crypto"
+     href="https://commerce.coinbase.com/checkout/860e4301-3c92-40df-b181-3d23ec3db910">
+    Donate with Crypto
+  </a>
+  <script src="https://commerce.coinbase.com/v1/checkout.js?version=201807">
+  </script>
+</div>
+
+<br />
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = https://slaeryan.github.io;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = 9; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-slaeryan-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
