@@ -1,4 +1,4 @@
-# Introducing FalconZero v1.0 - a stealthy, targeted Windows Loader for delivering second-stage shellcode payload to the host machine undetected
+# Introducing FalconZero v1.0 - a stealthy, targeted Windows Loader for delivering second-stage payloads(shellcode) to the host machine undetected
 
 <p align="center">
   <img src="../assets/images/FALCONSTRIKE.png">
