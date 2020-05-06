@@ -37,7 +37,7 @@ This is the reason it may not be classified as a malware per-se but rather a fac
 ## But there's plenty of tools that already do that. So what makes _FalconZero_ special?
 While there are many excellent existing projects, this is not designed to be a replacement for them.
 
-This is designed to be unique in its own way and there are quite a few of those features. So let's discuss them one by one.
+This is designed to be unique in its own way and there are quite a few of those features that separate it from the rest. So let's discuss them one by one.
 ### Separation of the final-stage payload from the implant
 Some of the ways of storing the Stage-2 payload(shellcode) in the Stage-1 payload(Dropper) are:
 
@@ -45,15 +45,22 @@ Some of the ways of storing the Stage-2 payload(shellcode) in the Stage-1 payloa
 1. Storing shellcode in .data section of Dropper
 1. Storing shellcode in .rsrc section of Dropper etc.
 
-While these techniques remain quite popular but keeping both the shellcode and Dropper bundled together(even if its encrypted) is probably not a good idea from an OPSEC perspective.
+While these techniques remain quite popular but keeping both the shellcode and Dropper bundled together(even if its encrypted) is probably not a good idea from an OPSEC & risk perspective.
 
-This technique also helps us to evade some AV/EDRs if the Stage-1 implant is designed in such a way since Stage-2 is actually the one that is supposed to do most of the "dirty" work and hence has more chances of getting detected.
+As the real attackers often do, we need to separate the payload into 2 stages:
+
+1. Stage-1 implant - A stealthy, lightweight Loader - downloads and injects the Beacon shellcode into a benign host process.
+1. Stage-2 implant - A full-fledged interactive C2 Agent - Meterpreter/Beacon etc.
+
+This technique also helps us to evade some AV/EDRs if the Stage-1 implant is designed in such a way since Stage-2 has more chances of getting detected.
 
 Imagine if the blue-teams get a hold of an undetonated implant, not only will the Dropper get compromised but also the Stage-2 payload which can't be any good. Instead, hosting the Stage-2 payload on a server is beneficial because you even have a kill-switch in your hands now(say you want to stop the op. simply delete the payload from the server and that's it).
 
-So it's best practise to separate the Dropper and the shellcode over network. In other words, the Dropper can connect to a remote server where the shellcode is hosted provided some conditions are met, fetch it from over there, prep it and then proceed to inject it into a host process on-the-fly which is exactly what has been implemented. Remember BYOL? Hopefully it makes a lot more sense now.
+Why risk combining all the functionality into a single tool?
+
+So it's best practise from an OPSEC and risk mitigation perspective to separate the Dropper and the shellcode over network. In other words, the Dropper can connect to a remote server where the shellcode is hosted provided some conditions are met, fetch it from over there, prep it and then proceed to inject it into a host process on-the-fly which is exactly what has been implemented. Remember BYOL? Hopefully it makes a lot more sense now.
 ### Usage of Github for fetching the Stage-2 payload
-Yep! You read that correctly. Github is used as the place where the payloads are stored. 
+Yep! You read that correctly. Github is used as the payload storage area. 
 The implant connects to the appropriate Github repository and fetches the payload from there.
 
 ![Github Payload Dock](../assets/images/github-payload-dock.png "Github Payload Dock")
