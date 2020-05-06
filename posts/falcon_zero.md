@@ -1,4 +1,4 @@
-# Introducing FalconZero - an undetectable, targeted implant for delivering second-stage payloads to the host machine
+# Introducing FalconZero - an undetectable, targeted Windows implant for delivering second-stage payloads to the host machine
 
 **Reading Time:** _16 minutes_
 
