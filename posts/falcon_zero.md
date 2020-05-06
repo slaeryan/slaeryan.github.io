@@ -101,7 +101,7 @@ This is a shellcode injection technique that works as follows:
 
 Credit goes to Mantvydas Baranauskas for describing this wonderful technique!
 
-## AV Scan of the implant
+## AV Scan of _FalconZero_
 ![FalconZero v1.0 Antiscan Result](../assets/images/falcon_zero_antiscan.png "FalconZero v1.0 Antiscan Result")
 
 
