@@ -118,7 +118,7 @@ This is a shellcode injection technique that works as follows:
 4. Resume target process
 ```
 
-Credit goes to Mantvydas Baranauskas for describing this wonderful technique!
+Credit goes to Mantvydas Baranauskas for describing this wonderful technique! In the current form, _FalconZero_ injects the payload to `explorer.exe`. Of course, this could be modified to suit the purpose of the operator.
 
 ## Usage
 There are many hard things in life but generating an implant shouldn't be one. This is the reason the `generate_implant.py` script has been created to make your life a breeze.
@@ -139,10 +139,12 @@ This is an alpha release version and depending on the response many more upgrade
 
 Some of them are:
 
-1. Integrate various Sandbox detection algorithms.
-1. Integrate support for more stealthy shellcode injection techniques.
-1. Integrate function obfuscation to make it stealthier.
-1. Include a network component to callback to a C2 when a Stage-2 payload is released or to change targets/payloads and other options on-the-fly etc.
+- [ ] Integrate various Sandbox detection algorithms.
+- [ ] Integrate support for more stealthy shellcode injection techniques.
+- [ ] Integrate function obfuscation to make it stealthier.
+- [ ] Include a network component to callback to a C2 when a Stage-2 payload is released or to change targets/payloads and configure other options on-the-fly etc.
+- [ ] Inject to a remote process from where network activity is not unusual for fetching the shellcode - better OPSEC
+- [ ] Include active hours functionality - Loader becomes active during a specified period of day etc.
 
 Feel free to communicate any further feature that you want to see in the next release. Suggestions for improving existing features are also warmly welcome :)
 
