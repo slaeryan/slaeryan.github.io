@@ -22,7 +22,7 @@ Let's take a quick look at a demo of the _FalconZero Implant Generation Utility_
 <script id="asciicast-xGZ7B6Vn2byMWniewydzQCEco" src="https://asciinema.org/a/xGZ7B6Vn2byMWniewydzQCEco.js" async></script>
 
 ## Introduction
-Ever since I completed my SLAE, I am completely enchanted by the power of shellcode. This feeling was only augmented when I heard a podcast by the wonderful guys at FireEye's Mandiant Red Team where they advocated the usage of shellcode in red teaming engagements for it's flexibility and it's ability to evade AV/EDRs among other things.
+Ever since I completed my SLAE, I am completely enchanted by the power of shellcode. This feeling was only augmented when I heard a podcast by the wonderful guys at FireEye's Mandiant Red Team where they advocated the usage of shellcode in red teaming engagements for its flexibility and its ability to evade AV/EDRs among other things.
 
 That's when I decided to play around with various shellcode injection techniques. Along the way, I thought of a ***cool*** technique and made an implant based on it that could deliver Stage-2 payloads to the target machine in a stealthy manner. 
 But why stop there? Why not add some neat features to it and create a framework to aid red teamers to generate these implants as quickly and cleanly as possible.
@@ -32,7 +32,7 @@ But it's not your standard run-off-the-mill shellcode loader(more on this later)
 
 You may think of _FalconZero_ as a loading dock for malware. In other words, _FalconZero_ is comparable to an undetectable gun that will fire a bullet(payload) on the host machine.
 
-This is the reason it may not be classified as a malware per-se but rather a facilitator of sorts that helps the malware get undetected on the host.
+This is the reason it may not be classified as malware per se but rather a facilitator of sorts that helps the malware get undetected on the host.
 
 ## But there's plenty of tools that already do that. So what makes _FalconZero_ special?
 While there are many excellent existing projects, this is not designed to be a replacement for them.
@@ -50,7 +50,7 @@ Some of the ways of storing the Stage-2 payload(shellcode) in the Stage-1 payloa
 1. Storing shellcode in .data section of Dropper
 1. Storing shellcode in .rsrc section of Dropper etc.
 
-While these techniques remain quite popular but keeping both the shellcode and Dropper bundled together(even if its encrypted) is probably not a good idea from an OPSEC & risk management perspective.
+While these techniques remain quite popular but keeping both the shellcode and Dropper bundled together(even if it is encrypted) is probably not a good idea from an OPSEC & risk management perspective.
 
 Why risk combining all the functionality into a single tool?
 
@@ -58,7 +58,7 @@ Imagine if the blue-teams get a hold of an undetonated implant, not only will th
 
 This technique also helps us to evade some AV/EDRs if the Stage-1 implant is designed in such a way since Stage-2 has more chances of getting detected.
 
-So it's best practise from an OPSEC and risk mitigation perspective to separate the Dropper and the shellcode over network. In other words, the Dropper can connect to a remote server where the shellcode is hosted provided some conditions are met, fetch it from over there, prep it and then proceed to inject it into a host process on-the-fly which is exactly what has been implemented. Remember BYOL? Hopefully it makes a lot more sense now.
+So it's best practise from an OPSEC and risk mitigation perspective to separate the Dropper and the shellcode over the network. In other words, the Dropper can connect to a remote server where the shellcode is hosted provided some conditions are met, fetch it from over there, prep it and then proceed to inject it into a host process on-the-fly which is exactly what has been implemented. Remember BYOL? Hopefully, it makes a lot more sense now.
 ### Usage of Github for fetching the Stage-2 payload
 Yep! You read that correctly. Github is used as the payload storage area. 
 The implant connects to the appropriate Github repository and fetches the payload from there.
@@ -74,7 +74,7 @@ I sincerely hope Github doesn't ban me from their platform now :)
 
 As a brownie point, this would save the operator precious time and money too ;)
 ### Sensitive string obfuscation
-All the sensitive strings in this implant are encrypted using XOR algorithm with a key that is commonly found in binaries. This would make the job of extracting the URL string and other information from the binary using static analysis impossible.
+All the sensitive strings in this implant are encrypted using the XOR algorithm with a key that is commonly found in binaries. This would make the job of extracting the URL string and other information from the binary using static analysis impossible.
 
 Feel free to test it using [FLOSS](https://github.com/fireeye/flare-floss/releases/download/v1.5.0/floss-1.5.0-GNU.Linux.zip). Extract it, chmod +x and test using:
 
@@ -83,16 +83,16 @@ Feel free to test it using [FLOSS](https://github.com/fireeye/flare-floss/releas
 ```
 
 ### Implant targeting
-This is something that I have spoken of before. Instead of having malicious code that executes on arbritary systems, _FalconZero_ comes with a targeting feature which prevent its execution on non-targeted assets and ensuring deployment only happens iff host is the intended target.
+This is something that I have spoken of before. Instead of having malicious code that executes on arbritrary systems, _FalconZero_ comes with a targeting feature which prevents its execution on non-targeted assets and ensuring deployment only happens iff host is the intended target.
 
 But we as red teams why should we care about it? This is why:
 
-1. To prevent accidental breaking of the rules of engagement. This will ensure that the malcode doesn't end being executed on any unintended host which are out of the scope.
+1. To prevent the accidental breaking of the rules of engagement. This will ensure that the malcode doesn't end being executed on any unintended host which are out of the scope.
 1. To hinder the efforts of blue teams trying to reverse engineer the implant on non-targeted assets and thwart analysis on automated malware sandboxes.
 
-Okay but how do we implement this? 
+Okay, but how do we implement this? 
 
-Using something known as an environmental keying factor which could be any network/host specific identifier that is found out previously using reconnaisance.
+Using something known as an environmental keying factor which could be any network/host specific identifier that is found out previously by reconnoitering the target.
 
 By hard-coding that value in the implant and comparing it at runtime, we can verify whether the executing host is the intended target or not.
 
@@ -100,13 +100,13 @@ One problem that arises from this approach is that it would be trivial to extrac
 
 So why don't we hash it? And compare the hashes at runtime instead of the original string? 
 
-_FalconZero_ uses the hostname as the environmental keying factor, hashes it using MD5 algorithm and what's more? It even encrypts that hash using XOR before hard-coding it to thwart all kinds of static analysis.
+_FalconZero_ uses the hostname as the environmental keying factor, hashes it using MD5 algorithm and what's more? It even encrypts that hash using XOR before hard-coding it to thwart all kinds of static analysis. Should the checks fail, the implant shall not execute on the host.
 
 As a result, reverse engineering this implant should be non-trivial.
 ### Killdate
 Think of killdates like a sort of expiry date for implants beyond which the implant will simply not execute. Obviously, this is quite an important feature as you'd want your implants to be rendered useless after the engagement ends.
 ### Address Of Entry Point Injection technique
-Thanks to [@spotless](https://twitter.com/spotless), _FalconZero_ utilises a shellcode injection technqiue that goes under the radar of many AV/EDRs since we do not need to allocate RWX memory pages in the host process which is a very noisy action.
+Thanks to [@spotless](https://twitter.com/spotless), _FalconZero_ utilises a shellcode injection technique that goes under the radar of many AV/EDRs since we do not need to allocate RWX memory pages in the host process which is a very noisy action.
 
 Quoting from his blog,
 
