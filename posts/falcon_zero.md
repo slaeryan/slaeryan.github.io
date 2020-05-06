@@ -38,7 +38,7 @@ This is the reason it may not be classified as a malware per-se but rather a fac
 While there are many excellent existing projects, this is not designed to be a replacement for them.
 
 This is designed to be unique in its own way and there are quite a few of those features that separate it from the rest. So let's discuss them one by one.
-### Separation of the final-stage payload from the implant
+### Separation of the final-stage payload from the Loader
 As the real attackers often do, we need to separate the payload into 2 stages:
 
 1. Stage-1 payload - A stealthy, lightweight Loader - downloads and injects the Beacon shellcode into a benign host process.
