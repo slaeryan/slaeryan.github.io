@@ -89,7 +89,7 @@ Think of killdates like a sort of expiry date for implants beyond which the impl
 ### Address Of Entry Point Injection technique
 Thanks to [@spotless](https://twitter.com/spotless), _FalconZero_ utilises a shellcode injection technqiue that goes under the radar of many AV/EDRs since we do not need to allocate RWX memory pages in the host process which is a very noisy action.
 
-Quoting from his website,
+Quoting from his blog,
 
 ```hta
 This is a shellcode injection technique that works as follows:
@@ -99,6 +99,7 @@ This is a shellcode injection technique that works as follows:
 4. Resume target process
 ```
 
+All credit goes to Mantvydas Baranauskas for this wonderful technique.
 
 
 
