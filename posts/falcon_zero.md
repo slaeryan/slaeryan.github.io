@@ -142,7 +142,7 @@ Some of them are:
 1. Integrate function obfuscation to make it stealthier.
 1. Include a network component to callback to a C2 when a Stage-2 payload is released or to change targets/payloads and other options on-the-fly etc.
 
-Feel free to communicate any feature you want to see in the next release. Suggestions for improving existing features are also warmly welcome :)
+Feel free to communicate any further feature that you want to see in the next release. Suggestions for improving existing features are also warmly welcome :)
 
 ## Support this project
 If you find this project useful, consider buying me coffee or a beer(depending on the mood) as a token of appreciation.
