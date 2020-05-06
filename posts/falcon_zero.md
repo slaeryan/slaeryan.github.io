@@ -78,7 +78,7 @@ All the sensitive strings in this implant are encrypted using XOR algorithm with
 
 Feel free to test it using [FLOSS](https://github.com/fireeye/flare-floss/releases/download/v1.5.0/floss-1.5.0-GNU.Linux.zip). Extract it, chmod +x and test using:
 
-```
+```hta
 ./floss <binary>
 ```
 
@@ -99,7 +99,10 @@ This is a shellcode injection technique that works as follows:
 4. Resume target process
 ```
 
-All credit goes to Mantvydas Baranauskas for this wonderful technique.
+Credit goes to Mantvydas Baranauskas for describing this wonderful technique!
+
+## AV Scan of the implant
+![FalconZero v1.0 Antiscan Result](../assets/images/falcon_zero_antiscan.png "FalconZero v1.0 Antiscan Result")
 
 
 
