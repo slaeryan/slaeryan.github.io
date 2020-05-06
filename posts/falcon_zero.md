@@ -84,9 +84,20 @@ Feel free to test it using [FLOSS](https://github.com/fireeye/flare-floss/releas
 
 ### Implant targeting
 test
+### Killdate
+Think of killdates like a sort of expiry date for implants beyond which the implant will simply not execute. Obviously, this is quite an important feature as you'd want your implants to be rendered useless after the engagement ends.
 ### Address Of Entry Point Injection technique
+Thanks to [@spotless](https://twitter.com/spotless), _FalconZero_ utilises a shellcode injection technqiue that goes under the radar of many AV/EDRs since we do not need to allocate RWX memory pages in the host process which is a very noisy action.
 
+Quoting from his website,
 
+```hta
+This is a shellcode injection technique that works as follows:
+1. Start a target process into which the shellcode will be injected, in suspended state. 
+2. Get AddressOfEntryPoint of the target process
+3. Write shellcode to AddressOfEntryPoint retrieved in step 2
+4. Resume target process
+```
 
 
 
