@@ -1,4 +1,4 @@
-# Introducing FalconZero v1.0 - a stealthy, targeted Windows implant for delivering second-stage payloads to the host machine
+# Introducing FalconZero v1.0 - a stealthy, targeted Windows implant for delivering second-stage payloads to the host machine undetected
 
 <p align="center">
   <img src="../assets/images/FALCONSTRIKE.png">
