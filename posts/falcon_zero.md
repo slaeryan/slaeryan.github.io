@@ -73,7 +73,16 @@ Last time I checked, I could not find any publicly available tools that utilised
 I sincerely hope Github doesn't ban me from their platform now :)
 
 As a brownie point, this would save the operator precious time and money too ;)
-### Implant Safety Measures
+### Sensitive string obfuscation
+All the sensitive strings in this implant are encrypted using XOR algorithm with a key that is commonly found in binaries. This would make the job of extracting the URL string and other information from the binary using static analysis impossible.
+
+Feel free to test it using [FLOSS](https://github.com/fireeye/flare-floss/releases/download/v1.5.0/floss-1.5.0-GNU.Linux.zip):
+
+```
+./floss <binary>
+```
+
+### Implant targeting
 
 
 
