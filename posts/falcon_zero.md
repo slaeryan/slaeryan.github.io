@@ -76,14 +76,15 @@ As a brownie point, this would save the operator precious time and money too ;)
 ### Sensitive string obfuscation
 All the sensitive strings in this implant are encrypted using XOR algorithm with a key that is commonly found in binaries. This would make the job of extracting the URL string and other information from the binary using static analysis impossible.
 
-Feel free to test it using [FLOSS](https://github.com/fireeye/flare-floss/releases/download/v1.5.0/floss-1.5.0-GNU.Linux.zip):
+Feel free to test it using [FLOSS](https://github.com/fireeye/flare-floss/releases/download/v1.5.0/floss-1.5.0-GNU.Linux.zip). Extract it, chmod +x and test using:
 
 ```
 ./floss <binary>
 ```
 
 ### Implant targeting
-
+test
+### Address Of Entry Point Injection technique
 
 
 
