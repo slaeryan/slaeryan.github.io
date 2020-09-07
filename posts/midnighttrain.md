@@ -26,6 +26,8 @@ That was the birth of the **MIDNIGHTTRAIN** framework. Over the next two days, I
 ## Of NVRAM variables, Print Monitors, Execution Guardrails with DPAPI etc. oh my my!
 For the uninitiated readers, don't be scared of these buzzwords for I can guarantee you that this is absolutely nothing to be scared of and I shall explain each of these individual components(and the motivation behind it) one by one.
 
+But first let's go through some basic concepts and some OPSEC considerations.
+
 ### NVRAM Variables
 Just know that these are variables used by UEFI to store data that persist between boots. Needless to say, this data will survive a full reinstallation of the Operating System.
 
