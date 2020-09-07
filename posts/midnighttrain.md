@@ -35,7 +35,7 @@ What's more? As easy as it is to write data into firmware variables from user-mo
 
 Now, conviniently for us attackers, Microsoft provides us with fully-documented API access to the magical land of firmware variables using:
 
-1. **SetFirmwareEnvironmentVariable()** - To create and set the value of an NVRAM variable
+1. [SetFirmwareEnvironmentVariable()](https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setfirmwareenvironmentvariablea) - To create and set the value of an NVRAM variable
 ```a
 BOOL SetFirmwareEnvironmentVariableA(
   LPCSTR lpName,
@@ -44,7 +44,7 @@ BOOL SetFirmwareEnvironmentVariableA(
   DWORD  nSize
 );
 ```
-2. **GetFirmwareEnvironmentVariable()** - To fetch the value of an NVRAM variable
+2. [GetFirmwareEnvironmentVariable()](https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-getfirmwareenvironmentvariablea) - To fetch the value of an NVRAM variable
 ```a
 DWORD GetFirmwareEnvironmentVariableA(
   LPCSTR lpName,
@@ -54,4 +54,5 @@ DWORD GetFirmwareEnvironmentVariableA(
 );
 ```
 
+So as can be seen from the MSDN docs GUID(Globally Unique Identifier) is basically a way to identify the specific variable in question. Each variable must have a name 
 
