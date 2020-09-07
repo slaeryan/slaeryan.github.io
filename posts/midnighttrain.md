@@ -7,6 +7,8 @@ This tool is [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badge
 
 It is available here: [https://github.com/slaeryan/MIDNIGHTTRAIN](https://github.com/slaeryan/MIDNIGHTTRAIN)
 
+Fair warning: This code has been tested in my lab extensively but bugs are to be expected. Furthermore, I'm not a professional coder so get ready to read crappy code! However, I have given it my best possible efforts  and if you find bugs don't feel shy to contact me!
+
 ## Introduction
 
 
