@@ -12,10 +12,10 @@ Fair warning: This has been made as a small weekend project and while the code h
 ## Introduction
 One of my favourite hobbies is to read APT reports and look for the TTPs(Tactics, Techniques and Procedures) used by apex adversaries(Read as: State-backed Threat Groups) and later attempt to recreate it or a variant of it myself in my lab.
 
-So last Friday was no different, except that this time I was actually going through the CIA Vault7 leaks specifically the EDB branch documents when suddenly [this](https://wikileaks.org/ciav7p1/cms/page_26968084.html) came to my attention which describes the theory behind NVRAM variables.
-Immediately it piqued my interest and I thought to myself well what can you do with it and what are the possible implications?
+So last Friday was no different, except that this time I was actually going through the _CIA Vault7_ leaks specifically the _EDB_ branch documents when suddenly [this](https://wikileaks.org/ciav7p1/cms/page_26968084.html) document came to my attention which describes the theory behind NVRAM variables.
+Immediately it piqued my interest and I started digging deeper.
 
-Turns out, these variables are not only accessible from the user-mode but also it's an awesome place to hide your shit like implants, config data, stolen goodies and whatnot which I found out after watching an enlightening [DEFCON talk](https://youtu.be/q2KUufrjoRo), thanks to Topher Timzen and Michael Leibowitz.
+Turns out, these variables are not only writable/readable from the user-mode but also it's an awesome place to hide your shit like egress implants, config data, stolen goodies and whatnot which I found out after watching an enlightening [DEFCON talk](https://youtu.be/q2KUufrjoRo), thanks to Topher Timzen and Michael Leibowitz.
 
 In the talk, they do give a demo using C# but the attendees are encouraged to figure out their own way to weaponize this technique.
 
@@ -54,5 +54,17 @@ DWORD GetFirmwareEnvironmentVariableA(
 );
 ```
 
-So as can be seen from the MSDN docs GUID(Globally Unique Identifier) is basically a way to identify the specific variable in question. Each variable must have a name 
+And if you're wondering what a _Guid_ is, A GUID(Globally Unique Identifier) along with the variable name is  just a way to identify the specific variable in question. Therefore, each variable must have a unique name and GUID.
+
+Okay this sounds too good to be true so what's the caveat? Can you call these API's even from a non-elevated context? 
+
+Good question, the answer is no! Calling these API functions require that you are a local admin and that you have a specific privilege available and enabled in the calling token namely - **SeSystemEnvironmentPrivilege/SE_SYSTEM_ENVIRONMENT_NAME**. This means that our persistence framework won't install without an **Elevated Context**.(Blue Teams take note!)
+
+I wouldn't consider this a huge problem for attackers since persistence is typically meant to be a Post-Ex job and could be easily installed after privilege escalation on the host.
+
+But the problem doesn't end there. The next big caveat is size. How much data can you store in a single NVRAM variable and how many such variables can be created reliably?
+
+That shall solely dictate what can or can't be used as the payload.
+
+To answer this question, I have done some testing in my lab and I have found that 
 
