@@ -33,7 +33,7 @@ Sound like a stealthy place to hide your life's secrets yet?
 
 What's more? As easy as it is to write data into firmware variables from user-mode, it is incredibly difficult(if not downright impossible) for the defenders to enumerate the data from the same.
 
-Conviniently for us attackers, Microsoft conviniently provides fully-documented API access to the magical land of firmware variables using:
+Now, conviniently for us attackers, Microsoft provides us with fully-documented API access to the magical land of firmware variables using:
 
 1. **SetFirmwareEnvironmentVariable** - To create and set the value of an NVRAM variable
 ```c
