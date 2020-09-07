@@ -23,7 +23,35 @@ So it got me thinking of various ways to weaponize this and suddenly I remembere
 
 That was the birth of the **MIDNIGHTTRAIN** framework. Over the next two days, I spent time coding it and then a couple of days more for writing this post.
 
-## Of NVRAM variables, Print Monitors, Environmental Keying with DPAPI etc oh my my!
+## Of NVRAM variables, Print Monitors, Execution Guardrails with DPAPI etc. oh my my!
+For the uninitiated readers, don't be scared of these buzzwords for I can guarantee you that this is absolutely nothing to be scared of and I shall explain each of these individual components(and the motivation behind it) one by one.
 
+### NVRAM Variables
+Just know that these are variables used by UEFI to store data that persist between boots. Needless to say, this data will survive a full reinstallation of the Operating System.
+
+Sound like a stealthy place to hide your life's secrets yet?
+
+What's more? As easy as it is to write data into firmware variables from user-mode, it is incredibly difficult(if not downright impossible) for the defenders to enumerate the data from the same.
+
+Conviniently for us attackers, Microsoft conviniently provides fully-documented API access to the magical land of firmware variables using:
+
+1. **SetFirmwareEnvironmentVariable** - To create and set the value of an NVRAM variable
+```
+BOOL SetFirmwareEnvironmentVariableA(
+  LPCSTR lpName,
+  LPCSTR lpGuid,
+  PVOID  pValue,
+  DWORD  nSize
+);
+```
+2. **GetFirmwareEnvironmentVariable** - To fetch the value of an NVRAM variable
+```
+DWORD GetFirmwareEnvironmentVariableA(
+  LPCSTR lpName,
+  LPCSTR lpGuid,
+  PVOID  pBuffer,
+  DWORD  nSize
+);
+```
 
 
