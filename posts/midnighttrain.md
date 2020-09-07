@@ -36,7 +36,7 @@ What's more? As easy as it is to write data into firmware variables from user-mo
 Now, conviniently for us attackers, Microsoft provides us with fully-documented API access to the magical land of firmware variables using:
 
 1. **SetFirmwareEnvironmentVariable()** - To create and set the value of an NVRAM variable
-```cpp
+```a
 BOOL SetFirmwareEnvironmentVariableA(
   LPCSTR lpName,
   LPCSTR lpGuid,
@@ -45,7 +45,7 @@ BOOL SetFirmwareEnvironmentVariableA(
 );
 ```
 2. **GetFirmwareEnvironmentVariable()** - To fetch the value of an NVRAM variable
-```cpp
+```a
 DWORD GetFirmwareEnvironmentVariableA(
   LPCSTR lpName,
   LPCSTR lpGuid,
