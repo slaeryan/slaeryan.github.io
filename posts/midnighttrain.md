@@ -7,12 +7,23 @@ This tool is [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badge
 
 It is available here: [https://github.com/slaeryan/MIDNIGHTTRAIN](https://github.com/slaeryan/MIDNIGHTTRAIN)
 
-Fair warning: This code has been tested in my lab extensively but bugs are to be expected. Furthermore, I'm not a professional coder so get ready to read crappy code! However, I have given it my best possible efforts  and if you find bugs/improvements in the code don't feel shy to contact me!
+Fair warning: This has been made as a small weekend project and while the code has been tested in my lab extensively, bugs are to be expected. Furthermore, I'm not a professional coder so get ready to read crappy code! However, I have given it my best possible efforts and if you find bugs/improvements in the code don't feel shy to contact me!
 
 ## Introduction
 One of my favourite hobbies is to read APT reports and look for the TTPs(Tactics, Techniques and Procedures) used by apex adversaries(Read as: State-backed Threat Groups) and later attempt to recreate it or a variant of it myself in my lab.
 
-So last Friday was no different, I was glossing over a report by [ESET](https://www.welivesecurity.com/2019/11/21/deprimon-default-print-monitor-malicious-downloader/) an _alleged CIA_ implant named **DePriMon** that basically registered as the default port monitor to achieve persistence on the host(Hence the name). Though not a new technique, this implant is the first reported case of [T1547.010 Boot or Logon Autostart Execution: Port Monitors](https://attack.mitre.org/techniques/T1547/010/) found in the wild and it automatically piqued my interest
+So last Friday was no different, except that this time I was actually going through the CIA Vault7 leaks specifically the EDB branch documents when suddenly [this](https://wikileaks.org/ciav7p1/cms/page_26968084.html) came to my attention which describes the theory behind NVRAM variables.
+Immediately it piqued my interest and I thought to myself well what can you do with it and what are the possible implications?
+
+Turns out, these variables are not only accessible from the user-mode but also it's an awesome place to hide your shit like implants, config data, stolen goodies and whatnot which I found out after watching an enlightening [DEFCON talk](https://youtu.be/q2KUufrjoRo), thanks to Topher Timzen and Michael Leibowitz.
+
+In the talk, they do give a demo using C# but the attendees are encouraged to figure out their own way to weaponize this technique.
+
+So it got me thinking of various ways to weaponize this and suddenly I remembered glossing over a report by [ESET](https://www.welivesecurity.com/2019/11/21/deprimon-default-print-monitor-malicious-downloader/) some time back describing an _alleged CIA_ implant(Ironically again!) named **DePriMon** which registered as the default print monitor to achieve persistence on the host(hence the name).
+
+That was the birth of the **MIDNIGHTTRAIN** framework. Over the next two days, I spent time coding it and then a couple of days more for writing this post.
+
+## Of NVRAM variables, Print Monitors, Environmental Keying with DPAPI etc oh my my!
 
 
 
