@@ -10,7 +10,7 @@ It is available here: [https://github.com/slaeryan/MIDNIGHTTRAIN](https://github
 Fair warning: This has been made as a small weekend project and while the code has been tested in my lab extensively, bugs are to be expected. Furthermore, I'm not a professional coder so get ready to read crappy code! However, I have given it my best possible efforts and if you find bugs/improvements in the code don't feel shy to contact me!
 
 ## Introduction
-One of my favourite hobbies is to read APT reports and look for the TTPs(Tactics, Techniques and Procedures) used by apex adversaries(Read as: State-backed Threat Groups) and later attempt to recreate it or a variant of it myself in my lab.
+One of my favourite pastimes is to read APT reports and look for the TTPs(Tactics, Techniques and Procedures) used by apex adversaries(Read as: State-backed Threat Groups) and later attempt to recreate it or a variant of it myself in my lab.
 
 So last Friday was no different, except that this time I was actually going through the _CIA Vault7_ leaks specifically the _EDB_ branch documents when suddenly [this](https://wikileaks.org/ciav7p1/cms/page_26968084.html) document came to my attention which describes the theory behind NVRAM variables.
 Immediately it piqued my interest and I started digging deeper.
