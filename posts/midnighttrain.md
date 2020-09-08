@@ -66,7 +66,9 @@ Now does it make sense why it's almost impossible to enumerate from Ring 3? Beca
 
 Okay, this sounds too good to be true so what's the caveat? Can you call these API's even from a non-elevated context?
 
-Good question, the answer is no! Calling these API functions require that you are a **local admin** and that you have a specific privilege available and enabled in the calling token namely - **SeSystemEnvironmentPrivilege/SE_SYSTEM_ENVIRONMENT_NAME**. This means that our persistence framework won't install without an **Elevated Context**.(Blue Teams take note!)
+Good question, the answer is no! 
+
+Using these API functions require that you are a **local admin** and that you have a specific privilege available and enabled in the calling token namely - **SeSystemEnvironmentPrivilege/SE_SYSTEM_ENVIRONMENT_NAME**. This means that our persistence framework won't install without an **Elevated Context**.(Blue Teams take note!)
 
 I wouldn't consider this a huge problem for attackers since persistence is typically meant to be a Post-Ex job and could be easily installed after privilege escalation on the host.
 
