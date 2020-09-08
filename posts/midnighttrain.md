@@ -23,19 +23,23 @@ So it got me thinking of various ways to weaponize this and suddenly I remembere
 
 That was the birth of the **MIDNIGHTTRAIN** framework. Over the next two days, I spent time coding it and then a couple of days more for writing this post.
 
-## Of NVRAM variables, Print Monitors, Execution Guardrails with DPAPI etc. oh my my!
-For the uninitiated readers, don't be scared of these buzzwords for I can guarantee you that this is absolutely nothing to be scared of and I shall explain each of these individual components(and the motivation behind it) one by one.
+## Of NVRAM variables, Print Monitors, Execution Guardrails with DPAPI, Thread Hijacking etc. oh my my!
+For the uninitiated readers, don't be scared of these buzzwords for I can guarantee you that this is absolutely nothing to be scared of and I shall attempt to explain each of these individual components(and the motivation behind it) one by one.
 
-But first let's go through some basic concepts and some OPSEC considerations.
+But first, let's go through these basic concepts. 
+
+Initiated readers, feel free to skip this part and move on directly to the framework architecture.
 
 ### NVRAM Variables
-Just know that these are variables used by UEFI to store data that persist between boots. Needless to say, this data will survive a full reinstallation of the Operating System.
+I am not going to bore you with the theory, for that is not my goal. Just know that all modern UEFI machines use these variables to store important boot-time data and various other vendor-specific data in the flash memory. Needless to say, this data will survive a full reinstallation of the Operating System and to quote the CIA, "are invisible to a forensic image of the hard drive".
 
 Sound like a stealthy place to hide your life's secrets yet?
 
-What's more? As easy as it is to write data into firmware variables from user-mode, it is incredibly difficult(if not downright impossible) for the defenders to enumerate the data from the same.
+What's more? As easy as it is to write data into firmware variables from User-mode i.e. Ring 3, it is incredibly difficult(if not downright impossible) for the defenders to enumerate the data from the same.
 
-Now, conviniently for us attackers, Microsoft provides us with fully-documented API access to the magical land of firmware variables using:
+How so you ask? Well, you'll see in a bit.
+
+Now, conveniently for us attackers, Microsoft provides us with fully-documented API access to the magical land of firmware variables using:
 
 1. [SetFirmwareEnvironmentVariable()](https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-setfirmwareenvironmentvariablea) - To create and set the value of an NVRAM variable
 ```a
@@ -56,11 +60,13 @@ DWORD GetFirmwareEnvironmentVariableA(
 );
 ```
 
-And if you're wondering what a _Guid_ is, A GUID(Globally Unique Identifier) along with the variable name is  just a way to identify the specific variable in question. Therefore, each variable must have a unique name and GUID.
+And if you're wondering what a _Guid_ is, A GUID(Globally Unique Identifier) along with the variable name is just a way to identify the specific variable in question. Therefore, each variable must have a unique name and GUID.
 
-Okay this sounds too good to be true so what's the caveat? Can you call these API's even from a non-elevated context? 
+Now does it make sense why it's almost impossible to enumerate from Ring 3? Because enumeration would require the exact name and GUID of the variables. Hell to even verify the existence of a variable, you'd need its specific name and GUID.
 
-Good question, the answer is no! Calling these API functions require that you are a local admin and that you have a specific privilege available and enabled in the calling token namely - **SeSystemEnvironmentPrivilege/SE_SYSTEM_ENVIRONMENT_NAME**. This means that our persistence framework won't install without an **Elevated Context**.(Blue Teams take note!)
+Okay, this sounds too good to be true so what's the caveat? Can you call these API's even from a non-elevated context?
+
+Good question, the answer is no! Calling these API functions require that you are a **local admin** and that you have a specific privilege available and enabled in the calling token namely - **SeSystemEnvironmentPrivilege/SE_SYSTEM_ENVIRONMENT_NAME**. This means that our persistence framework won't install without an **Elevated Context**.(Blue Teams take note!)
 
 I wouldn't consider this a huge problem for attackers since persistence is typically meant to be a Post-Ex job and could be easily installed after privilege escalation on the host.
 
@@ -68,5 +74,9 @@ But the problem doesn't end there. The next big caveat is size. How much data ca
 
 That shall solely dictate what can or can't be used as the payload.
 
-To answer this question, I have done some testing in my lab and I have found that 
+To answer this question, I have done some testing in my lab and I have found that you can approximately create around **50 variables** and each with a capacity of **1000 characters** before Windows starts whining with a **1470** error code.
+
+Now is a good time to point out that it is possible to enumerate these variables from **Kernel-mode i.e. Ring 0** using frameworks such as [CHIPSEC](https://github.com/chipsec/chipsec) or using **physical access** to the machine using an **UEFI shell**(Again, Defenders take note!)
+
+### Port Monitors
 
