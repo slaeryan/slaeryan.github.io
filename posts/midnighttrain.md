@@ -124,7 +124,7 @@ I have chosen the second way for the framework.
 ### Execution Guardrails with DPAPI
 Well, I'm a big fan of putting execution guardrails in my code primarily because of two reasons:
 
-1. To prevent the accidental breaking of the rules of engagement. This will ensure that the malcode doesn't end being executed on any unintended host which are out of the scope
+1. To prevent the accidental breaking of the rules of engagement. This will ensure that our malcode doesn't end being executed on any unintended host which are out of the scope
 1. To hinder the efforts of blue teams trying to reverse engineer the implant on non-targeted assets and thwart analysis on automated malware sandboxes
 
 Although, I think in this case the latter is more applicable than the former.
@@ -164,7 +164,7 @@ Apart from the fact that these functions are quite straightforward to use, it pr
 
 If we can encrypt a data blob with DPAPI on the target host, that encrypted data cannot be decrypted anywhere else but the same host machine. This means that if a payload is encrypted directly on the targeted asset, it shall make decryption and ergo execution non-trivial on a non-targeted asset like a sandbox or say a malware analyst's VM.
 
-I got inspiration for this from a malware named **InvisiMole**, technical analysis courtesy of [ESET](https://www.welivesecurity.com/wp-content/uploads/2020/06/ESET_InvisiMole.pdf).
+I got the inspiration for this from a malware named **InvisiMole**, technical analysis courtesy of [ESET](https://www.welivesecurity.com/wp-content/uploads/2020/06/ESET_InvisiMole.pdf).
 
 You can read in-detail about DPAPI if you're interested [here](https://docs.microsoft.com/en-us/previous-versions/ms995355(v=msdn.10)?redirectedfrom=MSDN#windataprotection-dpapi_topic04).
 
