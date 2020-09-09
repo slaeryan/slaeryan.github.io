@@ -175,7 +175,7 @@ What happens in Thread Injection is that a thread is created in the remote proce
 
 Though this remains one of the most popular, easy to implement and stable forms of code injection, this actually has some disadvantages from an OPSEC perspective. With tools, such as [Get-InjectedThread](https://gist.github.com/jaredcatkinson/23905d34537ce4b5b1818c3e6405c1d2) it is quite easy to detect an injected thread in a remote process by spotting missing `MEM_IMAGE` flags for the memory of the thread start address.
 
-Anyway, this is something that [@xpn(Adam Chester)](https://blog.xpnsec.com/undersanding-and-evading-get-injectedthread/) will do a far better job of explaining than me.
+Anyway, this is something that [@xpn(Adam Chester)](https://blog.xpnsec.com/undersanding-and-evading-get-injectedthread/) will do a far better job of explaining than me!
 
 The way Thread Hijacking overcomes the obstacle is by not injecting a thread in the first place but instead hijacking an existing thread of the remote process by first suspending it, then redirecting the `RIP` register to our malcode before resuming the thread again to launch our malcode this time.
 
