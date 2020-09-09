@@ -162,7 +162,7 @@ DPAPI_IMP BOOL CryptUnprotectData(
 
 Apart from the fact that these functions are quite straightforward to use, it provides another benefit.
 
-If we can encrypt a data blob with DPAPI on the target host, that encrypted data cannot be decrypted anywhere else but the same host machine. This means that if a payload is encrypted directly on the targeted asset, it shall make decryption and ergo execution non-trivial on a non-targeted asset like a sandbox or say a malware analyst's VM.
+If we can encrypt a data blob with DPAPI on the target host, that encrypted data cannot be decrypted anywhere else but on the same host machine. This means that if a payload is encrypted directly on a targeted asset, it shall make decryption and ergo execution non-trivial on a non-targeted asset like a sandbox or say a malware analyst's VM.
 
 I got the inspiration for this from a malware named **InvisiMole**, technical analysis courtesy of [ESET](https://www.welivesecurity.com/wp-content/uploads/2020/06/ESET_InvisiMole.pdf).
 
