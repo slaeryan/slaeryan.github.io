@@ -68,7 +68,7 @@ Okay, this sounds too good to be true so what's the caveat? Can you call these A
 
 Good question, the answer is no! 
 
-Using these API functions require that you are a **local admin** and that you have a specific privilege available and enabled in the calling token namely - **SeSystemEnvironmentPrivilege/SE_SYSTEM_ENVIRONMENT_NAME**. This means that our persistence framework won't install without an **Elevated Context**.(Blue Teams take note!)
+Using these API functions require that you are a **local admin** and that you have a specific privilege available and enabled in the calling token namely - `SeSystemEnvironmentPrivilege/SE_SYSTEM_ENVIRONMENT_NAME`. This means that our persistence framework won't install without an **Elevated Context**.(Blue Teams take note!)
 
 I wouldn't consider this a huge problem for attackers since persistence is typically meant to be a Post-Ex job and could be easily installed after privilege escalation on the host.
 
@@ -81,4 +81,11 @@ To answer this question, I have done some testing in my lab and I have found tha
 Alos, now is a good time to point out that it is possible to enumerate these variables from **Kernel-mode i.e. Ring 0** using frameworks such as [CHIPSEC](https://github.com/chipsec/chipsec) or using **physical access** to the machine with an **UEFI shell**(Again, Defenders take note!)
 
 ### Port Monitors
+Once again, I will not bore you with endless theory. But its important to know a few things. Port Monitors are User-mode DLLs that according to [MSDN](https://docs.microsoft.com/en-us/windows-hardware/drivers/print/port-monitors) "are responsible for providing a communications path between the user-mode print spooler and the kernel-mode port drivers that access I/O port hardware".
+
+These DLLs are loaded by the **Print Spooler Service** or `spoolsv.exe` at startup and for that to happen primarily one of the two conditions must be satisfied:
+1. `HKLM\SYSTEM\CurrentControlSet\Control\Print\Monitors` must be written with the Port Monitor name and its corresponding fully-qualified pathname
+
+![Port Monitor Registry Entry](../assets/images/port-mon-reg.png "Port Monitor Registry Entry")
+
 
