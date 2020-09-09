@@ -83,16 +83,17 @@ Alos, now is a good time to point out that it is possible to enumerate these var
 ### Port Monitors
 Once again, I will not bore you with endless theory. But it is important to know a few things. Port Monitors are User-mode DLLs that according to [MSDN](https://docs.microsoft.com/en-us/windows-hardware/drivers/print/port-monitors) "are responsible for providing a communications path between the user-mode print spooler and the kernel-mode port drivers that access I/O port hardware".
 
-These DLLs are loaded by the **Print Spooler Service** or `spoolsv.exe` at startup and for that to happen primarily one of the two conditions must be satisfied:
-1. The fully-qualified pathname of the DLL must be written to `HKLM\SYSTEM\CurrentControlSet\Control\Print\Monitors`
+These DLLs are loaded by the **Print Spooler Service** or `spoolsv.exe` at startup and for that to happen primarily one of the two methods must be followed:
+
+- The fully-qualified pathname of the DLL must be written to `HKLM\SYSTEM\CurrentControlSet\Control\Print\Monitors`
 
 ![Port Monitor Registry Entry](../assets/images/port-mon-reg.png "Port Monitor Registry Entry")
 
 This requires either a manual registry entry or via WinAPI and it allows loading of arbitrary DLLs.
 
-2. The second method has a couple of more constraints.
-- The DLL must reside in `System32`
-- Arbitrary DLLs cannot be loaded via this technique(well, it can but without persistence), the DLL must be written in a [special way](https://docs.microsoft.com/en-us/windows-hardware/drivers/print/port-monitor-server-dll-functions) with some mandatory functions defined and must export a function named `InitializePrintMonitor2` which gets called immediately after the DLL is loaded
+- The second method has a couple of more constraints.
+1. The DLL must reside in `System32`
+2. Arbitrary DLLs cannot be loaded via this technique(well, it can but without persistence), the DLL must be written in a [special way](https://docs.microsoft.com/en-us/windows-hardware/drivers/print/port-monitor-server-dll-functions) with some mandatory functions defined and must export a function named `InitializePrintMonitor2` which gets called immediately after the DLL is loaded
 
 Finally, the Port Monitor might be registered via:
 
