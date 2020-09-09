@@ -177,11 +177,11 @@ Though this remains one of the most popular, easy to implement and stable forms 
 
 Anyway, this is something that [@xpn(Adam Chester)](https://blog.xpnsec.com/undersanding-and-evading-get-injectedthread/) will do a far better job of explaining than me.
 
-The way Thread Hijacking overcomes the obstacle is by not injecting a thread in the first place and instead hijacking an existing thread of the remote process by first suspending it, then redirecting the `RIP` register to our malcode before resuming the thread again to launch our malcode this time.
+The way Thread Hijacking overcomes the obstacle is by not injecting a thread in the first place but instead hijacking an existing thread of the remote process by first suspending it, then redirecting the `RIP` register to our malcode before resuming the thread again to launch our malcode this time.
 
-This is why it is also known fondly as SiR(Suspend-Inject-Resume). Pretty neat eh?
+This is why it is also fondly known as SiR(Suspend-Inject-Resume) injection. Pretty neat eh?
 
-To accomplish we primarily need the following API calls:
+To accomplish this, we primarily need to perform the following steps(and API calls):
 
 1. [VirtualAllocEx()]() - To allocate memory in the target process for our shellcode
 2. [WriteProcessMemory()]() - To write the shellcode to the allocated memory in the target process
