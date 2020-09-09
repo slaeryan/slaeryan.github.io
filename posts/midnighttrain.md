@@ -92,6 +92,7 @@ These DLLs are loaded by the **Print Spooler Service** or `spoolsv.exe` at start
 This requires either a manual registry entry or via WinAPI and it allows loading of arbitrary DLLs.
 
 - The second method has a couple of more constraints.
+
 1. The DLL must reside in `System32`
 2. Arbitrary DLLs cannot be loaded via this technique(well, it can but without persistence), the DLL must be written in a [special way](https://docs.microsoft.com/en-us/windows-hardware/drivers/print/port-monitor-server-dll-functions) with some mandatory functions defined and must export a function named `InitializePrintMonitor2` which gets called immediately after the DLL is loaded
 
