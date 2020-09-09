@@ -23,7 +23,7 @@ So it got me thinking of various ways to weaponize this and suddenly I remembere
 
 That was the birth of the **MIDNIGHTTRAIN** framework. Over the next two days, I spent time coding it and then a couple of days more for cleaning up and writing this post.
 
-## Of NVRAM variables, Print Monitors, Execution Guardrails with DPAPI, Thread Hijacking etc. oh my my!
+## Of NVRAM variables, Print Monitors, Execution Guardrails with DPAPI, Token Stealing, Thread Hijacking etc. oh my my!
 For the uninitiated readers, don't be scared of these buzzwords for I can guarantee you that this is absolutely nothing to be scared of and I shall attempt to explain each of these individual components(and the motivation behind it) one by one.
 
 But first, let's go through these basic concepts. 
@@ -84,8 +84,38 @@ Alos, now is a good time to point out that it is possible to enumerate these var
 Once again, I will not bore you with endless theory. But its important to know a few things. Port Monitors are User-mode DLLs that according to [MSDN](https://docs.microsoft.com/en-us/windows-hardware/drivers/print/port-monitors) "are responsible for providing a communications path between the user-mode print spooler and the kernel-mode port drivers that access I/O port hardware".
 
 These DLLs are loaded by the **Print Spooler Service** or `spoolsv.exe` at startup and for that to happen primarily one of the two conditions must be satisfied:
-1. `HKLM\SYSTEM\CurrentControlSet\Control\Print\Monitors` must be written with the Port Monitor name and its corresponding fully-qualified pathname
+1. The fully-qualified pathname of the DLL must be written to `HKLM\SYSTEM\CurrentControlSet\Control\Print\Monitors`
 
 ![Port Monitor Registry Entry](../assets/images/port-mon-reg.png "Port Monitor Registry Entry")
+
+This requires either a manual registry entriy or via WinAPI and it allows loading of arbritary DLLs.
+
+2. The second method has a couple of more constraints.
+a. The DLL must reside in `System32`
+b. Arbritary DLLs cannot be loaded via this technique, the DLL must be written in a [special way](https://docs.microsoft.com/en-us/windows-hardware/drivers/print/port-monitor-server-dll-functions) with some mandatory functions defined and must export a function named `InitializePrintMonitor2` which gets called immediately after the DLL is loaded
+
+Finally, the Port Monitor might be registered via:
+[AddMonitor()](https://docs.microsoft.com/en-us/windows/win32/printdocs/addmonitor?redirectedfrom=MSDN) - To  install a local port monitor
+```a
+BOOL AddMonitor(
+  _In_ LPTSTR pName,
+  _In_ DWORD  Level,
+  _In_ LPBYTE pMonitors
+);
+```
+
+What the function does under the hood is add the same registry entries and load the DLL within `spoolsv.exe` but without any direct intervention. Readers should probably take note that if the DLL is not created exactly according to MSDN Port Monitor specifications then while the DLL will be loaded for the current session but the appropriate registry entries will **not** be made, ergo the DLL will not load after a reboot.
+
+And to uninstall a Port Monitor:
+[DeleteMonitor()](https://docs.microsoft.com/en-us/windows/win32/printdocs/deletemonitor) - To remove a local port monitor
+```a
+BOOL DeleteMonitor(
+  _In_ LPTSTR pName,
+  _In_ LPTSTR pEnvironment,
+  _In_ LPTSTR pMonitorName
+);
+```
+
+I have chosen the second way for the framework.
 
 
