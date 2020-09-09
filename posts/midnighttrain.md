@@ -23,7 +23,7 @@ So it got me thinking of various ways to weaponize this and suddenly I remembere
 
 That was the birth of the **MIDNIGHTTRAIN** framework. Over the next two days, I spent time coding it and then a couple of days more for cleaning up and writing this post.
 
-## Of NVRAM variables, Print Monitors, Execution Guardrails with DPAPI, Token Stealing, Thread Hijacking etc. oh my my!
+## Of NVRAM variables, Print Monitors, Execution Guardrails with DPAPI, Thread Hijacking etc. oh my my!
 For the uninitiated readers, don't be scared of these buzzwords for I can guarantee you that this is absolutely nothing to be scared of and I shall attempt to explain each of these individual components(and the motivation behind it) one by one.
 
 But first, let's go through these basic concepts. 
@@ -122,4 +122,52 @@ BOOL DeleteMonitor(
 I have chosen the second way for the framework.
 
 ### Execution Guardrails with DPAPI
+Well, I'm a big fan of putting execution guardrails in my code primarily because of two reasons:
+
+1. To prevent the accidental breaking of the rules of engagement. This will ensure that the malcode doesn't end being executed on any unintended host which are out of the scope
+1. To hinder the efforts of blue teams trying to reverse engineer the implant on non-targeted assets and thwart analysis on automated malware sandboxes
+
+Although, I think in this case the latter is more applicable than the former.
+
+So what's DPAPI?
+
+DPAPI(Data Protection API) is simply a set of functions provided by Microsoft intended to ensure confidentiality and integrity of locally stored credentials like Browser passwords, WiFi PSKs etc.
+
+This is primarily achieved through the use of two functions:
+
+1. [CryptProtectData](https://docs.microsoft.com/en-us/windows/win32/api/dpapi/nf-dpapi-cryptprotectdata)
+```a
+DPAPI_IMP BOOL CryptProtectData(
+  DATA_BLOB                 *pDataIn,
+  LPCWSTR                   szDataDescr,
+  DATA_BLOB                 *pOptionalEntropy,
+  PVOID                     pvReserved,
+  CRYPTPROTECT_PROMPTSTRUCT *pPromptStruct,
+  DWORD                     dwFlags,
+  DATA_BLOB                 *pDataOut
+);
+```
+2. [CryptUnprotectData](https://docs.microsoft.com/en-us/windows/win32/api/dpapi/nf-dpapi-cryptunprotectdata)
+```a
+DPAPI_IMP BOOL CryptUnprotectData(
+  DATA_BLOB                 *pDataIn,
+  LPWSTR                    *ppszDataDescr,
+  DATA_BLOB                 *pOptionalEntropy,
+  PVOID                     pvReserved,
+  CRYPTPROTECT_PROMPTSTRUCT *pPromptStruct,
+  DWORD                     dwFlags,
+  DATA_BLOB                 *pDataOut
+);
+```
+
+Apart from the fact that these functions are quite straightforward to use, it provides another benefit.
+
+If we can encrypt a data blob with DPAPI on the target host, that encrypted data cannot be decrypted anywhere else but the same host machine. This means that if a payload is encrypted directly on the targeted asset, it shall make decryption and ergo execution non-trivial on a non-targeted asset like a sandbox or say a malware analyst's VM.
+
+I got inspiration for this from a malware named **InvisiMole**, technical analysis courtesy of [ESET](https://www.welivesecurity.com/wp-content/uploads/2020/06/ESET_InvisiMole.pdf).
+
+You can read in-detail about DPAPI if you're interested [here](https://docs.microsoft.com/en-us/previous-versions/ms995355(v=msdn.10)?redirectedfrom=MSDN#windataprotection-dpapi_topic04).
+
+
+
 
