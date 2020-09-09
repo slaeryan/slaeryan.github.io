@@ -169,8 +169,26 @@ I got the inspiration for this from a malware named **InvisiMole**, technical an
 You can read in-detail about DPAPI if you're interested [here](https://docs.microsoft.com/en-us/previous-versions/ms995355(v=msdn.10)?redirectedfrom=MSDN#windataprotection-dpapi_topic04).
 
 ### Thread Hijacking
+Typical code injection uses thread injection using the documented `CreateRemoteThread()` or it's lesser known undocumented cousin `RtlCreateUserThread()` or an Nt* equivalent in Ntdll like `NtCreateThreadEx()`.
 
+What happens in Thread Injection is that a thread is created in the remote process to run our malcode.
 
+Though this remains one of the most popular, easy to implement and stable forms of code injection, this actually has some disadvantages from an OPSEC perspective. With tools, such as [Get-InjectedThread](https://gist.github.com/jaredcatkinson/23905d34537ce4b5b1818c3e6405c1d2) it is quite easy to detect an injected thread in a remote process by spotting missing `MEM_IMAGE` flags for the memory of the thread start address.
+
+Anyway, this is something that [@xpn(Adam Chester)](https://blog.xpnsec.com/undersanding-and-evading-get-injectedthread/) will do a far better job of explaining than me.
+
+The way Thread Hijacking overcomes the obstacle is by not injecting a thread in the first place and instead hijacking an existing thread of the remote process by first suspending it, then redirecting the `RIP` register to our malcode before resuming the thread again to launch our malcode this time.
+
+This is why it is also known fondly as SiR(Suspend-Inject-Resume). Pretty neat eh?
+
+To accomplish we primarily need the following API calls:
+
+1. [VirtualAllocEx()]() - To allocate memory in the target process for our shellcode
+2. [WriteProcessMemory()]() - To write the shellcode to the allocated memory in the target process
+3. [SuspendThread()]() - To suspend a thread
+4. [GetThreadContext()]() - To fetch the current state of the registers for our hijacked thread
+5. [SetThreadContext()]() - To set the updated state of the registers for our hijacked thread specifically the RIP register now redirected to point to our shellcode
+6. [ResumeThread()]() - To resume the hijacked thread
 
 
 
