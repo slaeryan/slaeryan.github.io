@@ -1,4 +1,4 @@
-# Introducing MIDNIGHTTRAIN - A Covert Stage-3 Persistence Framework utilizing UEFI variables
+# Introducing MIDNIGHTTRAIN - A Covert Stage-3 Persistence Framework weaponizing UEFI variables
 
 **Reading Time:** _16 minutes_
 
