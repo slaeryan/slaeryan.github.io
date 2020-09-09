@@ -168,6 +168,9 @@ I got the inspiration for this from a malware named **InvisiMole**, technical an
 
 You can read in-detail about DPAPI if you're interested [here](https://docs.microsoft.com/en-us/previous-versions/ms995355(v=msdn.10)?redirectedfrom=MSDN#windataprotection-dpapi_topic04).
 
+### Thread Hijacking
+
+
 
 
 
