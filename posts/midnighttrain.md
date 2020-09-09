@@ -96,6 +96,7 @@ This requires either a manual registry entry or via WinAPI and it allows loading
 - Arbitrary DLLs cannot be loaded via this technique(well, it can but without persistence), the DLL must be written in a [special way](https://docs.microsoft.com/en-us/windows-hardware/drivers/print/port-monitor-server-dll-functions) with some mandatory functions defined and must export a function named `InitializePrintMonitor2` which gets called immediately after the DLL is loaded
 
 Finally, the Port Monitor might be registered via:
+
 [AddMonitor()](https://docs.microsoft.com/en-us/windows/win32/printdocs/addmonitor?redirectedfrom=MSDN) - To  install a local port monitor
 ```a
 BOOL AddMonitor(
@@ -108,6 +109,7 @@ BOOL AddMonitor(
 What the function does under the hood is add the same registry entries and load the DLL within `spoolsv.exe` but without any direct intervention. Readers should probably take note that if the DLL is not created exactly according to MSDN specifications then while the DLL will be loaded for the current session but the appropriate registry entries will **not** be made and the DLL will **not load** after a reboot ergo, defeating it's very purpose.
 
 And to uninstall a Port Monitor:
+
 [DeleteMonitor()](https://docs.microsoft.com/en-us/windows/win32/printdocs/deletemonitor) - To remove a local port monitor
 ```a
 BOOL DeleteMonitor(
