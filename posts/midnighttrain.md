@@ -173,7 +173,7 @@ Typical code injection uses thread injection using the documented `CreateRemoteT
 
 What happens in Thread Injection is that a thread is created in the remote process to run our malcode.
 
-Though this remains one of the most popular, easy to implement and stable forms of code injection, this actually has some disadvantages from an OPSEC perspective. With tools, such as [Get-InjectedThread](https://gist.github.com/jaredcatkinson/23905d34537ce4b5b1818c3e6405c1d2) it is quite easy to detect an injected thread in a remote process by spotting missing `MEM_IMAGE` flags for the memory of the thread start address.
+Though this remains one of the most popular, easy to implement and stable forms of code injection, this has some disadvantages from an OPSEC perspective. With tools, such as [Get-InjectedThread](https://gist.github.com/jaredcatkinson/23905d34537ce4b5b1818c3e6405c1d2) it is quite easy to detect an injected thread in a remote process by spotting missing `MEM_IMAGE` flags for the memory of the thread start address.
 
 Anyway, this is something that [@xpn(Adam Chester)](https://blog.xpnsec.com/undersanding-and-evading-get-injectedthread/) will do a far better job of explaining than me!
 
@@ -181,14 +181,28 @@ The way Thread Hijacking overcomes the obstacle is by not injecting a thread in 
 
 This is why it is also fondly known as SiR(Suspend-Inject-Resume) injection. Pretty neat eh?
 
+![SiR vs pe-sieve](../assets/images/sir-pesieve.png "SiR vs pe-sieve")
+
 To accomplish this, we primarily need to perform the following steps(and API calls):
 
-1. [VirtualAllocEx()]() - To allocate memory in the target process for our shellcode
-2. [WriteProcessMemory()]() - To write the shellcode to the allocated memory in the target process
-3. [SuspendThread()]() - To suspend a thread
-4. [GetThreadContext()]() - To fetch the current state of the registers for our hijacked thread
-5. [SetThreadContext()]() - To set the updated state of the registers for our hijacked thread specifically the RIP register now redirected to point to our shellcode
-6. [ResumeThread()]() - To resume the hijacked thread
+1. [VirtualAllocEx()](https://docs.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualallocex) - To allocate memory in the target process for our shellcode
+2. [WriteProcessMemory()](https://docs.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-writeprocessmemory) - To write the shellcode to the allocated memory in the target process
+3. [SuspendThread()](https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-suspendthread) - To suspend a thread
+4. [GetThreadContext()](https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-getthreadcontext) - To fetch the current state of the registers for our hijacked thread
+5. [SetThreadContext()](https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-setthreadcontext) - To set the updated state of the registers for our hijacked thread specifically the RIP register now redirected to point to our shellcode
+6. [ResumeThread()](https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-resumethread) - To resume the hijacked thread
 
+There's an extra [VirtualProtect()](https://docs.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualprotect) call which I have taken the liberty to add because well, for one allocating `RWX` memory in a remote process is not taken too kindly by PSPs.
 
+The workaround first allocates `RW` pages for writing the payload and later changes the page protection to `RX` before the thread is resumed so that the payload can be executed.
 
+One last thing to note regarding this method is that it is a little unstable and the chances of the target process crashing after the malcode terminates are extremely high! (requires cleanup to fix)
+
+A possible alternative might include creating a new process and hijacking that but I wanted to avoid a process creation event(Sysmon Event ID 1). Ideally, you should weigh your pros and cons taking into factor your target environment and edit the code to suit your needs.
+
+## Enter MIDNIGHTTRAIN
+Whatever you've read till now explains the **What?**. Now that we have more-or-less understood the individual pieces of the puzzle let's move forward and assemble the above pieces to solve the puzzle and try to explain the **How?**.
+
+But first, let us look at a block diagram to help visualize the architecture.
+
+![MIDNIGHTTRAIN Block Diagram](../assets/images/midnighttrain-block-diagram.png "MIDNIGHTTRAIN Block Diagram")
