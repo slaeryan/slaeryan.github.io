@@ -192,7 +192,7 @@ To accomplish this, we primarily need to perform the following steps(and API cal
 5. [SetThreadContext()](https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-setthreadcontext) - To set the updated state of the registers for our hijacked thread specifically the RIP register now redirected to point to our shellcode
 6. [ResumeThread()](https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-resumethread) - To resume the hijacked thread
 
-There's an extra [VirtualProtect()](https://docs.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualprotect) call which I have taken the liberty to add because well, for one allocating `RWX` memory in a remote process is not taken too kindly by PSPs.
+There's an extra [VirtualProtectEx()](https://docs.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualprotectex) call which I have taken the liberty to add because well, for one allocating `RWX` memory in a remote process is not taken too kindly by PSPs.
 
 The workaround first allocates `RW` pages for writing the payload and later changes the page protection to `RX` before the thread is resumed so that the payload can be executed.
 
