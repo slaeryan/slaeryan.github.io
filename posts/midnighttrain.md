@@ -220,7 +220,7 @@ When `Gargoyle` is executed in-memory it primarily has **two** objectives to acc
 
 1. Figure out if persistence is already installed on the host or not. If not:
 - Extract `Gremlin` implant DLL from its resource section and copy it to `System32` folder before installing it as a Port Monitor DLL using the above-mentioned method
-- Extract the Beaconing shellcode payload from its resource section, encrypt the payload using DPAPI on the target host, Base64URL encode the encrypted payload and divide it into chunks before writing them into as many NVRAM variables as permissible by the flash chip
+- Extract the Beaconing shellcode payload from its resource section, encrypt the payload using DPAPI on the target host, `Base64URL` encode the encrypted payload and divide it into chunks before writing them into as many NVRAM variables as permissible by the flash chip
 2. If persistence is already installed on the host:
 - Delete the `Gremlin` implant from `System32`
 - Unload `Gremlin` implant from `spoolsv.exe`
@@ -231,9 +231,37 @@ This is turn loads `Gremlin` implant by `spoolsv.exe` if persistence is installe
 1. Steal a token from `winlogon.exe` and impersonate for the current thread(more on this later)
 2. Check if `SeSystemEnvironmentPrivilege/SE_SYSTEM_ENVIRONMENT_NAME` is available in the token and enable it if available
 3. Now, read back the individual chunks from the NVRAM variables and assemble to get the Base64URL-encoded encrypted payload
-4. Base64URL decode it to get the encrypted payload byte blob
+4. `Base64URL` decode it to get the encrypted payload byte blob
 5. Decrypt the blob using DPAPI to get the final payload
 6. Hijack a thread of `explorer.exe` to execute our Beaconing payload(`Meterpreter`/`Beacon`/`Grunt` etc.)
+
+## Design Considerations and OPSEC Concerns
+If you came this far, you must have a lot of questions regarding this framework. Don't worry for now I shall attempt to address some of those and discuss some OPSEC concerns. Hopefully, that shall explain the **Why?**.
+
+First, let's address the issue with UEFI variables. 
+
+By now, it is pretty evident that we can do little with the buffer offered by NVRAM variable. Therefore, we need to chunk the payload into the max permissible size and write those individual chunks to as many variables as required and permissible. Like I said before, I have found out from my tests that we can create a maximum of **50 variables and each with a buffer space of 1000 characters**. Our next quest is to figure out what encoding scheme to use to store the payload byte blob. It needs to be an efficient one for us to utilize the most out of the buffer space. `hex` will take two characters for each byte while `Base64` takes 4 characters for every 3 bytes, so it's more efficient than `hex`. But can we do any better? Yes we can! And one of the ways is by using `Base64URL` which is an URL-safe variant of `Base64` encoding plus omitting the padding character(=).
+
+So what's the final size of the payload that we can reliably store in NVRAM? It comes as around `~36 kB`.
+It becomes immediately evident that **Stageless payloads generated out-of-the-box** are out of the quesion with this tiny size limit in today's age.
+
+So what can we use? Well, **Staged payloads** should work fine with this framework. But this potentially raises an OPSEC concern since using default `Beacon` stagers is not recommended. And what about the cases when even the Staged payload crosses the size limit? 
+
+**Taking into consideration all these factors, I recommend designing a simple native payload stager/loader yourself that fetches the final payload over a network(due to size constraints) and executes it locally. In that case there would be no need to inject it again since the egress implant is already in the address space of a process from where network activity is not considered unusual by PSPs**.
+
+Secondly, some of you might be wondering if we are touching disk anyways with `Gremlin` implant then why do even need NVRAM variables?
+
+Short Answer: OPSEC
+
+Long Answer: Sure, persistence has to touch disk but we can always minimize that impact of that by controlling what touches the disk and what stays in-memory only. A `Stage-1(Beaconing)` or a `Stage-2(Post-Exploitation)` RAT on disk is just asking to be caught by AV/EDRs. They have no business being on disk and they should reside in-memory only. But with that comes a problem. If they are in-memory only, how can we achieve persistence with them.
+
+
+
+
+
+
+
+
 
 ## Screenshots
 Time for screenshots!
