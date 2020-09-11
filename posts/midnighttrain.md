@@ -216,14 +216,24 @@ Both of them are compiled to DLLs and with the Gargoyle payload an extra step is
 
 This is done to ensure that persistence can be delivered via your favourite C2 framework and installed with **inline execution/local execution** of shellcode.
 
-When Gargoyle is executed in-memory it primarily has **two** objectives to accomplish:
+When `Gargoyle` is executed in-memory it primarily has **two** objectives to accomplish:
 
 1. Figure out if persistence is already installed on the host or not. If not:
 - Extract the `Gremlin` implant DLL from its resource section and copy it to `System32` folder before installing it as a Port Monitor DLL using the above mentioned method
-- Extract the Beaconing shellcode payload from its resource section, encrypt the payload using DPAPI on the target host, base64url encode the encrypted payload and divide it into chunks before writing them into as many NVRAM variables as permissible by the flash chip
+- Extract the Beaconing shellcode payload from its resource section, encrypt the payload using DPAPI on the target host, Base64URL encode the encrypted payload and divide it into chunks before writing them into as many NVRAM variables as permissible by the flash chip
 2. If persistence is already installed on the host:
 - Delete the `Gremlin` implant from `System32`
-- Delete all the NVRAM variables(ergo their content) which were created for the purpose of storing the payload
+- Unload `Gremlin` implant from `spoolsv.exe`
+- Delete the payload from the NVRAM variables
+
+This is turn loads `Gremlin` implant by `spoolsv.exe` if persistence is installed successfully which has the following objectives to accomplish:
+
+1. Steal a token from `winlogon.exe` and impersonate for the current thread(more on this later)
+2. Check if `SeSystemEnvironmentPrivilege/SE_SYSTEM_ENVIRONMENT_NAME` is available in the token and enable it
+3. Now, read back the individual chunks from the NVRAM variables and assemble to get the Base64URL-encoded encrypted payload
+4. Base64URL decode it to get the encrypted payload byte blob
+5. Decrypt the blob using DPAPI to get the final payload
+6. Hijack a thread of `explorer.exe` to execute our Beaconing payload(`Meterpreter`/`Beacon`/`Grunt` etc.)
 
 
 
