@@ -298,7 +298,7 @@ Keep in mind that the framework has been designed in a **very modular structure*
 
 Feel free to hit me up if you feel something could be improved/general suggestions/other cool ideas etc.
 
-You can find what I'm up to on my Twitter[@slaeryan](https://twitter.com/slaeryan/).
+You can find what I'm up to on my Twitter [@slaeryan](https://twitter.com/slaeryan/).
 
 Bene vale operator!
 
