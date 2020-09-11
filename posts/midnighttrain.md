@@ -292,13 +292,15 @@ Uninstalling persistence:
 ![Uninstalling Persistence](../assets/images/midnighttrain-uninstall.png "Uninstalling Persistence")
 
 ## Conclusion
-If you've reached till here, I want to thank you for having the patience to read the whole article. I hope you enjoyed reading it as much as I enjoyed designing the framework/writing this blog post.
+If you're still reading, I want to thank you for having the patience to read the whole article. I hope you enjoyed reading it as much as I enjoyed designing the framework/writing this blog post.
 
-Keep in mind that the framework has been designed in a **very modular structure** so that operators can easily  mix'n'match other techniques keeping the architecture same or just treat them as separate modules and use them in their own projects.
+Keep in mind that the framework has been designed in a **very modular structure** so that operators can easily  mix and match other techniques keeping the architecture same or just treat it as separate modules and use them in their own projects.
 
 Feel free to hit me up if you feel something could be improved/general suggestions/other cool ideas etc.
 
-Bene vale!
+You can find what I'm up to on my Twitter[@slaeryan](https://twitter.com/slaeryan/).
+
+Bene vale operator!
 
 ## Support this project
 If you find this project useful, consider buying me coffee or a beer(depending on the mood) as a token of appreciation.
