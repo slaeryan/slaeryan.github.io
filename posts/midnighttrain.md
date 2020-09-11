@@ -219,7 +219,7 @@ This is done to ensure that persistence can be delivered via your favourite C2 f
 When `Gargoyle` is executed in-memory it primarily has **two** objectives to accomplish:
 
 1. Figure out if persistence is already installed on the host or not. If not:
-- Extract the `Gremlin` implant DLL from its resource section and copy it to `System32` folder before installing it as a Port Monitor DLL using the above mentioned method
+- Extract `Gremlin` implant DLL from its resource section and copy it to `System32` folder before installing it as a Port Monitor DLL using the above mentioned method
 - Extract the Beaconing shellcode payload from its resource section, encrypt the payload using DPAPI on the target host, Base64URL encode the encrypted payload and divide it into chunks before writing them into as many NVRAM variables as permissible by the flash chip
 2. If persistence is already installed on the host:
 - Delete the `Gremlin` implant from `System32`
