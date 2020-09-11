@@ -212,14 +212,14 @@ So as we can see underlined in the diagram, this framework consists of two paylo
 1. `Gremlin` - The Port Monitor DLL
 2. `Gargoyle` - The Persistence Installer
 
-Both of them are compiled to DLLs and with the Gargoyle payload an extra step is taken to convert it into a PIC(Position Independent Code) blob thanks to [(@monoxgas)Nick Landers[SBS]](https://twitter.com/monoxgas) for the amazing [sRDI project](https://github.com/monoxgas/sRDI).
+Both of them are compiled to DLLs and with the Gargoyle payload an extra step is taken to convert it into a PIC(Position Independent Code) blob, big thanks to [(@monoxgas)Nick Landers[SBS]](https://twitter.com/monoxgas) for the amazing [sRDI project](https://github.com/monoxgas/sRDI).
 
 This is done to ensure that persistence can be delivered via your favourite C2 framework and installed with **inline execution/local execution** of shellcode.
 
 When `Gargoyle` is executed in-memory it primarily has **two** objectives to accomplish:
 
 1. Figure out if persistence is already installed on the host or not. If not:
-- Extract `Gremlin` implant DLL from its resource section and copy it to `System32` folder before installing it as a Port Monitor DLL using the above mentioned method
+- Extract `Gremlin` implant DLL from its resource section and copy it to `System32` folder before installing it as a Port Monitor DLL using the above-mentioned method
 - Extract the Beaconing shellcode payload from its resource section, encrypt the payload using DPAPI on the target host, Base64URL encode the encrypted payload and divide it into chunks before writing them into as many NVRAM variables as permissible by the flash chip
 2. If persistence is already installed on the host:
 - Delete the `Gremlin` implant from `System32`
@@ -234,6 +234,29 @@ This is turn loads `Gremlin` implant by `spoolsv.exe` if persistence is installe
 4. Base64URL decode it to get the encrypted payload byte blob
 5. Decrypt the blob using DPAPI to get the final payload
 6. Hijack a thread of `explorer.exe` to execute our Beaconing payload(`Meterpreter`/`Beacon`/`Grunt` etc.)
+
+## Screenshots
+Time for screenshots!
+
+Installing persistence:
+![Installing Persistence](../assets/images/midnighttrain-install.png "Installing Persistence")
+
+And we successfully caught an incoming `Beacon` shell:
+![Catching Beacon Shellz](../assets/images/midnighttrain-beacon.png "Catching Beacon Shellz")
+
+Inspecting loaded modules in `spoolsv.exe`:
+![Inspecting Loaded DLLs spoolsv.exe](../assets/images/midnighttrain-spoolsv.png "Inspecting Loaded DLLs spoolsv.exe")
+Some pretty _suspicious_ functions in the import table here, wonder what this module is hmmm.
+
+This is the actual `Beacon` stager shellcode used:
+![Inspecting explorer.exe Memory](../assets/images/midnighttrain-explorer.png "Inspecting explorer.exe Memory")
+Aaah! That familiar PE DOS stub!
+
+Uninstalling persistence:
+![Uninstalling Persistence](../assets/images/midnighttrain-uninstall.png "Uninstalling Persistence")
+
+
+
 
 
 
