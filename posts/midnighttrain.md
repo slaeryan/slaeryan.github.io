@@ -216,7 +216,7 @@ Both of them are compiled to DLLs and with the Gargoyle payload an extra step is
 
 This is done to ensure that persistence can be delivered via your favourite C2 framework and installed with **inline execution/local execution** of shellcode.
 
-When `Gargoyle` is executed in-memory it primarily has **two** objectives to accomplish:
+When `Gargoyle` is executed in-memory in an **Elevated Context** it primarily has **two** objectives to accomplish:
 
 1. Figure out if persistence is already installed on the host or not. If not:
 - Extract `Gremlin` implant DLL from its resource section and copy it to `System32` folder before installing it as a Port Monitor DLL using the above-mentioned method
@@ -240,30 +240,31 @@ If you came this far, you must have a lot of questions regarding this framework.
 
 First, let's address the issue with UEFI variables. 
 
-By now, it is pretty evident that we can do little with the buffer offered by NVRAM variable. Therefore, we need to chunk the payload into the max permissible size and write those individual chunks to as many variables as required and permissible. Like I said before, I have found out from my tests that we can create a maximum of **50 variables and each with a buffer space of 1000 characters**. Our next quest is to figure out what encoding scheme to use to store the payload byte blob. It needs to be an efficient one for us to utilize the most out of the buffer space. `hex` will take two characters for each byte while `Base64` takes 4 characters for every 3 bytes, so it's more efficient than `hex`. But can we do any better? Yes we can! And one of the ways is by using `Base64URL` which is an URL-safe variant of `Base64` encoding plus omitting the padding character(=).
+By now, it is pretty evident that we can do little with the buffer space offered by one NVRAM variable. Therefore, we need to chunk the payload into the max permissible size and write those individual chunks to as many variables as required and permissible. Like I said before, I have found out from my tests that we can create a maximum of **50 variables and each with a buffer space of 1000 characters**. Our next quest is to figure out what encoding scheme to use to store the payload byte blob. It needs to be an efficient one for us to utilize the most out of the buffer space. `hex` will take two characters for each byte while `Base64` takes 4 characters for every 3 bytes, so it's more efficient than `hex`. But can we do any better? Yes, we can! And one of the ways is by using `Base64URL` which is an URL-safe variant of `Base64` encoding plus omitting the padding character(=).
 
 So what's the final size of the payload that we can reliably store in NVRAM? It comes as around `~36 kB`.
-It becomes immediately evident that **Stageless payloads generated out-of-the-box** are out of the quesion with this tiny size limit in today's age.
+It becomes immediately evident to us that **Stageless payloads generated out-of-the-box** are out of the question with this tiny size limit in today's age.
 
-So what can we use? Well, **Staged payloads** should work fine with this framework. But this potentially raises an OPSEC concern since using default `Beacon` stagers is not recommended. And what about the cases when even the Staged payload crosses the size limit? 
+So what can we use? Well, **Staged payloads generated out-of-the-box** should work fine with this framework. But this potentially raises an OPSEC concern since using default `Beacon` stagers is not recommended. And what about the cases when even the Staged payload crosses the size limit? 
 
-**Taking into consideration all these factors, I recommend designing a simple native payload stager/loader yourself that fetches the final payload over a network(due to size constraints) and executes it locally. In that case there would be no need to inject it again since the egress implant is already in the address space of a process from where network activity is not considered unusual by PSPs**.
+**Taking into consideration all these factors, I recommend designing a simple native payload stager/loader yourself that fetches the final payload over a network(due to size constraints) and executes it locally. In that case, there would be no need to inject it again since the egress implant is already in the address space of a process from where network activity is not considered unusual by PSPs**.
 
-Secondly, some of you might be wondering if we are touching disk anyways with `Gremlin` implant then why do even need NVRAM variables and why do we even need a separate persistence payload? Shouldn't persistence be a part of the Stage-1 or Stage-2 RAT?
+Secondly, some of you might be wondering if we are touching disk anyways with the `Gremlin` implant then why do we need NVRAM variables and why do we even need a separate persistence payload for that matter? Shouldn't persistence be a part of the Stage-1 or Stage-2 RAT?
 
 Short Answer: OPSEC
 
 ![OPSEC Meme 1](../assets/images/opsec-meme-1.png "OPSEC Meme 1")
 
-Long Answer: Sure, persistence has to touch disk but we can always minimize the impact of that by controlling what touches the disk and what stays in-memory only. A `Stage-1(Beaconing)` or a `Stage-2(Post-Exploitation)` RAT on disk is just asking to be caught by AV/EDRs. They have no business being on disk and they should reside in-memory only. But with that comes a problem. If they are in-memory only, how can we possibly achieve persistence with them? That answer is a persistence payload.
+Long Answer: Sure, **persistence has to touch disk but we can always minimize the impact of that by controlling what touches the disk and what stays in-memory only**. A `Stage-1(Beaconing)` or a `Stage-2(Post-Exploitation)` RAT **on disk** is **just asking to be caught by AV/EDRs**. They have **no** business being **on disk** and they should reside **in-memory only**. But with that comes a problem. If they are in-memory only, how can we possibly achieve persistence with them? That answer is a **"relatively-benign" persistence implant that automatically loads at machine startup which in turn loads the egress implant in-memory**. So how does the persistence implant(in our case `Gremlin` - A Port Monitor DLL) fetch the egress implant? There are possibly two avenues here: 
+1. Either over network or better yet
+2. A stealthy storage place in Windows
+One of those covert storage compartments happens to be **NVRAM Variables**. Some other possible places to hide your shit could be **NTFS ADS(Alternate Data Streams), Windows Registry, Event Logs** etc.
 
+I simply chose UEFI variables because well it seemed more fun than the rest and since (ab)using them for covert data storage requires elevation anyways, I decided to use a Port Monitor DLL as the persistence implant which is loaded by `spoolsv.exe` which if you haven't noticed is a `SYSTEM` process so it just all fit together nicely :)
 
+One last thing I feel like I should point out is that although `spoolsv.exe` runs as `SYSTEM`, it doesn't have the privilege required to use NVRAM variables in its process token. Ergo, we have to perform token stealing a.k.a. `Token Impersonation` to impersonate a token with the required privilege for the current thread and then attempt to enable the privilege.
 
-
-
-
-
-
+Hopefully, with this, I was able to explain the motivation behind each design choice.
 
 ## Screenshots
 Time for screenshots!
