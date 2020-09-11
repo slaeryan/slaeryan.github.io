@@ -206,3 +206,25 @@ Whatever you've read till now explains the **What?**. Now that we have more-or-l
 But first, let us look at a block diagram to help visualize the architecture.
 
 ![MIDNIGHTTRAIN Block Diagram](../assets/images/midnighttrain-block-diagram.png "MIDNIGHTTRAIN Block Diagram")
+
+So as we can see underlined in the diagram, this framework consists of two payloads:
+
+1. `Gremlin` - The Port Monitor DLL
+2. `Gargoyle` - The Persistence Installer
+
+Both of them are compiled to DLLs and with the Gargoyle payload an extra step is taken to convert it into a PIC(Position Independent Code) blob thanks to [(@monoxgas)Nick Landers[SBS]](https://twitter.com/monoxgas) for the amazing [sRDI project](https://github.com/monoxgas/sRDI).
+
+This is done to ensure that persistence can be delivered via your favourite C2 framework and installed with **inline execution/local execution** of shellcode.
+
+When Gargoyle is executed in-memory it primarily has **two** objectives to accomplish:
+
+1. Figure out if persistence is already installed on the host or not. If not:
+- Extract the `Gremlin` implant DLL from its resource section and copy it to `System32` folder before installing it as a Port Monitor DLL using the above mentioned method
+- Extract the Beaconing shellcode payload from its resource section, encrypt the payload using DPAPI on the target host, base64url encode the encrypted payload and divide it into chunks before writing them into as many NVRAM variables as permissible by the flash chip
+2. If persistence is already installed on the host:
+- Delete the `Gremlin` implant from `System32`
+- Delete all the NVRAM variables(ergo their content) which were created for the purpose of storing the payload
+
+
+
+
