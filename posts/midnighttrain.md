@@ -229,7 +229,7 @@ When `Gargoyle` is executed in-memory it primarily has **two** objectives to acc
 This is turn loads `Gremlin` implant by `spoolsv.exe` if persistence is installed successfully which has the following objectives to accomplish:
 
 1. Steal a token from `winlogon.exe` and impersonate for the current thread(more on this later)
-2. Check if `SeSystemEnvironmentPrivilege/SE_SYSTEM_ENVIRONMENT_NAME` is available in the token and enable it
+2. Check if `SeSystemEnvironmentPrivilege/SE_SYSTEM_ENVIRONMENT_NAME` is available in the token and enable it if available
 3. Now, read back the individual chunks from the NVRAM variables and assemble to get the Base64URL-encoded encrypted payload
 4. Base64URL decode it to get the encrypted payload byte blob
 5. Decrypt the blob using DPAPI to get the final payload
