@@ -273,31 +273,70 @@ Installing persistence:
 
 ![Installing Persistence](../assets/images/midnighttrain-install.png "Installing Persistence")
 
-
 And we successfully caught an incoming `Beacon` shell:
 
 ![Catching Beacon Shellz](../assets/images/midnighttrain-beacon.png "Catching Beacon Shellz")
-
 
 Inspecting loaded modules in `spoolsv.exe`:
 
 ![Inspecting Loaded DLLs spoolsv.exe](../assets/images/midnighttrain-spoolsv.png "Inspecting Loaded DLLs spoolsv.exe")
 Some pretty _suspicious_ functions in the import table here, wonder what this module is hmmm.
 
-
 This is the actual `Beacon` stager shellcode used:
 
 ![Inspecting explorer.exe Memory](../assets/images/midnighttrain-explorer.png "Inspecting explorer.exe Memory")
 Aaah! That familiar PE DOS stub!
 
-
 Uninstalling persistence:
 
 ![Uninstalling Persistence](../assets/images/midnighttrain-uninstall.png "Uninstalling Persistence")
 
+## Conclusion
+If you've reached till here, I want to thank you for having the patience to read the whole article. I hope you enjoyed reading it as much as I enjoyed designing the framework/writing this blog post.
 
+Keep in mind that the framework has been designed in a **very modular structure** so that operators can easily  mix'n'match other techniques keeping the architecture same or just treat them as separate modules and use them in their own projects.
 
+Feel free to hit me up if you feel something could be improved/general suggestions/other cool ideas etc.
 
+Bene vale!
 
+## Support this project
+If you find this project useful, consider buying me coffee or a beer(depending on the mood) as a token of appreciation.
 
+You can do it right here:
 
+<a href="https://www.patreon.com/bePatron?u=33751219" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+
+OR
+
+<div>
+  <a class="donate-with-crypto"
+     href="https://commerce.coinbase.com/checkout/860e4301-3c92-40df-b181-3d23ec3db910">
+    Donate with Crypto
+  </a>
+  <script src="https://commerce.coinbase.com/v1/checkout.js?version=201807">
+  </script>
+</div>
+
+<br />
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = https://slaeryan.github.io;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = 9; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-slaeryan-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
