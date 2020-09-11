@@ -242,19 +242,23 @@ Installing persistence:
 
 ![Installing Persistence](../assets/images/midnighttrain-install.png "Installing Persistence")
 
+
 And we successfully caught an incoming `Beacon` shell:
 
 ![Catching Beacon Shellz](../assets/images/midnighttrain-beacon.png "Catching Beacon Shellz")
+
 
 Inspecting loaded modules in `spoolsv.exe`:
 
 ![Inspecting Loaded DLLs spoolsv.exe](../assets/images/midnighttrain-spoolsv.png "Inspecting Loaded DLLs spoolsv.exe")
 Some pretty _suspicious_ functions in the import table here, wonder what this module is hmmm.
 
+
 This is the actual `Beacon` stager shellcode used:
 
 ![Inspecting explorer.exe Memory](../assets/images/midnighttrain-explorer.png "Inspecting explorer.exe Memory")
 Aaah! That familiar PE DOS stub!
+
 
 Uninstalling persistence:
 
