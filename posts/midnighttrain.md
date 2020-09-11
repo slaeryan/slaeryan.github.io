@@ -249,11 +249,13 @@ So what can we use? Well, **Staged payloads** should work fine with this framewo
 
 **Taking into consideration all these factors, I recommend designing a simple native payload stager/loader yourself that fetches the final payload over a network(due to size constraints) and executes it locally. In that case there would be no need to inject it again since the egress implant is already in the address space of a process from where network activity is not considered unusual by PSPs**.
 
-Secondly, some of you might be wondering if we are touching disk anyways with `Gremlin` implant then why do even need NVRAM variables?
+Secondly, some of you might be wondering if we are touching disk anyways with `Gremlin` implant then why do even need NVRAM variables and why do we even need a separate persistence payload? Shouldn't persistence be a part of the Stage-1 or Stage-2 RAT?
 
 Short Answer: OPSEC
 
-Long Answer: Sure, persistence has to touch disk but we can always minimize that impact of that by controlling what touches the disk and what stays in-memory only. A `Stage-1(Beaconing)` or a `Stage-2(Post-Exploitation)` RAT on disk is just asking to be caught by AV/EDRs. They have no business being on disk and they should reside in-memory only. But with that comes a problem. If they are in-memory only, how can we achieve persistence with them.
+![OPSEC Meme 1](../assets/images/opsec-meme-1.png "OPSEC Meme 1")
+
+Long Answer: Sure, persistence has to touch disk but we can always minimize the impact of that by controlling what touches the disk and what stays in-memory only. A `Stage-1(Beaconing)` or a `Stage-2(Post-Exploitation)` RAT on disk is just asking to be caught by AV/EDRs. They have no business being on disk and they should reside in-memory only. But with that comes a problem. If they are in-memory only, how can we possibly achieve persistence with them? That answer is a persistence payload.
 
 
 
