@@ -302,6 +302,9 @@ You can find what I'm up to on my Twitter [@slaeryan](https://twitter.com/slaery
 
 Bene vale operator!
 
+## Credits
+
+
 ## Support this project
 If you find this project useful, consider buying me coffee or a beer(depending on the mood) as a token of appreciation.
 
