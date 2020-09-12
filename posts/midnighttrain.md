@@ -7,7 +7,7 @@ This tool is [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badge
 
 It is available here: [https://github.com/slaeryan/MIDNIGHTTRAIN](https://github.com/slaeryan/MIDNIGHTTRAIN)
 
-Fair warning: This has been made as a small weekend project and while the code has been tested in my lab extensively, bugs are to be expected. Furthermore, I'm not a professional coder so get ready to read crappy code! However, I have given it my best possible efforts and if you find bugs/improvements in the code don't feel shy to contact me!
+Fair warning: This has been made as a small weekend project and while the code has been tested in my lab extensively, bugs are to be expected. Furthermore, I'm not a professional coder so get ready to read crappy code! However, I have given it my best possible efforts and if you find bugs/improvements in the code don't feel shy to hit me up!
 
 ## Introduction
 One of my favourite pastimes is to read APT reports and look for the interesting TTP(Tactics, Techniques and Procedures) used by apex adversaries(Read as: State-backed Threat Groups) in a later attempt to recreate it or at least a variant of it in my lab.
@@ -310,6 +310,7 @@ Bene vale operator!
 5. [Sektor7 RTO: MalDev Essentials](https://institute.sektor7.net/) & [@reenz0h](https://twitter.com/sektor7net?lang=en) for getting me initiated into the game.
 6. [CIA Vault7 leaks](https://wikileaks.org/ciav7p1/cms/page_31227915.html) - I have a joke but it is [REDACTED]().
 7. [@monoxgas](https://twitter.com/monoxgas?lang=en) for sRDI and being an awesome researcher in general!
+8. [Mr. Base64]() - for the review and code improvements. +1 for being a top-level guy! You can find him hanging out here [0x00sec Discord](https://discord.com/invite/c6BHVfn) with a bunch of other really cool peeps.
 
 ## Support this project
 If you find this project useful, consider buying me coffee or a beer as a token of appreciation.
