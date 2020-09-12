@@ -68,7 +68,7 @@ Okay, this sounds too good to be true so what's the caveat? Can you call these A
 
 Good question, the answer is no! 
 
-Using these API functions require that you are a **local admin** and that you have a specific privilege available and enabled in the calling token namely - `SeSystemEnvironmentPrivilege/SE_SYSTEM_ENVIRONMENT_NAME`. This means that our persistence framework won't install without an **Elevated Context**.(Blue Teams take note!)
+Using these API functions require that you are a **local admin** and that you have a specific privilege available and enabled in the calling token namely - `SeSystemEnvironmentPrivilege/SE_SYSTEM_ENVIRONMENT_NAME`. This means that our persistence framework won't install without an **Elevated Context**(Blue Teams take note!)
 
 I wouldn't consider this a huge problem for attackers since persistence is typically meant to be a Post-Ex job and could be easily installed after privilege escalation on the host.
 
@@ -307,8 +307,9 @@ Bene vale operator!
 2. [https://gist.github.com/jthuraisamy/e602d5d870230df3ce00178001f9ac16](https://gist.github.com/jthuraisamy/e602d5d870230df3ce00178001f9ac16) - Another PoC thanks to [@Jackson_T](https://twitter.com/jackson_t?lang=en)
 3. [@am0nsec](https://twitter.com/am0nsec?lang=en) for dropping dem hints regarding the token impersonation
 4. [Dark Side Ops - 1](https://silentbreaksecurity.com/training/malware-dev/) - A highly recommended hands-on approach to implant development from some of the best people in the game, highly recommended course
-5. [CIA Vault7 leaks](https://wikileaks.org/ciav7p1/cms/page_31227915.html) - I have a joke but its [REDACTED]()
-6. [@monoxgas](https://twitter.com/monoxgas?lang=en) for sRDI and being an awesome researcher in general
+5. [Sektor7 RTO: MalDev Essentials](https://institute.sektor7.net/) & [@reenz0h](https://twitter.com/sektor7net?lang=en) for getting me initiated into the game
+6. [CIA Vault7 leaks](https://wikileaks.org/ciav7p1/cms/page_31227915.html) - I have a joke but it is [REDACTED]()
+7. [@monoxgas](https://twitter.com/monoxgas?lang=en) for sRDI and being an awesome researcher in general
 
 ## Support this project
 If you find this project useful, consider buying me coffee or a beer(depending on the mood) as a token of appreciation.
