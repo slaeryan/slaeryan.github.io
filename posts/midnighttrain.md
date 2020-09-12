@@ -37,7 +37,7 @@ Sound like a stealthy place to hide your life's secrets yet?
 
 What's more? As easy as it is to write data into firmware variables from User-mode i.e. Ring 3, it is incredibly difficult(if not downright impossible) for the defenders to enumerate the data from the same.
 
-How so you ask? Well, you'll see in a bit.
+How so, you ask? Well, you'll see in a bit.
 
 Now, conveniently for us attackers, Microsoft provides us with fully-documented API access to the magical land of firmware variables using:
 
