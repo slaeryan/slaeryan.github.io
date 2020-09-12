@@ -10,7 +10,7 @@ It is available here: [https://github.com/slaeryan/MIDNIGHTTRAIN](https://github
 Fair warning: This has been made as a small weekend project and while the code has been tested in my lab extensively, bugs are to be expected. Furthermore, I'm not a professional coder so get ready to read crappy code! However, I have given it my best possible efforts and if you find bugs/improvements in the code don't feel shy to contact me!
 
 ## Introduction
-One of my favourite pastimes is to read APT reports and look for the interesting TTPs(Tactics, Techniques and Procedures) used by apex adversaries(Read as: State-backed Threat Groups) in a later attempt to recreate it or at least a variant of it in my lab.
+One of my favourite pastimes is to read APT reports and look for the interesting TTP(Tactics, Techniques and Procedures) used by apex adversaries(Read as: State-backed Threat Groups) in a later attempt to recreate it or at least a variant of it in my lab.
 
 So last Friday was no different, except that this time I was going through the _CIA Vault7_ leaks specifically the _EDB_ branch documents when suddenly [this](https://wikileaks.org/ciav7p1/cms/page_26968084.html) document came to my attention which describes the theory behind NVRAM variables.
 Immediately it piqued my interest and I started digging deeper.
@@ -78,7 +78,7 @@ That shall solely dictate what can or can't be used as the payload.
 
 To answer this question, I have done some testing in my lab and I have found that you can approximately create around **50 variables** and each with a capacity of **1000 characters** before Windows starts whining with a **1470** error code.
 
-Alos, now is a good time to point out that it is possible to enumerate these variables from **Kernel-mode i.e. Ring 0** using frameworks such as [CHIPSEC](https://github.com/chipsec/chipsec) or using **physical access** to the machine with an **UEFI shell**(Again, Defenders take note!)
+Also, now is a good time to point out that it is possible to enumerate these variables from **Kernel-mode i.e. Ring 0** using frameworks such as [CHIPSEC](https://github.com/chipsec/chipsec) or using **physical access** to the machine with an **UEFI shell**(Again, Defenders take note!)
 
 ### Port Monitors
 Once again, I will not bore you with endless theory. But it is important to know a few things. Port Monitors are User-mode DLLs that according to [MSDN](https://docs.microsoft.com/en-us/windows-hardware/drivers/print/port-monitors) "are responsible for providing a communications path between the user-mode print spooler and the kernel-mode port drivers that access I/O port hardware".
@@ -106,7 +106,7 @@ BOOL AddMonitor(
 );
 ```
 
-What the function does under the hood is add the same registry entries and load the DLL within `spoolsv.exe` but without any direct intervention. Readers should probably take note that if the DLL is not created exactly according to MSDN specifications then while the DLL will be loaded for the current session but the appropriate registry entries will **not** be made and the DLL will **not load** after a reboot ergo, defeating it's very purpose.
+What the function does under the hood is add the same registry entries and load the DLL within `spoolsv.exe` but without any direct intervention. Readers should probably take note that if the DLL is not created exactly according to MSDN specifications then while the DLL will be loaded for the current session but the appropriate registry entries will **not** be made and the DLL will **not load** after a reboot ergo, defeating its very purpose.
 
 And to uninstall a Port Monitor:
 
@@ -294,7 +294,7 @@ Uninstalling persistence:
 ## Conclusion
 If you're still reading, I want to thank you for having the patience to read the whole article. I hope you enjoyed reading it as much as I enjoyed designing the framework/writing this blog post.
 
-Keep in mind that the framework has been designed in a **very modular structure** so that operators can easily  mix and match other techniques keeping the architecture same or just treat it as separate modules and use them in their own projects.
+Keep in mind that the framework has been designed in a **very modular structure** so that operators can easily mix and match other techniques keeping the architecture same or just treat it as separate modules and use them in their own projects.
 
 Feel free to hit me up if you feel something could be improved/general suggestions/other cool ideas etc.
 
