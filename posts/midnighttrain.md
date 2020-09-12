@@ -312,7 +312,7 @@ Bene vale operator!
 7. [@monoxgas](https://twitter.com/monoxgas?lang=en) for sRDI and being an awesome researcher in general!
 
 ## Support this project
-If you find this project useful, consider buying me coffee or a beer(depending on the mood) as a token of appreciation.
+If you find this project useful, consider buying me coffee or a beer as a token of appreciation.
 
 You can do it right here:
 
