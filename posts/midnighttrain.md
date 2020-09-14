@@ -7,7 +7,7 @@ This tool is [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badge
 
 It is available here: [https://github.com/slaeryan/MIDNIGHTTRAIN](https://github.com/slaeryan/MIDNIGHTTRAIN)
 
-Fair warning: This has been made as a small weekend project and while the code has been tested in my lab extensively, bugs are to be expected. Furthermore, I'm not a professional coder so get ready to read crappy code! However, I have given it my best possible efforts and if you find bugs/improvements in the code don't feel shy to hit me up!
+Fair warning: This has been made as a small weekend project and it has received limited testing so bugs are to be expected. Furthermore, I'm not a professional coder so get ready to read crappy code! However, I am willing to fix bugs in my spare time so if you find any or even improvements in the code don't feel shy to hit me up!
 
 ## Introduction
 One of my favourite pastimes is to read APT reports and look for the interesting TTP(Tactics, Techniques and Procedures) used by apex adversaries(Read as: State-backed Threat Groups) in a later attempt to recreate it or at least a variant of it in my lab.
@@ -15,7 +15,7 @@ One of my favourite pastimes is to read APT reports and look for the interesting
 So last Friday was no different, except that this time I was going through the _CIA Vault7_ leaks specifically the _EDB_ branch documents when suddenly [this](https://wikileaks.org/ciav7p1/cms/page_26968084.html) document came to my attention which describes the theory behind NVRAM variables.
 Immediately it piqued my interest and I started digging deeper.
 
-Turns out, these variables are not only writable/readable from the user-mode but also it's an awesome place to hide your shit like egress implants, config data, stolen goodies and whatnot which I found out after watching an enlightening [DEFCON talk](https://youtu.be/q2KUufrjoRo), thanks to Topher Timzen and Michael Leibowitz.
+Turns out, these variables are not only writable/readable from the User-mode(Ring-3) but also it's an awesome place to hide your shit like egress implants, config data, stolen goodies, encryption keys and whatnot which I found out after watching an enlightening [DEFCON talk](https://youtu.be/q2KUufrjoRo), thanks to Topher Timzen and Michael Leibowitz.
 
 In the talk, they do give a demo using C# but the attendees are encouraged to figure out their own way to weaponize this technique.
 
@@ -95,7 +95,7 @@ This requires either a manual registry entry or via WinAPI and it allows loading
 - The DLL must reside in `System32`
 - Arbitrary DLLs cannot be loaded via this technique(well, it can but without persistence), the DLL must be written in a [special way](https://docs.microsoft.com/en-us/windows-hardware/drivers/print/port-monitor-server-dll-functions) with some mandatory functions defined and must export a function named `InitializePrintMonitor2` which gets called immediately after the DLL is loaded
 
-Finally, the Port Monitor might be registered via:
+Finally, the Port Monitor can be registered via:
 
 [AddMonitor()](https://docs.microsoft.com/en-us/windows/win32/printdocs/addmonitor?redirectedfrom=MSDN) - To  install a local port monitor
 ```a
@@ -258,11 +258,11 @@ Short Answer: OPSEC
 Long Answer: Sure, **persistence has to touch disk but we can always minimize the impact of that by controlling what touches the disk and what stays in-memory only**. A `Stage-1(Beaconing)` or a `Stage-2(Post-Exploitation)` RAT **on disk** is **just asking to be caught by AV/EDRs**. They have **no** business being **on disk** and they should reside **in-memory only**. But with that comes a problem. If they are in-memory only, how can we possibly achieve persistence with them? That answer is a **"relatively-benign" persistence implant that automatically loads at machine startup which in turn loads the egress implant in-memory**. So how does the persistence implant(in our case `Gremlin` - A Port Monitor DLL) fetch the egress implant? There are possibly two avenues here: 
 1. Either over network or better yet
 2. A stealthy storage place in Windows
-One of those covert storage compartments happens to be **NVRAM Variables**. Some other possible places to hide your shit could be **NTFS ADS(Alternate Data Streams), Windows Registry, Event Logs** etc.
+One of those covert storage compartments happens to be **NVRAM Variables**. Some other possible places to hide your shit could be **NTFS ADS(Alternate Data Streams), Covert File Systems, Windows Registry Keys, Event Logs** etc.
 
 I simply chose UEFI variables because well it seemed more fun than the rest and since (ab)using them for covert data storage requires elevation anyways, I decided to use a Port Monitor DLL as the persistence implant which is loaded by `spoolsv.exe` which if you haven't noticed is a `SYSTEM` process so it just all fit together nicely :)
 
-One last thing I feel like I should point out is that although `spoolsv.exe` runs as `SYSTEM`, it doesn't have the privilege required to use NVRAM variables in its process token. Ergo, we have to perform token stealing a.k.a. `Token Impersonation` to impersonate a token with the required privilege for the current thread and then attempt to enable the privilege.
+One last thing I feel like I should point out is that although `spoolsv.exe` runs as `SYSTEM`, it doesn't have the privilege required to use NVRAM variables in its process token. Ergo, we have to perform token stealing a.k.a. `Token Impersonation` i.e. **to steal and impersonate a primary token from a process(`winlogon.exe`) that has the required privilege in its token(albeit in a disabled state) for the calling thread and then attempt to enable the privilege**.
 
 Hopefully, with this, I was able to explain the motivation behind each design choice.
 
@@ -272,6 +272,7 @@ Time for screenshots!
 Installing persistence:
 
 ![Installing Persistence](../assets/images/midnighttrain-install.png "Installing Persistence")
+And if you're wondering about `edr_console`, it's simply a modified Sysmon EventLog parser and you can get it [here](https://gist.github.com/RamblingCookieMonster/da272fee3b9a879bfee9)
 
 And we successfully caught an incoming `Beacon` shell:
 
