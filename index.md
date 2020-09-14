@@ -70,3 +70,5 @@ published: true
 - **Apr 23, 2020:** [How I evaded "next-generation" Cylance Smart AntiVirus in less than 15 minutes](./posts/cylance-smartav-bypass.html)
 
 - **May 06, 2020:** [Introducing FalconZero v1.0 - a stealthy, targeted Windows Loader for delivering second-stage payloads(shellcode) to the host machine undetected](./posts/falcon-zero-alpha.html)
+
+- **Sep 15, 2020:** [Introducing MIDNIGHTTRAIN - A Covert Stage-3 Persistence Framework utilizing NVRAM variables](./posts/midnighttrain.html)
