@@ -121,6 +121,8 @@ BOOL DeleteMonitor(
 
 I have chosen the second way for the framework.
 
+A special acknowledgement to [@reenz0h](https://twitter.com/Sektor7Net) and [Sektor7 RTO: Windows Persistence Course](https://institute.sektor7.net/rto-windows-persistence) for the Port Monitor DLL snippet.
+
 ### Execution Guardrails with DPAPI
 Well, I'm a big fan of putting execution guardrails in my code primarily because of two reasons:
 
@@ -309,10 +311,9 @@ Bene vale operator!
 3. [@am0nsec](https://twitter.com/am0nsec?lang=en) for dropping dem hints regarding the token impersonation.
 4. [Dark Side Ops - 1](https://silentbreaksecurity.com/training/malware-dev/) - A hands-on approach to implant development from some of the best people in the game, a highly recommended course, period!
 5. [Sektor7 RTO: MalDev Essentials](https://institute.sektor7.net/) & [@reenz0h](https://twitter.com/sektor7net?lang=en) for getting me initiated into the game and the templates that I still use to this date.
-6. [Sektor7 RTO: Windows Persistence Course](https://institute.sektor7.net/rto-windows-persistence) for the Port Monitor DLL snippet.
-7. [CIA Vault7 leaks](https://wikileaks.org/ciav7p1/cms/page_31227915.html) - I have a joke but it is [REDACTED]().
-8. [@monoxgas](https://twitter.com/monoxgas?lang=en) for sRDI and being an awesome researcher in general!
-9. [Mr. Base64]() - for the review and code improvements. +1 for being a top-level guy! You can find him hanging out here [0x00sec Discord](https://discord.com/invite/c6BHVfn) with a bunch of other really cool peeps.
+6. [CIA Vault7 leaks](https://wikileaks.org/ciav7p1/cms/page_31227915.html) - I have a joke but it is [REDACTED]().
+7. [@monoxgas](https://twitter.com/monoxgas?lang=en) for sRDI and being an awesome researcher in general!
+8. [Mr. Base64]() - for the review and code improvements. +1 for being a top-level guy! You can find him hanging out here [0x00sec Discord](https://discord.com/invite/c6BHVfn) with a bunch of other really cool peeps.
 
 ## Support this project
 If you find this project useful, consider buying me coffee or a beer as a token of appreciation.
